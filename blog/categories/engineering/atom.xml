@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Engineering | Dong Guo's Blog]]></title>
+  <link href="http://guod08.github.io/blog/categories/engineering/atom.xml" rel="self"/>
+  <link href="http://guod08.github.io/"/>
+  <updated>2014-01-05T00:38:36+08:00</updated>
+  <id>http://guod08.github.io/</id>
+  <author>
+    <name><![CDATA[Dong Guo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Druid 评析]]></title>
+    <link href="http://guod08.github.io/blog/2014/01/05/druid-ping-xi/"/>
+    <updated>2014-01-05T00:36:47+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/01/05/druid-ping-xi</id>
+    <content type="html"><![CDATA[<p>最近在设计一个新的系统，需要一种存储方案</p>
+]]></content>
+  </entry>
+  
+</feed>
