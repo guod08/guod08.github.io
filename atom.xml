@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo''s Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-04T22:53:22+08:00</updated>
+  <updated>2014-01-05T00:06:17+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test1]]></title>
+    <link href="http://guod08.github.io/blog/2014/01/04/test1/"/>
+    <updated>2014-01-04T23:13:53+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/01/04/test1</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test]]></title>
+    <link href="http://guod08.github.io/blog/2014/01/04/test/"/>
+    <updated>2014-01-04T23:06:32+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/01/04/test</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Expectation Propagation]]></title>
