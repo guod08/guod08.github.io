@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://guod08.github.io/sitemap.xml 
