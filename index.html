@@ -318,7 +318,7 @@ Suppose variable x belongs to Gaussian distribution, then x conditional on x bel
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR Prediction for Bing</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR Prediction of Bing</a></h1>
     
     
       <p class="meta">
@@ -347,17 +347,15 @@ This article shows how to inference this model(let&rsquo;s call it Ad predictor)
 
 <h2>Pros. and Cons.</h2>
 
-
-<p>I like it because it&rsquo;s totally based on Bayesian, and Bayesian is beautiful. Online learning is naturally supported, and the precition accuracy is comparable with FTRL and OWLQN.
-And both training and prediction is light-weight and fast.
+<p>I like it because it&rsquo;s totally based on Bayesian, and Bayesian is beautiful. Online learning is naturally supported, and the precition accuracy is comparable with FTRL and OWLQN. And both training and prediction is light-weight and fast.
 Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big issue when applied on big dataset with huge amount of features.</p>
 
 <h2>Inference using Expectation Propagation step by step</h2>
 
-
 <p>Firstly, following is the factor graph of ad predictor.
-<img class="left" src="/images/personal/research/ep/adPredictor.png" width="1200">
-<img class="left" src="/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
+<img class="left" src="/images/personal/research/ep/adPredictor.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
 
 <p><img class="left" src="/images/personal/research/ep/ep_step1.png" width="1200"></p>
 
@@ -395,22 +393,20 @@ Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big iss
 
 <h2>Prediction</h2>
 
-
 <p>After training, we can predict with following formula:
 <img class="left" src="/images/personal/research/ep/ep_predict.png" width="1200"></p>
 
 <h2>Prediction Accuracy</h2>
 
-
 <p>I compared it with FTRL and OWLQN on one dataset for age&amp;gender prediction. AUC of this model is comparable with OWLQN and FTRL, so I recommend you have a try in your case.</p>
 
 <h2>Insights</h2>
 
+<ol>
+<li><p>You can find variance of each feature increases after every exposure, which makes sense.</p></li>
+<li><p>This model shows samples with more features will have bigger variance, which does not make sense very much. I think the reason is we assume all the features are independent. Any insights from you?</p></li>
+</ol>
 
-<p>1). You can find variance of each feature increases after every exposure, which makes sense.</p>
-
-<p>2). This model shows samples with more features will have bigger variance, which does not make sense very much.
-I think the reason is we assume all the features are independent. Any insights from you?</p>
 </div>
   
   
@@ -446,14 +442,18 @@ I think the reason is we assume all the features are independent. Any insights f
   </header>
 
 
-  <div class="entry-content"><p>周末浏览了一本书《小强升职记》，有了一些新的收获，写在这边做个总结。</p>
+  <div class="entry-content"><p>周末浏览了一本书《小强升职记》，介绍了工作中事情管理的很多经验，个人觉得帮助挺大，在这边分享一下。</p>
 
 <ol>
-<li><p>将事情按照重要性、紧急性2个维度分成4个象限。
- 第一象限（重要且紧急）：立马去做；思考“这些事情真的都是重要且紧急的吗？”，“为什么这些事情会进入这个象限？”；
- 第二象限（重要但不紧急）：尽量开始去做，没时间的话第一时间进行任务分解，制定时间表；
- 第三象限（不重要但紧急）：注意紧急和重要一点关系没有；思考“如何尽力减少这类事情？”
- 第四象限（不重要且不紧急）：尽量别做</p></li>
+<li><p>将事情按照重要性、紧急性2个维度分成4个象限。</p>
+
+<ol type="a">
+<li>第一象限（重要且紧急）：立马去做；思考“这些事情真的都是重要且紧急的吗？”，“为什么这些事情会进入这个象限？”；</li>
+<li>第二象限（重要但不紧急）：尽量开始去做，没时间的话第一时间进行任务分解，制定时间表；</li>
+<li>第三象限（不重要但紧急）：注意紧急和重要一点关系没有；思考“如何尽力减少这类事情？”</li>
+<li>第四象限（不重要且不紧急）：尽量别做</li>
+</ol>
+</li>
 <li><p>走出第三象限（不重要但紧急）：Monkey theory
  甩掉自己身上的猴子，将猴子放回到主人身上 （书中这段举的例子很有意思）
  比如：“朋友问：这周六咱们去游泳吧；你答：好啊，到时候你提前给我打电话，有时间的话，我一定去”。
@@ -516,7 +516,7 @@ I think the reason is we assume all the features are independent. Any insights f
       </li>
     
       <li class="post">
-        <a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR Prediction for Bing</a>
+        <a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR Prediction of Bing</a>
       </li>
     
       <li class="post">
