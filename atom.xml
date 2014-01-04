@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-05T00:38:36+08:00</updated>
+  <updated>2014-01-05T00:41:52+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,55 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Druid 评析]]></title>
-    <link href="http://guod08.github.io/blog/2014/01/05/druid-ping-xi/"/>
-    <updated>2014-01-05T00:36:47+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/01/05/druid-ping-xi</id>
-    <content type="html"><![CDATA[<p>最近在设计一个新的系统，需要一种存储方案</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Expectation Propagation]]></title>
-    <link href="http://guod08.github.io/blog/2014/01/01/expectation-propagation/"/>
-    <updated>2014-01-01T22:04:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/01/01/expectation-propagation</id>
-    <content type="html"><![CDATA[<p><strong>expectation propagation</strong> is a useful approximate bayesian inference method, and it&rsquo;s very popular in graph model.</p>
-
-<h1>title</h1>
-
-<h2>title</h2>
-
-<h3>title</h3>
-
-<ol>
-<li>hello</li>
-<li>world</li>
-<li>liebiao</li>
-</ol>
-
-
-<h3>code</h3>
-
-<pre><code>def new_post():
-    for i in range(10):
-        print i
-    return 0
-</code></pre>
-
-<h3>Comments</h3>
-
-<hr />
-
-<h3>link</h3>
-
-<p>This is <a href="http://guod08.github.io/me/" title="dong's blog">the link</a> of my blog</p>
-
-<p><img src="http://guod08.github.io/images/personal/research/ep/ep_step1.png" alt="Alt text" /></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some ML Slides From Hulu Internal]]></title>
