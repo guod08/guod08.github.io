@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-04T17:02:02+08:00</updated>
+  <updated>2014-01-04T17:04:47+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -14,11 +14,324 @@
 
   
   <entry>
-    <title type="html"><![CDATA[First Blog]]></title>
-    <link href="http://guod08.github.io/blog/2014/01/04/first-blog/"/>
-    <updated>2014-01-04T17:01:25+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/01/04/first-blog</id>
-    <content type="html"><![CDATA[<p>Hello world</p>
+    <title type="html"><![CDATA[Expectation Propagation]]></title>
+    <link href="http://guod08.github.io/blog/2014/01/01/expectation-propagation/"/>
+    <updated>2014-01-01T22:04:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/01/01/expectation-propagation</id>
+    <content type="html"><![CDATA[<p><strong>expectation propagation</strong> is a useful approximate bayesian inference method, and it&rsquo;s very popular in graph model.</p>
+
+<h1>title</h1>
+
+<h2>title</h2>
+
+<h3>title</h3>
+
+<ol>
+<li>hello</li>
+<li>world</li>
+<li>liebiao</li>
+</ol>
+
+
+<h3>code</h3>
+
+<pre><code>def new_post():
+    for i in range(10):
+        print i
+    return 0
+</code></pre>
+
+<h3>Comments</h3>
+
+<hr />
+
+<h3>link</h3>
+
+<p>This is <a href="http://guod08.github.io/me/" title="dong's blog">the link</a> of my blog</p>
+
+<p><img src="http://guod08.github.io/images/personal/research/ep/ep_step1.png" alt="Alt text" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Some ML Slides From Hulu Internal]]></title>
+    <link href="http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal/"/>
+    <updated>2013-12-16T00:00:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal</id>
+    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
+
+<p><a href="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
+
+<p><a href="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
+
+<p><a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
+
+<p><a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a>: a popular bayesian inference technique proposed by Thomas Minka.
+You may see it a lot in graph model inference.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Classification Models]]></title>
+    <link href="http://guod08.github.io/blog/2013/12/15/classification-models/"/>
+    <updated>2013-12-15T00:35:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2013/12/15/classification-models</id>
+    <content type="html"><![CDATA[<p>During my past 3 years in career, following classifiers are often used for classification tasks.</p>
+
+<h3> Typcial classifiers comparision </h3>
+
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/classifiers/classifiers_compare.png" width="800"></p>
+
+<h3>Decision Tree </h3>
+
+
+<p>Decision Tree is not a start-of-art model for classification or regression, and when there are huge features(say millions) it will take a long time for training.
+But it may perform very well when the number of distinct features are limited, and the classification/regression task is obviously non-linear.</p>
+
+<p>A typical scenario is multi-model fusion: you have trained multiple models for single task, and you want to generate the final prediction result using all these models.
+Based on my past experiments, Decision Tree can out perform linear model(linear regression, logistic regression and so on) on many datasets.</p>
+
+<h3>RDT, random forest, boosting tree</h3>
+
+
+<p>All of these 3 models are ensemble learning method for classification/regression that operate by constructing multiple Decision Tree at training time.
+For RDT(random decision tree), only part of total samples are used to training each tree. And all features are considered for splitting.</p>
+
+<p>Similar with RDT, random forest also use part of total sampels to construct each tree, but it also only use subset of features/dimisions for splitting.
+So random forest introduces more &lsquo;random&rsquo; factors for training, and it may perform better when there are more noises in training set.</p>
+
+<p>boosting tree is actually forward stagwise additive modeling with decision tree as base learner. And if you choose exponential loss function, then boosting tree becauses Adaboost with decision tree as base learner.
+Here is <a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">slides</a> about additive model and boosting tree.</p>
+
+<h3>Generalized linear model</h3>
+
+
+<p>One of the most popular generalized linear model is logistic regression, which is generalized linear model with inversed sigmoid function as the link function.
+There are multiple different implementation for logistic regression, and here are some often used by me.</p>
+
+<p>1). Logistic regression optimized by SGD.</p>
+
+<p>2). OWLQN: It was proposed by Microsoft in paper <a href="http://research.microsoft.com/en-us/downloads/b1eb1016-1738-4bd5-83a9-370c9d498a03/">
+&lsquo;Orthant-Wise Limited-memory Quasi-Newton Optimizer for L1-regularized Objectives&rsquo;</a> of ICML 2007. You can also find the source code and executable runner via this link.</p>
+
+<p>This model is optimized by a method which is similar with L-BFGS, but can works with L1 regularizer.
+I recommend you try this model and compare with other models you are using in your dataset.
+Here are four reasons:
+a. It&rsquo;s fast, especially when the dataset is huge;</p>
+
+<ol type="a">
+<li><p>It can generate start-of-art prediction results on most dataset;</p></li>
+<li><p>It&rsquo;s stable and there are few parameters need to be tried. Actaully, I find only regularization parameters can impact the performance obviously;</p></li>
+<li><p>It&rsquo;s sparse, which is very important for big dataset and real product. (Of course, sparse is due to L1 regularizer, instead of the specific optimization method)</p></li>
+</ol>
+
+
+<p>One disadvantage is it&rsquo;s more challenge to implement it by yourself, so you need spend some time to make it support incremental update or online learning.</p>
+
+<p>3). FTRL: It was proposed by Google via paper <a href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/41159.pdf">
+Ad Click Prediction: a View from the Trenches</a> in 2013. I tried on my dataset, and this implementation can generate similar prediction performance with OWLQN.
+It&rsquo;s quicker than OWLQN for training, and it&rsquo;s also sparse. One advantage is it&rsquo;s very easy to implement, and it support increamental update naturally.
+One pain point for me is this model has 3-4 parameters need to be chosen, and most of them impact the prediction performance obviously.</p>
+
+<p>4). Ad predictor: This <a href="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">paper</a> is also proposed by Microsoft in ICML 2009.
+One biggest different with upper 3 implementation is it&rsquo;s based on bayesian, so it&rsquo;s generative model.
+Ad predictor is used to predict CTR of sponsor search ads of Bing, and on my dataset, it could also achieve comparable prediction performance with OWQLN and FTRL.
+Ad predictor model the weight of each feature with a gaussian distribution, so it natually supports online learning.
+And the prediction result for each sample is also a gaussian distribution, and it could be used to handle the exploration and exploitation problem.
+See more details of this model in <a href="http://guod08.github.io/me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">another blog</a></p>
+
+<h3>Neural Network</h3>
+
+
+<p>ANN is so slow for training, so it&rsquo;s tried only when the dataset is small of medium. Another disadvantage of ANN is it&rsquo;s totally blackbox.</p>
+
+<h3>SVM</h3>
+
+
+<p>SVM with kernel is also slow for training. You can try it with <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm</a> when the dataset is small/medium.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gaussian and Truncated Gaussian]]></title>
+    <link href="http://guod08.github.io/blog/2013/12/02/gaussian-and-truncated-gaussian/"/>
+    <updated>2013-12-02T18:30:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2013/12/02/gaussian-and-truncated-gaussian</id>
+    <content type="html"><![CDATA[<p>Everybody knows about Gaussian distribution, and Gaussian is very popular in Bayesian world and even in our life.
+This article summaries typical operation of Gaussian, and something about Truncated Guassian distribution.</p>
+
+<h3>pdf(probability density function) and cdf(cumulative density function) of Gaussian distribution </h3>
+
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/gaussian/gaussian_pdf.png" width="350" title="'Gaussian pdf'" >
+<img class="right" src="http://guod08.github.io/images/personal/research/gaussian/gaussian_cdf.png" width="350" title="'Gaussian cdf'" ></p>
+
+<p></p>
+
+
+<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_1.png" width="1200"></p>
+
+<h3>Sum (or substraction) of two independent Gaussian random variables</h3>
+
+
+<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_plus2.png" width="1200">
+Please take care upper formula only works when x1 and x2 are independent. And it&rsquo;s easy to get the distribution for variable x=x1-x2
+See <a href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf">[here]</a> for the detils of inference</p>
+
+<h3>Product of two Gaussian pdf </h3>
+
+
+<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_multiple2.png" width="1200">
+Please take care x is no longer a gaussian distribution. And you can find it&rsquo;s very elegant to use &lsquo;precision&rsquo; and &lsquo;precision adjusted mean&rsquo; for Gaussian operation like multiply and division.
+See <a href="http://www.tina-vision.net/docs/memos/2003-003.pdf">[here]</a> for the detils of inference</p>
+
+<h3>division of two Gaussian pdf </h3>
+
+
+<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_divide2.png" width="1200"></p>
+
+<h3>And it&#8217;s common to calculate the intergral of the product of two gaussian distribution</h3>
+
+
+<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_integral.png" width="1200"></p>
+
+<h2> Truncated Gaussian </h2>
+
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/gaussian/tg_pdf.png" width="350" title="'Gaussian pdf'" >
+<img class="right" src="http://guod08.github.io/images/personal/research/gaussian/tg_cdf.png" width="350" title="'Gaussian cdf'" ></p>
+
+<p>Truncated Gaussian distribution is very simple: it&rsquo;s just one conditional (Gaussian) distribution.
+Suppose variable x belongs to Gaussian distribution, then x conditional on x belongs to (a, b) has a truncated Gaussian distribution.
+<img src="http://guod08.github.io/images/personal/research/gaussian/tg_def.png" width="1200"></p>
+
+<h3>Calculate expectation of Truncated Gaussian </h3>
+
+
+<p><img src="http://guod08.github.io/images/personal/research/gaussian/tg_e1.png" width="1200">
+<img src="http://guod08.github.io/images/personal/research/gaussian/tg_e2.png" width="1200"></p>
+
+<h3>Calculate variance of Truncated Gaussian </h3>
+
+
+<p><img src="http://guod08.github.io/images/personal/research/gaussian/tg_v1.png" width="1200">
+<img src="http://guod08.github.io/images/personal/research/gaussian/tg_v2.png" width="1200">
+<img src="http://guod08.github.io/images/personal/research/gaussian/tg_v3.png" width="1200"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bayesian CTR Prediction for Bing]]></title>
+    <link href="http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing/"/>
+    <updated>2013-12-01T22:07:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing</id>
+    <content type="html"><![CDATA[<p>Microsoft published a paper in ICML 2009 named &lsquo;Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft&rsquo;s Bing Search Engine&rsquo;,
+which is claimed won the competition of most accurate and scalable CTR predictor across MS.
+This article shows how to inference this model(let&rsquo;s call it Ad predictor) step-by-step.</p>
+
+<h2>Pros. and Cons.</h2>
+
+
+<p>I like it because it&rsquo;s totally based on Bayesian, and Bayesian is beautiful. Online learning is naturally supported, and the precition accuracy is comparable with FTRL and OWLQN.
+And both training and prediction is light-weight and fast.
+Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big issue when applied on big dataset with huge amount of features.</p>
+
+<h2>Inference using Expectation Propagation step by step</h2>
+
+
+<p>Firstly, following is the factor graph of ad predictor.
+<img class="left" src="http://guod08.github.io/images/personal/research/ep/adPredictor.png" width="1200">
+<img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step1.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step2.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step3.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step4.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step5.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step6.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_1.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_2.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_3.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_4.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step8.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step9.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step10.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step11.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step12.png" width="1200"></p>
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step13.png" width="1200"></p>
+
+<p>For each sample, we can use the formula of step 13 to update the posterior parameter of W, which is very easy to be implemented.</p>
+
+<h2>Prediction</h2>
+
+
+<p>After training, we can predict with following formula:
+<img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_predict.png" width="1200"></p>
+
+<h2>Prediction Accuracy</h2>
+
+
+<p>I compared it with FTRL and OWLQN on one dataset for age&amp;gender prediction. AUC of this model is comparable with OWLQN and FTRL, so I recommend you have a try in your case.</p>
+
+<h2>Insights</h2>
+
+
+<p>1). You can find variance of each feature increases after every exposure, which makes sense.</p>
+
+<p>2). This model shows samples with more features will have bigger variance, which does not make sense very much.
+I think the reason is we assume all the features are independent. Any insights from you?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[更高效地工作学习]]></title>
+    <link href="http://guod08.github.io/blog/2013/10/20/shi-jian-guan-li/"/>
+    <updated>2013-10-20T20:53:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2013/10/20/shi-jian-guan-li</id>
+    <content type="html"><![CDATA[<p>周末浏览了一本书《小强升职记》，有了一些新的收获，写在这边做个总结。</p>
+
+<ol>
+<li><p>将事情按照重要性、紧急性2个维度分成4个象限。
+ 第一象限（重要且紧急）：立马去做；思考“这些事情真的都是重要且紧急的吗？”，“为什么这些事情会进入这个象限？”；
+ 第二象限（重要但不紧急）：尽量开始去做，没时间的话第一时间进行任务分解，制定时间表；
+ 第三象限（不重要但紧急）：注意紧急和重要一点关系没有；思考“如何尽力减少这类事情？”
+ 第四象限（不重要且不紧急）：尽量别做</p></li>
+<li><p>走出第三象限（不重要但紧急）：Monkey theory
+ 甩掉自己身上的猴子，将猴子放回到主人身上 （书中这段举的例子很有意思）
+ 比如：“朋友问：这周六咱们去游泳吧；你答：好啊，到时候你提前给我打电话，有时间的话，我一定去”。
+ 比如“新来的同事问：你好，能不能给我讲讲pre-demo这个项目；你答：好啊，能不能你先看一下咱们wiki上的文档，你总结问题之后咱们一起讨论？”
+ 另外，第三象限中的事情可以想办法delegate给别人去做</p></li>
+<li><p>第二象限是精力分配的重点
+ 有2个原因：这些事是重要的；这些事安排处理好了，进入第一象限的事情也会明显变少；
+ 目标描述和任务分解：让自己清晰地自己有哪些细分的是要做，每个时段的任务是什么，明确地知道该任务是否拖延；有利于减轻自己的压力；</p></li>
+<li><p>时段工作法：将待做的事情分配到各个小时，每个小时或者任务完成后勾掉任务，给自己增加压力，督促自己提高效率；
+ 这种方法还可以让自己了解自己的高效、低效时段在哪</p></li>
+<li><p>每周（天）开始前将要做的事情分到4个象限; 优先做（或者在自己效率最高的时段）做第一第二象限的事情；同时按照时段工作法进行</p></li>
+<li><p>一些tips
+ 尽量午休
+ 做一件事情的时候尽量不让自己给打断（如果同事来讨论问题，可以说一会去找他，同时记录下这件事情），专注心如止水地做事
+ 关掉outlook的邮件提醒，绝大部分邮件都不需要立即响应，每半天主动检查一次邮件即可；
+ 安排计划前提前考虑已经被预约掉的时间；
+ 保持办公环境，特别是办公桌的整洁有序；
+ 刚到公司或者吃完饭回到公司，先给水杯打满水再工作；</p></li>
+</ol>
+
 ]]></content>
   </entry>
   
