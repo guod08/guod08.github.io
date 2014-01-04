@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-05T01:31:48+08:00</updated>
+  <updated>2014-01-05T01:37:46+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -118,46 +118,37 @@ See more details of this model in <a href="http://guod08.github.io/me/blog/2013/
     <link href="http://guod08.github.io/blog/2013/12/02/gaussian-and-truncated-gaussian/"/>
     <updated>2013-12-02T18:30:00+08:00</updated>
     <id>http://guod08.github.io/blog/2013/12/02/gaussian-and-truncated-gaussian</id>
-    <content type="html"><![CDATA[<p>Everybody knows about Gaussian distribution, and Gaussian is very popular in Bayesian world and even in our life.
-This article summaries typical operation of Gaussian, and something about Truncated Guassian distribution.</p>
+    <content type="html"><![CDATA[<p>Everybody knows about Gaussian distribution, and Gaussian is very popular in Bayesian world and even in our life. This article summaries typical operation of Gaussian, and something about Truncated Guassian distribution.</p>
 
-<h3>pdf(probability density function) and cdf(cumulative density function) of Gaussian distribution </h3>
+<h2>Gaussian</h2>
 
+<h3>pdf and cdf</h3>
 
 <p><img class="left" src="http://guod08.github.io/images/personal/research/gaussian/gaussian_pdf.png" width="350" title="'Gaussian pdf'" >
-<img class="right" src="http://guod08.github.io/images/personal/research/gaussian/gaussian_cdf.png" width="350" title="'Gaussian cdf'" ></p>
+<img class="right" src="http://guod08.github.io/images/personal/research/gaussian/gaussian_cdf.png" width="350" title="'Gaussian cdf'" >
+<img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_1.png" width="1200"></p>
 
-<p></p>
-
-
-<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_1.png" width="1200"></p>
-
-<h3>Sum (or substraction) of two independent Gaussian random variables</h3>
-
+<h3>Sum/substraction of two independent Gaussian random variables</h3>
 
 <p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_plus2.png" width="1200">
 Please take care upper formula only works when x1 and x2 are independent. And it&rsquo;s easy to get the distribution for variable x=x1-x2
-See <a href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf">[here]</a> for the detils of inference</p>
+See <a href="" title="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf">here</a> for the detils of inference</p>
 
-<h3>Product of two Gaussian pdf </h3>
-
+<h3>Product of two Gaussian pdf</h3>
 
 <p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_multiple2.png" width="1200">
 Please take care x is no longer a gaussian distribution. And you can find it&rsquo;s very elegant to use &lsquo;precision&rsquo; and &lsquo;precision adjusted mean&rsquo; for Gaussian operation like multiply and division.
-See <a href="http://www.tina-vision.net/docs/memos/2003-003.pdf">[here]</a> for the detils of inference</p>
+See <a href="" title="http://www.tina-vision.net/docs/memos/2003-003.pdf">here</a> for the detils of inference</p>
 
-<h3>division of two Gaussian pdf </h3>
-
+<h3>Division of two Gaussian pdf</h3>
 
 <p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_divide2.png" width="1200"></p>
 
-<h3>And it&#8217;s common to calculate the intergral of the product of two gaussian distribution</h3>
-
+<h3>Intergral of the product of two gaussian distribution</h3>
 
 <p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_integral.png" width="1200"></p>
 
-<h2> Truncated Gaussian </h2>
-
+<h2>Truncated Gaussian</h2>
 
 <p><img class="left" src="http://guod08.github.io/images/personal/research/gaussian/tg_pdf.png" width="350" title="'Gaussian pdf'" >
 <img class="right" src="http://guod08.github.io/images/personal/research/gaussian/tg_cdf.png" width="350" title="'Gaussian cdf'" ></p>
@@ -166,14 +157,12 @@ See <a href="http://www.tina-vision.net/docs/memos/2003-003.pdf">[here]</a> for 
 Suppose variable x belongs to Gaussian distribution, then x conditional on x belongs to (a, b) has a truncated Gaussian distribution.
 <img src="http://guod08.github.io/images/personal/research/gaussian/tg_def.png" width="1200"></p>
 
-<h3>Calculate expectation of Truncated Gaussian </h3>
-
+<h3>Calculate expectation of Truncated Gaussian</h3>
 
 <p><img src="http://guod08.github.io/images/personal/research/gaussian/tg_e1.png" width="1200">
 <img src="http://guod08.github.io/images/personal/research/gaussian/tg_e2.png" width="1200"></p>
 
-<h3>Calculate variance of Truncated Gaussian </h3>
-
+<h3>Calculate variance of Truncated Gaussian</h3>
 
 <p><img src="http://guod08.github.io/images/personal/research/gaussian/tg_v1.png" width="1200">
 <img src="http://guod08.github.io/images/personal/research/gaussian/tg_v2.png" width="1200">
