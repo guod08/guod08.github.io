@@ -184,7 +184,25 @@ BP的核心为如下3点：</p>
 </ul>
 
 
+<p>更多细节请参考PRML</p>
+
 <h3>Moment matching</h3>
+
+<p>在实际的问题中，要么后验分布本身比较复杂（推荐阅读3中的Clutter example），要么最大化后验的计算比较复杂，要么破坏了具体算法的假设（比如EP假设图中的所有message都是指数族），所以常常会用（有良好性质的）指数族分布近似实际的概率分布。</p>
+
+<p>比如</p>
+
+<p><img class="left" src="/images/personal/research/ep-intro/message_passing_1.png" width="600"></p>
+
+<p><img class="left" src="/images/personal/research/ep-intro/message_passing_2.png" width="600"></p>
+
+<p><img class="left" src="/images/personal/research/ep-intro/message_passing_3.png" width="600"></p>
+
+<p><img class="left" src="/images/personal/research/ep-intro/message_passing_4.png" width="600"></p>
+
+<p><img class="left" src="/images/personal/research/ep-intro/message_passing_5.png" width="600"></p>
+
+<p><img class="left" src="/images/personal/research/ep-intro/message_passing_6.png" width="600"></p>
 
 <h2>期望传播方法-理论</h2>
 
