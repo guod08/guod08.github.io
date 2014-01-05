@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Research | Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/blog/categories/research/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-05T01:37:46+08:00</updated>
+  <updated>2014-01-05T10:10:27+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -18,16 +18,15 @@
     <link href="http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal/"/>
     <updated>2013-12-16T00:00:00+08:00</updated>
     <id>http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal</id>
-    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
+    <content type="html"><![CDATA[<p><a href="" title="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
 
-<p><a href="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
+<p><a href="" title="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
 
-<p><a href="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
+<p><a href="" title="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
 
-<p><a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
+<p><a href="" title="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
 
-<p><a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a>: a popular bayesian inference technique proposed by Thomas Minka.
-You may see it a lot in graph model inference.</p>
+<p><a href="" title="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a> (one popular bayesian inference technique proposed by Thomas Minka)</p>
 ]]></content>
   </entry>
   
@@ -38,13 +37,11 @@ You may see it a lot in graph model inference.</p>
     <id>http://guod08.github.io/blog/2013/12/15/classification-models</id>
     <content type="html"><![CDATA[<p>During my past 3 years in career, following classifiers are often used for classification tasks.</p>
 
-<h3> Typcial classifiers comparision </h3>
-
+<h2>Typcial classifiers comparision</h2>
 
 <p><img class="left" src="/images/personal/research/classifiers/classifiers_compare.png" width="800"></p>
 
-<h3>Decision Tree </h3>
-
+<h2>Decision Tree</h2>
 
 <p>Decision Tree is not a start-of-art model for classification or regression, and when there are huge features(say millions) it will take a long time for training.
 But it may perform very well when the number of distinct features are limited, and the classification/regression task is obviously non-linear.</p>
@@ -52,8 +49,7 @@ But it may perform very well when the number of distinct features are limited, a
 <p>A typical scenario is multi-model fusion: you have trained multiple models for single task, and you want to generate the final prediction result using all these models.
 Based on my past experiments, Decision Tree can out perform linear model(linear regression, logistic regression and so on) on many datasets.</p>
 
-<h3>RDT, random forest, boosting tree</h3>
-
+<h2>RDT, random forest, boosting tree</h2>
 
 <p>All of these 3 models are ensemble learning method for classification/regression that operate by constructing multiple Decision Tree at training time.
 For RDT(random decision tree), only part of total samples are used to training each tree. And all features are considered for splitting.</p>
@@ -62,54 +58,56 @@ For RDT(random decision tree), only part of total samples are used to training e
 So random forest introduces more &lsquo;random&rsquo; factors for training, and it may perform better when there are more noises in training set.</p>
 
 <p>boosting tree is actually forward stagwise additive modeling with decision tree as base learner. And if you choose exponential loss function, then boosting tree becauses Adaboost with decision tree as base learner.
-Here is <a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">slides</a> about additive model and boosting tree.</p>
+Here is one <a href="" title="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">slide</a> about additive model and boosting tree.</p>
 
-<h3>Generalized linear model</h3>
-
+<h2>Generalized linear model</h2>
 
 <p>One of the most popular generalized linear model is logistic regression, which is generalized linear model with inversed sigmoid function as the link function.
 There are multiple different implementation for logistic regression, and here are some often used by me.</p>
 
-<p>1). Logistic regression optimized by SGD.</p>
+<h4>Logistic regression optimized with SGD.</h4>
 
-<p>2). OWLQN: It was proposed by Microsoft in paper <a href="http://research.microsoft.com/en-us/downloads/b1eb1016-1738-4bd5-83a9-370c9d498a03/">
-&lsquo;Orthant-Wise Limited-memory Quasi-Newton Optimizer for L1-regularized Objectives&rsquo;</a> of ICML 2007. You can also find the source code and executable runner via this link.</p>
+<p>It&rsquo;s very basic, so I ignore the details here</p>
 
-<p>This model is optimized by a method which is similar with L-BFGS, but can works with L1 regularizer.
-I recommend you try this model and compare with other models you are using in your dataset.
-Here are four reasons:
-a. It&rsquo;s fast, especially when the dataset is huge;</p>
+<h4>OWLQN</h4>
+
+<p>It was proposed by Microsoft in paper <a href="%22http://research.microsoft.com/en-us/downloads/b1eb1016-1738-4bd5-83a9-370c9d498a03/">Orthant-Wise Limited-memory Quasi-Newton Optimizer for L1-regularized Objectives</a> of ICML 2007. You can also find the source code and executable runner via this link.</p>
+
+<p>This model is optimized by a method which is similar with L-BFGS, but can achieve sparse model with L1 regularizer. I recommend you try this model and compare with other models you are using in your dataset.
+Here are four reasons:</p>
 
 <ol type="a">
-<li><p>It can generate start-of-art prediction results on most dataset;</p></li>
-<li><p>It&rsquo;s stable and there are few parameters need to be tried. Actaully, I find only regularization parameters can impact the performance obviously;</p></li>
-<li><p>It&rsquo;s sparse, which is very important for big dataset and real product. (Of course, sparse is due to L1 regularizer, instead of the specific optimization method)</p></li>
+<li>It&rsquo;s fast, especially when the dataset is huge;</li>
+<li>It can generate start-of-art prediction results on most dataset;</li>
+<li>It&rsquo;s stable and there are few parameters need to be tried. Actaully, I find only regularization parameters can impact the performance obviously;</li>
+<li>It&rsquo;s sparse, which is very important for big dataset and real product. (Of course, sparse is due to L1 regularizer, instead of the specific optimization method)</li>
 </ol>
 
 
-<p>One disadvantage is it&rsquo;s more challenge to implement it by yourself, so you need spend some time to make it support incremental update or online learning.</p>
+<p>One problem is it&rsquo;s more challenge to implement it by yourself, so you need spend some time to make it support incremental update or online learning.</p>
 
-<p>3). FTRL: It was proposed by Google via paper <a href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/41159.pdf">
+<h4>FTRL</h4>
+
+<p>It was proposed by Google via paper <a href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/41159.pdf">
 Ad Click Prediction: a View from the Trenches</a> in 2013. I tried on my dataset, and this implementation can generate similar prediction performance with OWLQN.
 It&rsquo;s quicker than OWLQN for training, and it&rsquo;s also sparse. One advantage is it&rsquo;s very easy to implement, and it support increamental update naturally.
 One pain point for me is this model has 3-4 parameters need to be chosen, and most of them impact the prediction performance obviously.</p>
 
-<p>4). Ad predictor: This <a href="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">paper</a> is also proposed by Microsoft in ICML 2009.
-One biggest different with upper 3 implementation is it&rsquo;s based on bayesian, so it&rsquo;s generative model.
-Ad predictor is used to predict CTR of sponsor search ads of Bing, and on my dataset, it could also achieve comparable prediction performance with OWQLN and FTRL.
-Ad predictor model the weight of each feature with a gaussian distribution, so it natually supports online learning.
-And the prediction result for each sample is also a gaussian distribution, and it could be used to handle the exploration and exploitation problem.
-See more details of this model in <a href="http://guod08.github.io/me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">another blog</a></p>
+<h4>Ad predictor</h4>
 
-<h3>Neural Network</h3>
+<p>This <a href="" title="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">paper</a> was also proposed by Microsoft in ICML 2009.</p>
 
+<p>One biggest different with upper 3 implementation is it&rsquo;s based on bayesian, so it&rsquo;s generative model. Ad predictor is used to predict CTR of sponsor search ads of Bing, and on my dataset, it could also achieve comparable prediction performance with OWQLN and FTRL.
+Ad predictor model the weight of each feature with a gaussian distribution, so it natually supports online learning. And the prediction result for each sample is also a gaussian distribution, and it could be used to handle the exploration and exploitation problem.
+See more details of this model in another <a href="" title="http://guod08.github.io/me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">post</a>.</p>
+
+<h2>Neural Network</h2>
 
 <p>ANN is so slow for training, so it&rsquo;s tried only when the dataset is small of medium. Another disadvantage of ANN is it&rsquo;s totally blackbox.</p>
 
-<h3>SVM</h3>
+<h2>SVM</h2>
 
-
-<p>SVM with kernel is also slow for training. You can try it with <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm</a> when the dataset is small/medium.</p>
+<p>SVM with kernel is also slow for training. You can try it with <a href="" title="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm</a>.</p>
 ]]></content>
   </entry>
   
