@@ -113,13 +113,13 @@
 
 <p>下面是一些关键词的中英文对应 （由于相关的书籍文献基本都是英文的，有些词没有想到比较好的中文翻译，故保留英文）</p>
 
-<p><strong>截断高斯</strong>: Truncated Gaussian</p>
+<p>截断高斯: Truncated Gaussian</p>
 
-<p><strong>置信传播</strong>: Belief Propagation （后面会简称BP）</p>
+<p>置信传播: Belief Propagation （后面会简称BP）</p>
 
-<p><strong>期望传播</strong>: Expectation Propagation (后面会简称为EP)</p>
+<p>期望传播: Expectation Propagation (后面会简称为EP)</p>
 
-<p><strong>消息传递</strong>: Message passing</p>
+<p>消息传递: Message passing</p>
 
 <h2>背景</h2>
 
@@ -160,24 +160,30 @@
 BP的核心为如下3点：</p>
 
 <ul>
-<li><p><strong>单个variable node边缘分布的计算</strong>
-<img class="left" src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width="400"></p>
+<li><p><strong>单个variable node边缘分布的计算</strong></p>
 
-<p>  前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node。
-<img class="left" src="/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width="600"></p>
+<p>  <img class="left" src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width="400"></p>
 
-<p>  每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积。
-<img class="left" src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width="600"></p></li>
+<p>  前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node。</p>
+
+<p>  <img class="left" src="/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width="600"></p>
+
+<p>  每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积。</p>
+
+<p>  <img class="left" src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width="600"></p></li>
 <li><p><strong>从factor node到variable node的消息传递</strong>
-<img class="left" src="/images/personal/research/ep-intro/message_factor_to_variable.png" width="400"></p>
+  <img class="left" src="/images/personal/research/ep-intro/message_factor_to_variable.png" width="400"></p>
 
-<p>  从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）
-<img class="left" src="/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width="600"></p></li>
-<li><p><strong>从variable node到factor node的消息传递</strong>
-<img class="left" src="/images/personal/research/ep-intro/message_variable_to_factor.png" width="600"></p>
+<p>  从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）</p>
 
-<p>  从variable node x到factor node f的message为：与x直接相连的factor nodes（除f意外）传递到x的messages的乘积
-<img class="left" src="/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width="600"></p></li>
+<p>  <img class="left" src="/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width="600"></p></li>
+<li><p><strong>从variable node到factor node的消息传递</strong></p>
+
+<p>  <img class="left" src="/images/personal/research/ep-intro/message_variable_to_factor.png" width="600"></p>
+
+<p>  从variable node x到factor node f的message为：与x直接相连的factor nodes（除f意外）传递到x的messages的乘积</p>
+
+<p>  <img class="left" src="/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width="600"></p></li>
 </ul>
 
 
