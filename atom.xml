@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-05T17:40:52+08:00</updated>
+  <updated>2014-01-05T17:41:35+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,96 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Expectation Propagation]]></title>
+    <link href="http://guod08.github.io/blog/2014/01/01/expectation-propagation/"/>
+    <updated>2014-01-01T22:04:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/01/01/expectation-propagation</id>
+    <content type="html"><![CDATA[<h2>简介</h2>
+
+<p>第一次接触EP是10年在百度实习时，当时组里面考虑把线上的CTR预估模型改成支持增量更新的版本，老板正好看到推荐阅读中第5篇的那篇文章，于是让夏粉同学读一读给大家讲一下。听完之后，本人表示…完全没听懂。最近在PRML中读到Approximal inference这一节，参考了其它相关资料对其有了一定的了解和理解，在这里和大家探讨。</p>
+
+<h3>什么是期望传播</h3>
+
+<p>期望传播（Expectation Propagation）:<strong>基于bayesian</strong>的一种<strong>近似</strong>推断方法，常用于图模型中计算单个节点的边缘分布或者后验分布，属于message passing这一类推断方法。</p>
+
+<h3>牛人</h3>
+
+<p>首先当然是Thomas Minka, 其在MIT读博期间提出了EP，并将EP作为博士论文课题在2001年发表。Minka毕业之后去了CMU教书，现在和Bishop一起在剑桥微软研究院。</p>
+
+<p>其次是Kevin p. Murphy, 他是我做EP相关文献调研时发现的paper比较多的，我读到的一篇全文基本都是在推导Minka博士论文中一些公式的细节。btw Murphy 2013年出版了一本书，见推荐阅读2。</p>
+
+<h3>中英文对照</h3>
+
+<p>下面是一些关键词的中英文对应 （由于相关的书籍文献基本都是英文的，有些词没有想到比较好的中文翻译，故保留英文）</p>
+
+<p><strong>截断高斯</strong>: Truncated Gaussian</p>
+
+<p><strong>置信传播</strong>: Belief Propagation （后面会简称BP）</p>
+
+<p><strong>期望传播</strong>: Expectation Propagation (后面会简称为EP)</p>
+
+<p><strong>消息传递</strong>: Message passing</p>
+
+<h2>背景</h2>
+
+<p>EP本身的思想和方法都还是比较简单的，不过会涉及到一些背景知识，这边一并介绍。</p>
+
+<h3>高斯、截断高斯</h3>
+
+<p>EP的核心思想之一是用指数族分布近似复杂分布，实际应用中通常选择高斯分布，所以多个高斯分布的乘积，相除，积分在EP应用过程中不可避免。</p>
+
+<p>截断高斯是高斯分布在指定区间归一化后的结果，（所以其并不是一个高斯分布），EP本身并不和截断高斯直接相关，但是如果在分类问题中应用EP，对观察样本（0-1）建模方法通常是y=sign(f(x)>t), 和另一个高斯分布相乘之后即为截断高斯分布。（然后就需要计算其的均值方差，原因后面会提到）</p>
+
+<p>我在<a href="" title="http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian/">另一篇文章</a>中介绍了比较多的细节，可以参考。</p>
+
+<h3>指数族分布</h3>
+
+<p>指数族分布（exponential family distribution）有着非常好的特性，比如其有<strong>充分统计量</strong>，多个指数族分布的乘积依然是指数族分布，具体的介绍可以参见wikipedia, 介绍的非常全面，也可以参考PRML第2章。</p>
+
+<p>由于指数族的良好特性，其常被拿去近似复杂的概率分布（EP和variance baysian都是）。由于EP中常常选择高斯分布，我们这边强调一下，高斯分布的充分统计量为: (x, x<sup>2</sup>), 其中x为高斯分布的自变量。</p>
+
+<h3>图模型</h3>
+
+<p>EP是贝叶斯流派的计算变量后验分布（或者说是边缘分布）的近似推断方法，通常都可以通过一个概率图模型来描述问题的生成过程（generation process），所以可以说图模型是EP的典型应用场景。</p>
+
+<p>图模型在很多地方都有介绍，比如PRML第8章，在这里就不重复了。有1点提一下，一个图模型的联合分布（不管是有向图还是无向图）可以写成若干个因子的乘积，对于有向图每个因子是每个节点的条件分布（条件于其的所有直接相连的父节点），对于无限图每个因子是energy function。
+这个特性在后面的置信传播算法会用到。</p>
+
+<h3>factor graph</h3>
+
+<p>图模型中节点之间的关系通过边来表达，factor graph将这种节点之间的关系通过显式的节点（factor node）来表达，比如对于有向图，每个factor node就代表一个条件概率分布，图中的所有的信息都存在于节点上（variable nodes和factor nodes）。</p>
+
+<p>后面的BP和EP都基于factor graph，可以认为factor graph使得图上的inference方法变得比较直观，另一个好处是factor graph屏蔽了有向图和无向图的差异。（有向图无向图都可以转变为factor graph）</p>
+
+<p>更多了解可以看PRML第8章。</p>
+
+<h3>置信传播</h3>
+
+<p>Belief Propagation (BP)是一种计算图模型上节点边缘分布的推断方法，属于消息传递这样方法的一种，通常不采用近似。（基于其延伸的Loopy Belief propagation为近似推断方法）</p>
+
+<h3>Moment matching</h3>
+
+<h2>期望传播方法-理论</h2>
+
+<h2>期望传播方法-应用</h2>
+
+<h2>一些思考</h2>
+
+<h2>推荐阅读</h2>
+
+<ol>
+<li><p>机器学习保留书籍:《Pattern recognition and machine learning》第2,8,10章 (第2章看看高斯四则运算，指数族分布特性；第8章了解图模型基础，期望传播算法；第10章了解期望传播算法)</p></li>
+<li><p>Murphy新书: 《Machine Learning: A Probabilistic Perspective》第22章 (本书相比PRML更加具体，第22章干脆包含了TrueSkill的详细推导步骤)</p></li>
+<li><p>Minka的博士论文：A family of algorithms for approximate Bayesian inference (想了解基本思想和理论看完前3节即可)</p></li>
+<li><p>EP的应用之一：TrueSkill: A Bayesian Skill Rating System (文中并没有给出EP每一步的细节)</p></li>
+<li><p>EP的应用之二：Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft’s Bing Search Engine (CTR预估的应用比较吸引人，文章写得很棒，算法的效果也很好，只是干脆忽略的inference过程，有兴趣的同学可以参看我另一个文章，里面有一步一步推导的过程)</p></li>
+<li><p>Minka整理的EP学习资料：<a href="" title="http://research.microsoft.com/en-us/um/people/minka/papers/ep/roadmap.html">link</a> (其中的包含了一个videolecture上他做的variance inference的talk值得一看)</p></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some ML Slides From Hulu Internal]]></title>
