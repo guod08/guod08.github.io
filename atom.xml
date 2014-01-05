@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-05T22:51:53+08:00</updated>
+  <updated>2014-01-05T23:07:15+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -84,19 +84,29 @@ BP的核心为如下3点：</p>
 
 <ol>
 <li>单个variable node边缘分布的计算
-<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/marginal_dis_variable_node.png" width="800"></li>
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/marginal_dis_variable_node.png" width="400"></li>
 </ol>
 
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width="800"></p>
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width="600"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width="800"></p>
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width="600"></p>
 
 <ol>
-<li><p>从factor node到variable node的消息传递</p></li>
-<li><p>从variable node到factor node的消息传递</p></li>
+<li>从factor node到variable node的消息传递
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/message_factor_to_variable.png" width="400"></li>
 </ol>
 
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width="600"></p>
+
+<ol>
+<li>从variable node到factor node的消息传递
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/message_variable_to_factor.png" width="600"></li>
+</ol>
+
+
+<p><img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width="600"></p>
 
 <h3>Moment matching</h3>
 
