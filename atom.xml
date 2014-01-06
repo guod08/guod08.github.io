@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-06T10:28:39+08:00</updated>
+  <updated>2014-01-06T11:57:14+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -132,6 +132,30 @@ BP的核心为如下3点：</p>
 <img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/message_passing_6.png" width="600"></p>
 
 <h2>期望传播方法-理论</h2>
+
+<p>EP的思想：在图模型中，用高斯分布近似每一个factors，然后&#8217;approximate each factor in turn in the context of all remaining facotrs&#8217;.</p>
+
+<p>下面为具体的算法：
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/message_passing_6.png" width="800"></p>
+
+<p>下面通过Minka博士论文中的例子‘clutter problem’来解释：
+每个观察样本以(1-w)的概率由高斯分布N(x|sita, I)生成，以w的概率由noise生成（同样也是高斯分布N(x|0, aI)），于是：
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_1.png" width="400">
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_2.png" width="200"></p>
+
+<p>按照EP的思想，我们用一个单高斯q(sita)去近似混合高斯p(x|sita)
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_3.png" width="400"></p>
+
+<p>单高斯去近似混合高斯听起来效果一定不好，但实际上，由于EP在近似的时候乘了其他所有factors的高斯近似之后的上下文，考虑到很多个高斯分布相乘之后的方差一般都很小，所有实际上单高斯只需要在很小的区间近似好混合高斯即可。如下图：
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_4.png" width="400">
+<img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_5.png" width="400">
+其中蓝色曲线为混合高斯（没有画完整），红色曲线为近似的单高斯，绿色曲线为‘其它所有factor的乘积’。</p>
+
+<h3>EP怎么应用在message passing中：</h3>
+
+<p>在图模型中，所谓的&#8217;context of all remaining factors&#8217;就是当前节点之外所有节点和messages，所以EP在图模型中的使用方式为：和BP一样的方法计算message和marginal distribution，当某个factor或者marginal distribution不是高斯分布时，用高斯分布近似它。所以Minka认为EP也就是BP+moment matching。</p>
+
+<p>由于每个factor以及variable node的边缘分布都是高斯分布（或被近似为高斯分布），所以EP的计算过程一般并不复杂。</p>
 
 <h2>期望传播方法-应用</h2>
 
