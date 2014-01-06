@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-05T23:59:16+08:00</updated>
+  <updated>2014-01-06T09:59:12+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -20,11 +20,11 @@
     <id>http://guod08.github.io/blog/2014/01/01/expectation-propagation</id>
     <content type="html"><![CDATA[<h2>简介</h2>
 
-<p>第一次接触EP是10年在百度实习时，当时组里面考虑把线上的CTR预估模型改成支持增量更新的版本，老板正好看到推荐阅读中第5篇的那篇文章，于是让夏粉同学读一读给大家讲一下。听完之后，本人表示…完全没听懂。最近在PRML中读到Approximal inference这一节，参考了其它相关资料对其有了一定的了解和理解，在这里和大家探讨。</p>
+<p>第一次接触EP是10年在百度实习时，读到了微软一篇基于baysian的CTR预估模型的文章（见推荐阅读5），当时组里面正有计划把线上的CTR预估模型改成支持增量更新的版本，这篇文章正是用EP inference的，文章中没有给出推导的细节，自己也没有继续研究。今年在PRML中读到Approximal inference这章，参考了其它相关资料对EP有了一定的理解，在这里和大家探讨。</p>
 
 <h3>什么是期望传播</h3>
 
-<p>期望传播（Expectation Propagation）:<strong>基于bayesian</strong>的一种<strong>近似</strong>推断方法，常用于图模型中计算单个节点的边缘分布或者后验分布，属于message passing这一类推断方法。</p>
+<p>期望传播(Expectation Propagation): 基于<strong>bayesian</strong>的一种<strong>近似</strong>推断方法，常用于图模型中计算单个节点的边缘分布或者后验分布，属于message passing这一类推断方法。</p>
 
 <h3>牛人</h3>
 
