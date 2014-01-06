@@ -128,7 +128,7 @@
 
 <p>截断高斯是高斯分布在指定区间归一化后的结果，（所以其并不是一个高斯分布），EP本身并不和截断高斯直接相关，但是如果在分类问题中应用EP，对观察样本（0-1）建模方法通常是y=sign(f(x)>t), 和另一个高斯分布相乘之后即为截断高斯分布。（然后就需要计算其的均值方差，原因后面会提到）</p>
 
-<p>我在另一篇文章<a href="" title="http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian/">Gaussian and Truncated Gaussian</a>中介绍了比较多的细节，可以参考。</p>
+<p>我在另一篇文章<a href="http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian/">Gaussian and Truncated Gaussian</a>中介绍了比较多的细节，可以参考。</p>
 
 <h3>指数族分布</h3>
 
@@ -237,10 +237,10 @@ BP的核心为如下3点：</p>
 
 <h3>Bing的CTR预估</h3>
 
-<p>详细的推导及实验请参考：<a href="" title="http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR prediction for Bing</a>
+<p>详细的推导及实验请参考：<a href="http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR prediction for Bing</a>
 paper中称这个model为ad predictor，其在我的数据集上预估效果很不错，训练预测速度快，天然支持增量更新，主要的缺点就是模型不是稀疏的。如果你知道怎么自然地达到稀疏效果，请指教。</p>
 
-<p>和其它算法的比较请参考：<a href="" title="http://dongguo.me/blog/2013/12/15/classification-models/">Classification Models</a></p>
+<p>和其它算法的比较请参考：<a href="http://dongguo.me/blog/2013/12/15/classification-models/">Classification Models</a></p>
 
 <h3>XBOX中player skill的评估</h3>
 
@@ -260,11 +260,11 @@ paper中称这个model为ad predictor，其在我的数据集上预估效果很�
 
 <ol>
 <li><p>机器学习保留书籍:<a href="http://research.microsoft.com/en-us/um/people/cmbishop/prml/">Pattern recognition and machine learning</a> 第2,8,10章 (第2章看看高斯四则运算，指数族分布特性；第8章了解图模型基础，期望传播算法；第10章了解期望传播算法)</p></li>
-<li><p>Murphy新书: <a href="" title="http://www.cs.ubc.ca/~murphyk/MLbook/">Machine Learning: A Probabilistic Perspective</a> 第22章 (本书相比PRML更加具体，第22章干脆包含了TrueSkill的详细推导步骤)</p></li>
-<li><p>Minka的博士论文：<a href="" title="http://qh.eng.ua.edu/e_paper/e_thesis/EPThesis.pdf">A family of algorithms for approximate Bayesian inference</a> (想了解基本思想和理论看完前3节即可)</p></li>
-<li><p>EP的应用之一：<a href="" title="http://research.microsoft.com/pubs/74419/tr-2006-80.pdf">TrueSkill: A Bayesian Skill Rating System</a> (文中并没有给出EP每一步的细节)</p></li>
-<li><p>EP的应用之二：<a href="" title="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft’s Bing Search Engine</a> (CTR预估的应用比较吸引人，文章写得很棒，算法的效果也很好，只是干脆忽略的inference过程，有兴趣的同学可以参看我另一个文章，里面有一步一步推导的过程)</p></li>
-<li><p>Minka整理的EP学习资料：<a href="" title="http://research.microsoft.com/en-us/um/people/minka/papers/ep/roadmap.html">link</a> (其中的包含了一个videolecture上他做的variance inference的talk值得一看)</p></li>
+<li><p>Murphy新书: <a href="http://www.cs.ubc.ca/~murphyk/MLbook/">Machine Learning: A Probabilistic Perspective</a> 第22章 (本书相比PRML更加具体，第22章干脆包含了TrueSkill的详细推导步骤)</p></li>
+<li><p>Minka的博士论文：<a href="http://qh.eng.ua.edu/e_paper/e_thesis/EPThesis.pdf">A family of algorithms for approximate Bayesian inference</a> (想了解基本思想和理论看完前3节即可)</p></li>
+<li><p>EP的应用之一：<a href="http://research.microsoft.com/pubs/74419/tr-2006-80.pdf">TrueSkill: A Bayesian Skill Rating System</a> (文中并没有给出EP每一步的细节)</p></li>
+<li><p>EP的应用之二：<a href="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft’s Bing Search Engine</a> (CTR预估的应用比较吸引人，文章写得很棒，算法的效果也很好，只是干脆忽略的inference过程，有兴趣的同学可以参看我另一个文章，里面有一步一步推导的过程)</p></li>
+<li><p>Minka整理的EP学习资料：<a href="http://research.microsoft.com/en-us/um/people/minka/papers/ep/roadmap.html">link</a> (其中的包含了一个videolecture上他做的variance inference的talk值得一看)</p></li>
 </ol>
 
 </div>

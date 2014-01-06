@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Research | Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/blog/categories/research/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-07T00:11:06+08:00</updated>
+  <updated>2014-01-07T00:16:21+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -18,15 +18,15 @@
     <link href="http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal/"/>
     <updated>2013-12-16T00:00:00+08:00</updated>
     <id>http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal</id>
-    <content type="html"><![CDATA[<p><a href="" title="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
+    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
 
-<p><a href="" title="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
+<p><a href="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
 
-<p><a href="" title="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
+<p><a href="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
 
-<p><a href="" title="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
+<p><a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
 
-<p><a href="" title="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a> (one popular bayesian inference technique proposed by Thomas Minka)</p>
+<p><a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a> (one popular bayesian inference technique proposed by Thomas Minka)</p>
 ]]></content>
   </entry>
   
@@ -58,7 +58,7 @@ For RDT(random decision tree), only part of total samples are used to training e
 So random forest introduces more &lsquo;random&rsquo; factors for training, and it may perform better when there are more noises in training set.</p>
 
 <p>boosting tree is actually forward stagwise additive modeling with decision tree as base learner. And if you choose exponential loss function, then boosting tree becauses Adaboost with decision tree as base learner.
-Here is one <a href="" title="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">slide</a> about additive model and boosting tree.</p>
+Here is one <a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">slide</a> about additive model and boosting tree.</p>
 
 <h2>Generalized linear model</h2>
 
@@ -71,7 +71,7 @@ There are multiple different implementation for logistic regression, and here ar
 
 <h4>OWLQN</h4>
 
-<p>It was proposed by Microsoft in paper <a href="%22http://research.microsoft.com/en-us/downloads/b1eb1016-1738-4bd5-83a9-370c9d498a03/">Orthant-Wise Limited-memory Quasi-Newton Optimizer for L1-regularized Objectives</a> of ICML 2007. You can also find the source code and executable runner via this link.</p>
+<p>It was proposed by Microsoft in paper <a href="http://research.microsoft.com/en-us/downloads/b1eb1016-1738-4bd5-83a9-370c9d498a03/">Orthant-Wise Limited-memory Quasi-Newton Optimizer for L1-regularized Objectives</a> of ICML 2007. You can also find the source code and executable runner via this link.</p>
 
 <p>This model is optimized by a method which is similar with L-BFGS, but can achieve sparse model with L1 regularizer. I recommend you try this model and compare with other models you are using in your dataset.
 Here are four reasons:</p>
@@ -95,11 +95,11 @@ One pain point for me is this model has 3-4 parameters need to be chosen, and mo
 
 <h4>Ad predictor</h4>
 
-<p>This <a href="" title="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">paper</a> was also proposed by Microsoft in ICML 2009.</p>
+<p>This <a href="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">paper</a> was also proposed by Microsoft in ICML 2009.</p>
 
 <p>One biggest different with upper 3 implementation is it&rsquo;s based on bayesian, so it&rsquo;s generative model. Ad predictor is used to predict CTR of sponsor search ads of Bing, and on my dataset, it could also achieve comparable prediction performance with OWQLN and FTRL.
 Ad predictor model the weight of each feature with a gaussian distribution, so it natually supports online learning. And the prediction result for each sample is also a gaussian distribution, and it could be used to handle the exploration and exploitation problem.
-See more details of this model in another <a href="" title="http://guod08.github.io/me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">post</a>.</p>
+See more details of this model in another <a href="http://guod08.github.io/me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">post</a>.</p>
 
 <h2>Neural Network</h2>
 
@@ -107,7 +107,7 @@ See more details of this model in another <a href="" title="http://guod08.github
 
 <h2>SVM</h2>
 
-<p>SVM with kernel is also slow for training. You can try it with <a href="" title="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm</a>.</p>
+<p>SVM with kernel is also slow for training. You can try it with <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm</a>.</p>
 ]]></content>
   </entry>
   
