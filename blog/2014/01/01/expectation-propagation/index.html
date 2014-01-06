@@ -190,27 +190,27 @@ BP的核心为如下3点：</p>
 
 <p>在实际的问题中，要么后验分布本身比较复杂（推荐阅读3中的Clutter example），要么最大化后验的计算比较复杂，要么破坏了具体算法的假设（比如EP要求图中的所有message都是指数族），所以常常会用（有良好性质的）指数族分布近似实际的概率分布。</p>
 
-<p><img class="left" src="/images/personal/research/ep-intro/message_passing_1.png" width="600">
-<img class="left" src="/images/personal/research/ep-intro/message_passing_2.png" width="600"></p>
+<p><img class="left" src="/images/personal/research/ep-intro/moment_matching_1.png" width="600">
+<img class="left" src="/images/personal/research/ep-intro/moment_matching_2.png" width="600"></p>
 
 <p>用一个分布去近似另一个分布的常见方法是最小化KL散度:
-<img class="left" src="/images/personal/research/ep-intro/message_passing_3.png" width="600">
-<img class="left" src="/images/personal/research/ep-intro/message_passing_4.png" width="600"></p>
+<img class="left" src="/images/personal/research/ep-intro/moment_matching_3.png" width="600">
+<img class="left" src="/images/personal/research/ep-intro/moment_matching_4.png" width="600"></p>
 
 <p>我们发现通过最小化KL散度得到的‘最接近’p(x)的q(x)可以简单地通过匹配充分统计量的期望得到。</p>
 
 <p>当q(x)为高斯分布的时候，我们知道其充分统计量u(x)=(x, x<sup>2</sup>)，这时通过KL散度最小化近似分布近似的方法称为moment matching(匹配矩)
-<img class="left" src="/images/personal/research/ep-intro/message_passing_5.png" width="600"></p>
+<img class="left" src="/images/personal/research/ep-intro/moment_matching_5.png" width="600"></p>
 
 <p>为什么称为匹配矩呢，看看矩的定义就知道了：
-<img class="left" src="/images/personal/research/ep-intro/message_passing_6.png" width="600"></p>
+<img class="left" src="/images/personal/research/ep-intro/moment_matching_6.png" width="600"></p>
 
 <h2>期望传播方法-理论</h2>
 
 <p>EP的思想：在图模型中，用高斯分布近似每一个factors，然后&#8217;approximate each factor in turn in the context of all remaining facotrs&#8217;.</p>
 
 <p>下面为具体的算法：
-<img class="left" src="/images/personal/research/ep-intro/message_passing_6.png" width="800"></p>
+<img class="left" src="/images/personal/research/ep-intro/ep_def.png" width="800"></p>
 
 <p>下面通过Minka博士论文中的例子‘clutter problem’来解释：
 每个观察样本以(1-w)的概率由高斯分布N(x|sita, I)生成，以w的概率由noise生成（同样也是高斯分布N(x|0, aI)），于是：
