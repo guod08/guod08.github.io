@@ -128,7 +128,7 @@
 
 <p>截断高斯是高斯分布在指定区间归一化后的结果，（所以其并不是一个高斯分布），EP本身并不和截断高斯直接相关，但是如果在分类问题中应用EP，对观察样本（0-1）建模方法通常是y=sign(f(x)>t), 和另一个高斯分布相乘之后即为截断高斯分布。（然后就需要计算其的均值方差，原因后面会提到）</p>
 
-<p>我在<a href="" title="http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian/">另一篇文章</a>中介绍了比较多的细节，可以参考。</p>
+<p>我在另一篇文章<a href="" title="http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian/">Gaussian and Truncated Gaussian</a>中介绍了比较多的细节，可以参考。</p>
 
 <h3>指数族分布</h3>
 
@@ -237,15 +237,24 @@ BP的核心为如下3点：</p>
 
 <h3>Bing的CTR预估</h3>
 
-<p>详细的推导及实验请参考：<a href="" title="http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR prediction for Bing</a></p>
+<p>详细的推导及实验请参考：<a href="" title="http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR prediction for Bing</a>
+paper中称这个model为ad predictor，其在我的数据集上预估效果很不错，训练预测速度快，天然支持增量更新，主要的缺点就是模型不是稀疏的。如果你知道怎么自然地达到稀疏效果，请指教。</p>
 
 <p>和其它算法的比较请参考：<a href="" title="http://dongguo.me/blog/2013/12/15/classification-models/">Classification Models</a></p>
 
 <h3>XBOX中player skill的评估</h3>
 
-<p>图模型和上一篇略有差异，推导过程差不多</p>
+<p>图模型和上一篇略有差异，推导过程差不多，paper中没有给出详细的推导过程，不过Murphy的新书中给出了，请参考推荐阅读2。</p>
 
-<h2>一些思考</h2>
+<h2>一些小结</h2>
+
+<ol>
+<li>EP的通用性比较好，对于实际的问题，画出graph model和factor graph，就可以尝试用EP来进行inference；</li>
+<li>虽然应用EP时的推导过程略长（计算很多个message和marginal distribution），但是最终的整体的更新公式一般都非常简单，所以模型训练时间开销往往较小；</li>
+<li>为了使用EP，只能用高斯分布来建模，比如Bing的CTR预估那篇对每个feature的weight建模，只能假设服从高斯分布，相当于是2范数的正则化，不能达到稀疏模型的效果；</li>
+<li>在我的实验中，通过EP进行inference得到的模型预估效果不错，值得一试；</li>
+</ol>
+
 
 <h2>推荐阅读</h2>
 
