@@ -157,34 +157,27 @@
 BP的核心为如下3点：</p>
 
 <ul>
-<li><strong>单个variable node边缘分布的计算</strong></li>
+<li><p><strong>单个variable node边缘分布的计算</strong>
+<img src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top />
+前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node：
+<img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width=500 align=top />
+每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积：
+<img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width=700 align=top /></p></li>
+<li><p><strong>从factor node到variable node的消息传递</strong>
+<img src="/images/personal/research/ep-intro/message_factor_to_variable.png" width=400 align=bottom /></p></li>
 </ul>
 
 
-<p><img src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top /></p>
-
-<p>前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node：
-<img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width=500 align=top /></p>
-
-<p>每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积：
-<img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width=700 align=top /></p>
-
-<ul>
-<li><strong>从factor node到variable node的消息传递</strong>
-<img src="/images/personal/research/ep-intro/message_factor_to_variable.png" width=400 align=top /></li>
-</ul>
-
-
-<p>从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）
+<p>从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）：
 <img src="/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width=600 align=top /></p>
 
 <ul>
 <li><strong>从variable node到factor node的消息传递</strong>
-<img src="/images/personal/research/ep-intro/message_variable_to_factor.png" width=400 align=top /></li>
+<img src="/images/personal/research/ep-intro/message_variable_to_factor.png" width=400 align=bottom /></li>
 </ul>
 
 
-<p>从variable node x到factor node f的message为：与x直接相连的factor nodes（除f意外）传递到x的messages的乘积
+<p>从variable node x到factor node f的message为：与x直接相连的factor nodes（除f以外）传递到x的messages的乘积：
 <img src="/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width=400 align=top /></p>
 
 <p>更多细节请参考PRML</p>
@@ -194,7 +187,7 @@ BP的核心为如下3点：</p>
 <p>在实际的问题中，要么后验分布本身比较复杂（推荐阅读3中的Clutter example），要么最大化后验的计算比较复杂，要么破坏了具体算法的假设（比如EP要求图中的所有message都是指数族），所以常常会用（有良好性质的）指数族分布近似实际的概率分布。</p>
 
 <p><img src="/images/personal/research/ep-intro/moment_matching_1.png" width=600 align=top />
-<img src="/images/personal/research/ep-intro/moment_matching_2.png" width=600 align=top /></p>
+<img src="/images/personal/research/ep-intro/moment_matching_2.png" width=300 align=top /></p>
 
 <p>用一个分布去近似另一个分布的常见方法是最小化KL散度:
 <img src="/images/personal/research/ep-intro/moment_matching_3.png" width=600 align=top />
@@ -206,7 +199,7 @@ BP的核心为如下3点：</p>
 <img src="/images/personal/research/ep-intro/moment_matching_5.png" width=600 align=top /></p>
 
 <p>为什么称为匹配矩呢，看看矩的定义就知道了：
-<img src="/images/personal/research/ep-intro/moment_matching_6.png" width=600 align=top /></p>
+<img src="/images/personal/research/ep-intro/moment_matching_6.png" width=350 align=top /></p>
 
 <h2>期望传播方法-理论</h2>
 
@@ -215,10 +208,9 @@ BP的核心为如下3点：</p>
 <p>下面为具体的算法：
 <img src="/images/personal/research/ep-intro/ep_def.png" width=800 align=top /></p>
 
-<p>下面通过Minka博士论文中的例子‘clutter problem’来解释：
-每个观察样本以(1-w)的概率由高斯分布N(x|sita, I)生成，以w的概率由noise生成（同样也是高斯分布N(x|0, aI)），于是：
+<p>下面通过Minka博士论文中的例子‘clutter problem’来解释：每个观察样本以(1-w)的概率由高斯分布N(x|sita, I)生成，以w的概率由noise生成（同样也是高斯分布N(x|0, aI)），于是：
 <img src="/images/personal/research/ep-intro/clutter_problem_1.png" width=400 align=top />
-<img src="/images/personal/research/ep-intro/clutter_problem_2.png" width=400 align=top /></p>
+<img src="/images/personal/research/ep-intro/clutter_problem_2.png" width=200 align=top /></p>
 
 <p>按照EP的思想，我们用一个单高斯q(sita)去近似混合高斯p(x|sita)
 <img src="/images/personal/research/ep-intro/clutter_problem_3.png" width=400 align=top /></p>
