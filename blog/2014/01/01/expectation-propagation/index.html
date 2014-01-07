@@ -156,7 +156,10 @@
 <p>Belief Propagation (BP)又叫&#8217;sum-product&#8217;，是一种计算图模型上节点边缘分布的推断方法，属于消息传递方法的一种，非近似方法（基于其延伸的Loopy Belief propagation为近似推断方法）。
 BP的核心为如下3点：</p>
 
-<p><strong>单个variable node边缘分布的计算</strong></p>
+<ul>
+<li><strong>单个variable node边缘分布的计算</strong></li>
+</ul>
+
 
 <p><img src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top /></p>
 
@@ -166,7 +169,7 @@ BP的核心为如下3点：</p>
 
 <p>每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积。</p>
 
-<p><img class="left" src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width="800" height="50"></p>
+<p><img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width=700 align=top /></p>
 
 <ul>
 <li><p><strong>从factor node到variable node的消息传递</strong>
