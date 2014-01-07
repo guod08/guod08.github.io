@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-07T20:26:50+08:00</updated>
+  <updated>2014-01-07T20:28:12+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -91,11 +91,11 @@ BP的核心为如下3点：</p>
 
 <p>  前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node。</p>
 
-<p>  <img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width="800" height="50"></p>
+<p>  <img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width="800" height="30"></p>
 
 <p>  每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积。</p>
 
-<p>  <img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width="800" height="70"></p></li>
+<p>  <img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width="800" height="50"></p></li>
 <li><p><strong>从factor node到variable node的消息传递</strong>
   <img class="left" src="http://guod08.github.io/images/personal/research/ep-intro/message_factor_to_variable.png" width="400"></p>
 
