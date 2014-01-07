@@ -166,30 +166,29 @@ BP的核心为如下3点：</p>
 
 <p><img src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top /></p>
 
-<p>前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node。</p>
+<p>前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node：
+<img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width=500 align=top /></p>
 
-<p><img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width=500 align=top /></p>
-
-<p>每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积。</p>
-
-<p><img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width=700 align=top /></p>
+<p>每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积：
+<img src="/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width=700 align=top /></p>
 
 <ul>
-<li><p><strong>从factor node到variable node的消息传递</strong>
-  <img class="left" src="/images/personal/research/ep-intro/message_factor_to_variable.png" width="400"></p>
-
-<p>  从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）</p>
-
-<p>  <img class="left" src="/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width="600"></p></li>
-<li><p><strong>从variable node到factor node的消息传递</strong></p>
-
-<p>  <img class="left" src="/images/personal/research/ep-intro/message_variable_to_factor.png" width="400"></p>
-
-<p>  从variable node x到factor node f的message为：与x直接相连的factor nodes（除f意外）传递到x的messages的乘积</p>
-
-<p>  <img class="left" src="/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width="400" height="50"></p></li>
+<li><strong>从factor node到variable node的消息传递</strong>
+<img src="/images/personal/research/ep-intro/message_factor_to_variable.png" width=400 align=top /></li>
 </ul>
 
+
+<p>从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）
+<img src="/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width=600 align=top /></p>
+
+<ul>
+<li><strong>从variable node到factor node的消息传递</strong>
+<img src="/images/personal/research/ep-intro/message_variable_to_factor.png" width=400 align=top /></li>
+</ul>
+
+
+<p>从variable node x到factor node f的message为：与x直接相连的factor nodes（除f意外）传递到x的messages的乘积
+<img src="/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width=400 align=top /></p>
 
 <p>更多细节请参考PRML</p>
 
@@ -197,40 +196,41 @@ BP的核心为如下3点：</p>
 
 <p>在实际的问题中，要么后验分布本身比较复杂（推荐阅读3中的Clutter example），要么最大化后验的计算比较复杂，要么破坏了具体算法的假设（比如EP要求图中的所有message都是指数族），所以常常会用（有良好性质的）指数族分布近似实际的概率分布。</p>
 
-<p><img class="left" src="/images/personal/research/ep-intro/moment_matching_1.png" width="600">
-<img class="left" src="/images/personal/research/ep-intro/moment_matching_2.png" width="600"></p>
+<p><img src="/images/personal/research/ep-intro/moment_matching_1.png" width=600 align=top />
+<img src="/images/personal/research/ep-intro/moment_matching_2.png" width=600 align=top /></p>
 
 <p>用一个分布去近似另一个分布的常见方法是最小化KL散度:
-<img class="left" src="/images/personal/research/ep-intro/moment_matching_3.png" width="600">
-<img class="left" src="/images/personal/research/ep-intro/moment_matching_4.png" width="600"></p>
+<img src="/images/personal/research/ep-intro/moment_matching_3.png" width=600 align=top />
+<img src="/images/personal/research/ep-intro/moment_matching_4.png" width=600 align=top /></p>
 
 <p>我们发现通过最小化KL散度得到的‘最接近’p(x)的q(x)可以简单地通过匹配充分统计量的期望得到。</p>
 
 <p>当q(x)为高斯分布的时候，我们知道其充分统计量u(x)=(x, x<sup>2</sup>)，这时通过KL散度最小化近似分布近似的方法称为moment matching(匹配矩)
-<img class="left" src="/images/personal/research/ep-intro/moment_matching_5.png" width="600"></p>
+<img src="/images/personal/research/ep-intro/moment_matching_5.png" width=600 align=top /></p>
 
 <p>为什么称为匹配矩呢，看看矩的定义就知道了：
-<img class="left" src="/images/personal/research/ep-intro/moment_matching_6.png" width="600"></p>
+<img src="/images/personal/research/ep-intro/moment_matching_6.png" width=600 align=top /></p>
 
 <h2>期望传播方法-理论</h2>
 
 <p>EP的思想：在图模型中，用高斯分布近似每一个factors，然后&#8217;approximate each factor in turn in the context of all remaining facotrs&#8217;.</p>
 
 <p>下面为具体的算法：
-<img class="left" src="/images/personal/research/ep-intro/ep_def.png" width="800"></p>
+<img src="/images/personal/research/ep-intro/ep_def.png" width=800 align=top /></p>
 
 <p>下面通过Minka博士论文中的例子‘clutter problem’来解释：
 每个观察样本以(1-w)的概率由高斯分布N(x|sita, I)生成，以w的概率由noise生成（同样也是高斯分布N(x|0, aI)），于是：
-<img class="left" src="/images/personal/research/ep-intro/clutter_problem_1.png" width="400">
-<img class="left" src="/images/personal/research/ep-intro/clutter_problem_2.png" width="200"></p>
+<img src="/images/personal/research/ep-intro/clutter_problem_1.png" width=400 align=top />
+<img src="/images/personal/research/ep-intro/clutter_problem_2.png" width=400 align=top /></p>
 
 <p>按照EP的思想，我们用一个单高斯q(sita)去近似混合高斯p(x|sita)
-<img class="left" src="/images/personal/research/ep-intro/clutter_problem_3.png" width="400"></p>
+<img src="/images/personal/research/ep-intro/clutter_problem_3.png" width=400 align=top /></p>
 
 <p>单高斯去近似混合高斯听起来效果一定不好，但实际上，由于EP在近似的时候乘了其他所有factors的高斯近似之后的上下文，考虑到很多个高斯分布相乘之后的方差一般都很小，所有实际上单高斯只需要在很小的区间近似好混合高斯即可。如下图：
-<img class="left" src="/images/personal/research/ep-intro/clutter_problem_4.png" width="400">
-<img class="left" src="/images/personal/research/ep-intro/clutter_problem_5.png" width="400">
-其中蓝色曲线为混合高斯（没有画完整），红色曲线为近似的单高斯，绿色曲线为‘其它所有factor的乘积’。</p>
+<img src="/images/personal/research/ep-intro/clutter_problem_4.png" width=400 align=top />
+<img src="/images/personal/research/ep-intro/clutter_problem_5.png" width=400 align=top /></p>
+
+<p>其中蓝色曲线为混合高斯（没有画完整），红色曲线为近似的单高斯，绿色曲线为‘其它所有factor的乘积’。</p>
 
 <h3>EP怎么应用在message passing中：</h3>
 
