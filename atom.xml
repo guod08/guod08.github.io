@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-01-08T23:51:28+08:00</updated>
+  <updated>2014-01-08T23:53:43+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -157,8 +157,9 @@ BP的核心为如下3点：</p>
 <p>按照EP的思想，我们用一个单高斯q(sita)去近似混合高斯p(x|sita)
 <img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_3.png" width=400 align=top /></p>
 
-<p>单高斯去近似混合高斯听起来效果一定不好，但实际上，由于EP在近似的时候乘了其他所有factors的高斯近似之后的上下文，考虑到很多个高斯分布相乘之后的方差一般都很小，所有实际上单高斯只需要在很小的区间近似好混合高斯即可。如下图：
-<img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_4.png" width=300 align=top />
+<p>单高斯去近似混合高斯听起来效果一定不好，但实际上，由于EP在近似的时候乘了其他所有factors的高斯近似之后的上下文，考虑到很多个高斯分布相乘之后的方差一般都很小，所有实际上单高斯只需要在很小的区间近似好混合高斯即可。如下图：</p>
+
+<p><img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_4.png" width=300 align=top />
 <img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_5.png" width=300 align=top /></p>
 
 <p>其中蓝色曲线为混合高斯（没有画完整），红色曲线为近似的单高斯，绿色曲线为‘其它所有factor的乘积’。</p>
