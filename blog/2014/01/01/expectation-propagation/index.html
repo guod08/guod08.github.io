@@ -161,8 +161,9 @@ BP的核心为如下3点：</p>
 </ul>
 
 
-<p><img src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top />
-(注：上图来之PRML)</p>
+<p><img src="/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top /></p>
+
+<p>(注：上图来之PRML)</p>
 
 <p>前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node：</p>
 
@@ -177,8 +178,9 @@ BP的核心为如下3点：</p>
 </ul>
 
 
-<p><img src="/images/personal/research/ep-intro/message_factor_to_variable.png" width=400 align=bottom />
-(注：上图来之PRML)</p>
+<p><img src="/images/personal/research/ep-intro/message_factor_to_variable.png" width=400 align=bottom /></p>
+
+<p>(注：上图来之PRML)</p>
 
 <p>从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）：</p>
 
@@ -189,8 +191,9 @@ BP的核心为如下3点：</p>
 </ul>
 
 
-<p><img src="/images/personal/research/ep-intro/message_variable_to_factor.png" width=400 align=bottom />
-(注：上图来之PRML)</p>
+<p><img src="/images/personal/research/ep-intro/message_variable_to_factor.png" width=400 align=bottom /></p>
+
+<p>(注：上图来之PRML)</p>
 
 <p>从variable node x到factor node f的message为：与x直接相连的factor nodes（除f以外）传递到x的messages的乘积：</p>
 
@@ -238,9 +241,11 @@ BP的核心为如下3点：</p>
 <p>单高斯去近似混合高斯听起来效果一定不好，但实际上，由于EP在近似的时候乘了其他所有factors的高斯近似之后的上下文，考虑到很多个高斯分布相乘之后的方差一般都很小，所有实际上单高斯只需要在很小的区间近似好混合高斯即可。如下图：</p>
 
 <p><img src="/images/personal/research/ep-intro/clutter_problem_4.png" width=350 align=top />
-<img src="/images/personal/research/ep-intro/clutter_problem_5.png" width=350 align=top />
-(注：上面2张图来之PRML)
-其中蓝色曲线为混合高斯（没有画完整），红色曲线为近似的单高斯，绿色曲线为‘其它所有factor的乘积’。</p>
+<img src="/images/personal/research/ep-intro/clutter_problem_5.png" width=350 align=top /></p>
+
+<p>(注：上面2张图来之PRML)</p>
+
+<p>其中蓝色曲线为混合高斯（没有画完整），红色曲线为近似的单高斯，绿色曲线为‘其它所有factor的乘积’。</p>
 
 <h3>EP怎么应用在message passing中：</h3>
 
