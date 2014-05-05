@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="简介 第一次接触EP是10年在百度实习时，当时组里面正有计划把线上的CTR预估模型改成支持增量更新的版本，读到了微软一篇基于baysian的CTR预估模型的文章（见推荐阅读5），文章中没有给出推导的细节，自己也没有继续研究。今年在PRML中读Approximal &hellip;">
+  <meta name="description" content="Recently I&rsquo;m working on building a system to predict future ad inventory under any specific targeting rule restriction. The challenge is how to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/">Druid: An Infrastructure for Real-time Analytics on Large Dataset</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-05T22:25:34+08:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
+        
+        
+           | <a href="/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I&rsquo;m working on building a system to predict future ad inventory under any specific targeting rule restriction. The challenge is how to achieve a small response time giving dozens of Millions of rows and dozens of attribute columns.</p>
+
+<p>example</p>
+
+<p><img src="/images/personal/engineering/druid/impression_table.png" width=400 align=bottom /></p>
+
+<p><strong>Mysql is not a good choice</strong>
+In my application, typical queries contain 1-6 different attributes(targeting rules). So in order to speed up querying process, the main if not only option is using composite indexes.
+However,</p>
+
+<p><strong>We want a scable &amp; fast-query data store infrastructure</strong></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -737,6 +786,10 @@ Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big iss
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/">Druid: An Infrastructure for Real-time Analytics on Large Dataset</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/01/01/expectation-propagation/">Expectation Propagation: Theory and Application</a>

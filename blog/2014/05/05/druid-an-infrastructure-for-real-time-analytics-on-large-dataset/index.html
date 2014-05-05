@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Some ML Slides From Hulu Internal - Dong Guo's Blog</title>
+  <title>Druid: An Infrastructure for Real-time Analytics on Large Dataset - Dong Guo's Blog</title>
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Machine Learning Introduction Feature selection Logistic regression Additive Model and boosting tree Expectation propagation (one popular bayesian &hellip;">
+  <meta name="description" content="Recently I&rsquo;m working on building a system to predict future ad inventory under any specific targeting rule restriction. The challenge is how to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal">
+  <link rel="canonical" href="http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Dong Guo's Blog" type="application/atom+xml">
@@ -66,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">Some ML Slides From Hulu Internal</h1>
+      <h1 class="entry-title">Druid: An Infrastructure for Real-time Analytics on Large Dataset</h1>
     
     
       <p class="meta">
@@ -82,7 +82,7 @@
   
 
 
-<time datetime="2013-12-16T00:00:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2013</time>
+<time datetime="2014-05-05T22:25:34+08:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -92,15 +92,17 @@
   </header>
 
 
-<div class="entry-content"><p><a href="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
+<div class="entry-content"><p>Recently I&rsquo;m working on building a system to predict future ad inventory under any specific targeting rule restriction. The challenge is how to achieve a small response time giving dozens of Millions of rows and dozens of attribute columns.</p>
 
-<p><a href="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
+<p>example</p>
 
-<p><a href="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
+<p><img src="/images/personal/engineering/druid/impression_table.png" width=400 align=bottom /></p>
 
-<p><a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
+<p><strong>Mysql is not a good choice</strong>
+In my application, typical queries contain 1-6 different attributes(targeting rules). So in order to speed up querying process, the main if not only option is using composite indexes.
+However,</p>
 
-<p><a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a> (one popular bayesian inference technique proposed by Thomas Minka)</p>
+<p><strong>We want a scable &amp; fast-query data store infrastructure</strong></p>
 </div>
 
 
@@ -123,14 +125,8 @@
   
 
 
-<time datetime="2013-12-16T00:00:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2013</time>
+<time datetime="2014-05-05T22:25:34+08:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/research/'>research</a>
-  
-</span>
 
 
     </p>
@@ -146,10 +142,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/12/15/classification-models/" title="Previous Post: classification models">&laquo; classification models</a>
+        <a class="basic-alignment left" href="/blog/2014/01/01/expectation-propagation/" title="Previous Post: Expectation Propagation: Theory and Application">&laquo; Expectation Propagation: Theory and Application</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/01/01/expectation-propagation/" title="Next Post: Expectation Propagation: Theory and Application">Expectation Propagation: Theory and Application &raquo;</a>
       
     </p>
   </footer>

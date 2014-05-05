@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-05-05T22:22:34+08:00</updated>
+  <updated>2014-05-05T22:27:41+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Druid: An Infrastructure for Real-time Analytics on Large Dataset]]></title>
+    <link href="http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/"/>
+    <updated>2014-05-05T22:25:34+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset</id>
+    <content type="html"><![CDATA[<p>Recently I&rsquo;m working on building a system to predict future ad inventory under any specific targeting rule restriction. The challenge is how to achieve a small response time giving dozens of Millions of rows and dozens of attribute columns.</p>
+
+<p>example</p>
+
+<p><img src="http://guod08.github.io/images/personal/engineering/druid/impression_table.png" width=400 align=bottom /></p>
+
+<p><strong>Mysql is not a good choice</strong>
+In my application, typical queries contain 1-6 different attributes(targeting rules). So in order to speed up querying process, the main if not only option is using composite indexes.
+However,</p>
+
+<p><strong>We want a scable &amp; fast-query data store infrastructure</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Expectation Propagation: Theory and Application]]></title>
