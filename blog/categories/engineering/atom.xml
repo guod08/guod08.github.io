@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/blog/categories/engineering/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-05-05T23:27:32+08:00</updated>
+  <updated>2014-05-05T23:55:15+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -26,9 +26,8 @@
 
 <p>最近在设计一个系统来预估未来的广告流量，不是总流量，是任意时间段任何定向条件（Targeting rule）约束情况下的流量。定向条件有近百个（内容，设备平台，用户地域，用户人口属性等），整个时间区间不同组合数是几千万量级。目标是秒级的响应时间。</p>
 
-<p>一个示例</p>
-
-<p><img src="http://guod08.github.io/images/personal/engineering/druid/impression_table.png" width=400 align=bottom /></p>
+<p>一个示例
+<img src="http://guod08.github.io/images/personal/engineering/druid/impression_table.png" width=600 align=bottom /></p>
 
 <h4>Mysql is not a good choice</h4>
 
@@ -44,11 +43,38 @@
 
 <h3>Druid</h3>
 
-<p>Druid满足我们上面2点要求，其是一个开源的、分布式的、列存储系统，特别适用于大数据上的（准）实时分析统计。且具有较好的稳定性（Highly Available）
-其包含的组建有:
-其使用的外部依赖有：Kafka, Zooker</p>
+<p>Druid满足我们上面2点要求，其是一个开源的、分布式的、列存储系统，特别适用于大数据上的（准）实时分析统计。且具有较好的稳定性（Highly Available）</p>
+
+<p>其包含的组建有: Real-time nodes, Historical nodes, Coordinator nodes, Broker nodes</p>
+
+<p>其使用的外部依赖有：Kafka, ZooKeeper, Mysql, Deep Storage</p>
+
+<p>Druid基础的数据单位是Segment，可以自己设置多长时间的数据对应一个segment</p>
 
 <h4>系统架构</h4>
+
+<p><img src="http://guod08.github.io/images/personal/engineering/druid/druid_system.png" width=800 align=bottom />
+Real-time nodes:</p>
+
+<p>Historial nodes:</p>
+
+<p>Coordinator nodes:</p>
+
+<p>Broker nodes:</p>
+
+<p>Recommend read the <a href="http://static.druid.io/docs/druid.pdf">paper</a> of druid.</p>
+
+<h4>Setup &amp; Batch indexing &amp; Query</h4>
+
+<p>Druid has great documentation <a href="http://druid.io/">here</a>.</p>
+
+<h4>Batch Indexing</h4>
+
+<p>注意Druid</p>
+
+<h4>Performance</h4>
+
+<p>在我们的应用场景和数据量情况下（Real-time, Historical, Coordinator, Broker nodes一共&lt;10台机器），平均查询时间在秒级别,</p>
 ]]></content>
   </entry>
   
