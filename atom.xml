@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-05-05T22:27:41+08:00</updated>
+  <updated>2014-05-05T23:27:32+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -14,21 +14,41 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Druid: An Infrastructure for Real-time Analytics on Large Dataset]]></title>
+    <title type="html"><![CDATA[Druid in Practise: An Infrastructure for Real-time Analytics on Large Dataset]]></title>
     <link href="http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/"/>
     <updated>2014-05-05T22:25:34+08:00</updated>
     <id>http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset</id>
-    <content type="html"><![CDATA[<p>Recently I&rsquo;m working on building a system to predict future ad inventory under any specific targeting rule restriction. The challenge is how to achieve a small response time giving dozens of Millions of rows and dozens of attribute columns.</p>
+    <content type="html"><![CDATA[<h2>Keywords</h2>
 
-<p>example</p>
+<p>Druid, column-stores, distributed, bitmaps</p>
+
+<h2>Background</h2>
+
+<p>最近在设计一个系统来预估未来的广告流量，不是总流量，是任意时间段任何定向条件（Targeting rule）约束情况下的流量。定向条件有近百个（内容，设备平台，用户地域，用户人口属性等），整个时间区间不同组合数是几千万量级。目标是秒级的响应时间。</p>
+
+<p>一个示例</p>
 
 <p><img src="http://guod08.github.io/images/personal/engineering/druid/impression_table.png" width=400 align=bottom /></p>
 
-<p><strong>Mysql is not a good choice</strong>
-In my application, typical queries contain 1-6 different attributes(targeting rules). So in order to speed up querying process, the main if not only option is using composite indexes.
-However,</p>
+<h4>Mysql is not a good choice</h4>
 
-<p><strong>We want a scable &amp; fast-query data store infrastructure</strong></p>
+<p>在我的应用中，典型的查询包含若干个定向条件，Mysql加快查询速度的方法就是索引或组合索引，在这个应用中单个组合可能包含5+个定向条件，且常用的列组合有几十个，实际测试结果是加了组合索引后整体查询速度提升有限。</p>
+
+<h4>We want a fast &amp; distributed data store infrastructure</h4>
+
+<p>我们的核心需求包含2点，一是查询速度快，二是系统的拓展性好，最好是分布式的。</p>
+
+<p>第一点要求意味着最好用column-store而不是row-store，业界普遍的观点是对于修改操作较少，查询往往只涉及少数几列的场景使用column-store可以获得快一个量级的查询速度。column-store可以通过bitmap indexing，encoding,compression来优化查询速度和存储开销。具体参见：</p>
+
+<p>第二点要求一方面是由于我们的数据量较大，并行存储和查询可以减少时间开销，另一方面是数据量每年还在快速上涨，以后可以通过加机器来应对。</p>
+
+<h3>Druid</h3>
+
+<p>Druid满足我们上面2点要求，其是一个开源的、分布式的、列存储系统，特别适用于大数据上的（准）实时分析统计。且具有较好的稳定性（Highly Available）
+其包含的组建有:
+其使用的外部依赖有：Kafka, Zooker</p>
+
+<h4>系统架构</h4>
 ]]></content>
   </entry>
   
