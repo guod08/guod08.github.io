@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-05-06T14:00:25+08:00</updated>
+  <updated>2014-05-06T14:09:56+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -24,8 +24,9 @@
 
 <h4>Background</h4>
 
-<p>最近在设计一个系统来预估未来的广告流量，不是总流量，是任意时间段任何定向条件（Targeting rule）约束情况下的流量。定向条件有近百个（内容，设备平台，用户地域，用户人口属性等），整个时间区间不同组合数是几千万量级。目标是秒级的响应时间。
-<strong>Example</strong>
+<p>最近在设计一个系统来预估未来的广告流量，不是总流量，是任意时间段任何定向条件（Targeting rule）约束情况下的流量。定向条件有近百个（内容，设备平台，用户地域，用户人口属性等），整个时间区间不同组合数是几千万量级。目标是秒级的响应时间。</p>
+
+<p><strong>Example</strong>
 <img src="http://guod08.github.io/images/personal/engineering/druid/impression_table.png" width=800 align=bottom /></p>
 
 <h4>Mysql is not a good choice</h4>
@@ -40,10 +41,11 @@
 
 <p>第二点要求一方面是由于我们的数据量较大，并行存储和查询可以减少时间开销，另一方面是数据量每年还在快速上涨，以后可以通过加机器来应对。</p>
 
-<h3>Druid Introduction</h3>
+<h4>Druid Introduction</h4>
 
-<p>Druid满足我们上面2点要求，其是一个开源的、分布式的、列存储系统，特别适用于大数据上的（准）实时分析统计。且具有较好的稳定性（Highly Available）
-Druid基础的数据单位是Segment，可以自己设置多长时间的数据对应一个segment</p>
+<p>Druid满足我们上面2点要求，其是一个开源的、分布式的、列存储系统，特别适用于大数据上的（准）实时分析统计。且具有较好的稳定性（Highly Available）</p>
+
+<p>Druid基础的数据单位是Segment，可以自己设置多长时间的数据对应一个segment。</p>
 
 <p><strong>Druid Cluter Overview</strong>
 <img src="http://guod08.github.io/images/personal/engineering/druid/druid_system.png" width=800 align=bottom /></p>
@@ -66,20 +68,15 @@ Druid基础的数据单位是Segment，可以自己设置多长时间的数据�
 
 <p>Mysql：存储Druid中的各种metadata（里面的表和数据都是Druid自身创建和插入的）。包括1).表druid_segments, 存储每个segment的metadata，2).表druid_rules, 给Coordinator nodes使用的规则信息（从哪个node load哪个segment）；3). 表druid_config, 号称存一些cluter配置信息，但是通常是空的。</p>
 
-<p>Recommend read the <a href="http://static.druid.io/docs/druid.pdf">paper</a> of druid.</p>
-
 <h4>Setup &amp; Batch indexing &amp; Query</h4>
 
 <p>Druid官网给了非常详细的文档介绍Druid，以及怎么使用 <a href="http://druid.io/">here</a>.</p>
 
 <h4>Notes</h4>
 
-<ol>
-<li>Druid的数据单位Segment是不可修改的，我们的做法是生成新的segments替换现有的；</li>
-<li>Druid在设计时充分考虑到了Highly Available，各种nodes挂掉都不会使得druid停止工作（但是状态会无法更新）；</li>
-<li>Druid使用Bitmap indexing加速column-store的查询速度，使用了一个叫做<a href="http://ricerca.mat.uniroma3.it/users/colanton/docs/concise.pdf">CONCISE</a>的算法来对bitmap indexing进行压缩，使得生成的segments比原始文本文件小很多；</li>
-</ol>
-
+<p>1.Druid的数据单位Segment是不可修改的，我们的做法是生成新的segments替换现有的；
+2.Druid在设计时充分考虑到了Highly Available，各种nodes挂掉都不会使得druid停止工作（但是状态会无法更新）；
+3.Druid使用Bitmap indexing加速column-store的查询速度，使用了一个叫做<a href="http://ricerca.mat.uniroma3.it/users/colanton/docs/concise.pdf">CONCISE</a>的算法来对bitmap indexing进行压缩，使得生成的segments比原始文本文件小很多；</p>
 
 <h4>Performance</h4>
 
@@ -87,14 +84,11 @@ Druid基础的数据单位是Segment，可以自己设置多长时间的数据�
 
 <h4>Reference &amp; Recommended reading</h4>
 
-<ol>
-<li><a href="http://druid.io/">Druid.io</a></li>
-<li>&lsquo;<a href="http://static.druid.io/docs/druid.pdf">Druid: A Real-time Analytical Data Store</a>&rsquo; is a very good introduction paper</li>
-<li><a href="http://en.wikipedia.org/wiki/Bitmap_index">Bitmap indexing wikepedia</a></li>
-<li><a href="http://ricerca.mat.uniroma3.it/users/colanton/docs/concise.pdf">Bitmap indexing compression algorithm used by Druid</a></li>
-<li>行存储or列存储？给小白：<a href="http://www.infoq.com/cn/articles/bigdata-store-choose">link</a></li>
-</ol>
-
+<p>1.<a href="http://druid.io/">Druid.io</a>
+2.&lsquo;<a href="http://static.druid.io/docs/druid.pdf">Druid: A Real-time Analytical Data Store</a>&rsquo; is a very good introduction paper
+3.<a href="http://en.wikipedia.org/wiki/Bitmap_index">Bitmap indexing wikepedia</a>
+4.<a href="http://ricerca.mat.uniroma3.it/users/colanton/docs/concise.pdf">Bitmap indexing compression algorithm used by Druid</a>
+5.行存储or列存储？给小白：<a href="http://www.infoq.com/cn/articles/bigdata-store-choose">link</a></p>
 ]]></content>
   </entry>
   
