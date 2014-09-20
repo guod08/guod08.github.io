@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-05-06T14:50:54+08:00</updated>
+  <updated>2014-09-20T22:14:02+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[设计与实现一个好的广告流量预估系统的挑战]]></title>
+    <link href="http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting/"/>
+    <updated>2014-09-20T22:01:24+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting</id>
+    <content type="html"><![CDATA[<p>Key words: Ad Inventory Forecasting, Ad serving, Online advertising.</p>
+
+<p>广告流量预估是每个使用保量模式售卖广告的公司必须要做的。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Druid in Practise: An Open-source Infrastructure for Real-time Analytics on Large Dataset]]></title>
