@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-09-20T22:14:02+08:00</updated>
+  <updated>2014-10-12T23:36:28+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[分布式系统原理－notes]]></title>
+    <link href="http://guod08.github.io/blog/2014/10/12/distributed-system-theory/"/>
+    <updated>2014-10-12T23:23:27+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/10/12/distributed-system-theory</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[设计与实现一个好的广告流量预估系统的挑战]]></title>
