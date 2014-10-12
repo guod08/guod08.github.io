@@ -9,8 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="分布式系统包含这么几个重要的部分：数据存取在哪，数据副本，数据的可用性与一致性保证，分布式计算。
-在数据存储部分包含了一些核心的方法，思想，理论，包括：一致性hash，数据多副本存放，副本控制策略，Lease机制，cap理论 consistent hashing: &hellip;">
+  <meta name="description" content="过去三年参与的广告相关的项目都基于各种各样的分布式存储和计算系统，比如hdfs，hbase，cassandra cluster，memcached cluster，Druid, hadoop和spark。最近在研究各个系统的原理，周末浏览了一本电子书《分布式系统原理介绍》，介绍了很多重要的基础知识 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,7 +69,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/10/12/distributed-system-theory/">分布式系统原理－notes</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/10/12/distributed-system-theory/">《分布式系统原理介绍》－notes</a></h1>
     
     
       <p class="meta">
@@ -96,70 +95,90 @@
   </header>
 
 
-  <div class="entry-content"><p>分布式系统包含这么几个重要的部分：数据存取在哪，数据副本，数据的可用性与一致性保证，分布式计算。
-在数据存储部分包含了一些核心的方法，思想，理论，包括：一致性hash，数据多副本存放，副本控制策略，Lease机制，cap理论</p>
+  <div class="entry-content"><p>过去三年参与的广告相关的项目都基于各种各样的分布式存储和计算系统，比如hdfs，hbase，cassandra cluster，memcached cluster，Druid, hadoop和spark。最近在研究各个系统的原理，周末浏览了一本电子书<a href="http://www.valleytalk.org/wp-content/uploads/2012/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D.pdf">《分布式系统原理介绍》</a>，介绍了很多重要的基础知识，推荐浏览。</p>
 
-<p>consistent hashing: 典型的数据在分布式环境下存取的方案
-背景：数据的分布式存储的一种简单方式为hash, 这种方法简单，无需做任何纪录。一个较大的问题是拓展性问题，一旦集群中机器数据进行拓展（或者减少），数据需要重新迁移。</p>
+<h3>Key words:</h3>
 
-<blockquote><p>增加一个node，不影响任何现有的nodes，只需要将临近的一个node上的部分数据copy到新node。
-需要额外存储的元数据只有node在环上的顺序，数据量小。
-有一个缺点是：每次加入一个node，只能减轻现有的一个node的压力。且如果是随即分配node在环上的顺序，将很难保证在每个node的&#8217;负载均衡&#8217;
-一个较好的解决方案是引入&#8217;virtual nodes&#8217;： 首先假设有比真实nodes个数明显多的virtual nodes。这个个数是固定的，所以可以预先将其均匀地分布到环上。通过元数据将每个real node关联上多个virtual nodes，注意不是连续的，一般选在环上分隔较远的virtual nodes。这样的话，每加入一个real node，将会将属于其他real nodes的几个virtual nodes分配给新加入的real node，分担了多个real nodes的压力。反之，当一个real node失败，可以有多个real nodes来分担压力。</p></blockquote>
+<p>数据存储方式，consistent hashing，数据副本，副本控制协议，Lease机制，Quorum机制，日志技术，Paxos协议，CAP理论</p>
 
-<p>数据副本: 分布式系统提供高容错，高用可行的一种重要手段
-有2种最常见的数据副本存储方案，一种是以机器为粒度，一种是以数据块为粒度。</p>
+<p>部分小结</p>
 
-<blockquote><p>以机器为粒度的缺点：</p>
+<h3>consistent hashing: 分布式数据存取的经典方案</h3>
 
-<pre><code>           1). 一旦某台机器数据丢失，数据恢复的效率不高，因为一般需要从非常有限台机器copy数据。而且会比较消耗copy from机器的资源，往往需要让          一台机器下线，或者限制copy的速度； 
-           2). 一旦某台机器宕机，压力被有限的几台副本机器分担（若3台机器互为副本，则剩余机器的数据访问压力提高50%） 
-           3). 增加一台机器无法扩容，必须一下增加若干台机器（互为副本）
-</code></pre>
+<ol>
+<li>背景：数据的分布式存储的一种简单方式为hash, 这种方法简单，无需做任何纪录。一个较大的问题是拓展性问题，一旦集群中机器数据进行拓展（或者减少），数据需要重新迁移。</li>
+<li>增加一个node，不影响任何现有的nodes，只需要将临近的一个node上的部分数据copy到新node。</li>
+<li>需要额外存储的元数据只有node在环上的顺序，数据量小。</li>
+<li>有一个缺点是：每次加入一个node，只能减轻现有的一个node的压力。且如果是随即分配node在环上的顺序，将很难保证在每个node的&#8217;负载均衡&#8217;</li>
+<li>一个较好的解决方案是引入&#8217;virtual nodes&#8217;： 首先假设有比真实nodes个数明显多的virtual nodes。这个个数是固定的，所以可以预先将其均匀地分布到环上。通过元数据将每个real node关联上多个virtual nodes，注意不是连续的，一般选在环上分隔较远的virtual nodes。这样的话，每加入一个real node，将会将属于其他real nodes的几个virtual nodes分配给新加入的real node，分担了多个real nodes的压力。反之，当一个real node失败，可以有多个real nodes来分担压力。</li>
+</ol>
 
-<p>以数据块为粒度的好处：(相对应)</p>
 
-<pre><code>           1). 一旦某台机器数据丢失，可以从剩余的所有机器上copy数据，数据恢复的效率高
-           2). 一台机器宕机，不会给任何单台机器增加明显压力；
-           3). 扩容容易
-</code></pre></blockquote>
+<h3>数据副本: 分布式系统提供高容错，高用可行的一种重要手段</h3>
 
-<p>副本控制协议: 应对数据更新的可用性和一致性（权衡）策略</p>
+<ol>
+<li>有2种最常见的数据副本存储方案，一种是以机器为粒度，一种是以数据块为粒度。</li>
+<li>以机器为粒度的缺点：
 
-<blockquote><p>中心化副本控制协议：中心结点负责数据的更新，并发控制，协调副本一致性；单点故障</p>
+<ol type="a">
+<li>一旦某台机器数据丢失，数据恢复的效率不高，因为一般需要从非常有限台机器copy数据。而且会比较消耗copy from机器的资源，往往需要让          一台机器下线，或者限制copy的速度；</li>
+<li>一旦某台机器宕机，压力被有限的几台副本机器分担（若3台机器互为副本，则剩余机器的数据访问压力提高50%）</li>
+<li>增加一台机器无法扩容，必须一下增加若干台机器（互为副本）</li>
+</ol>
+</li>
+<li>以数据块为粒度的好处：(相对应)
 
-<pre><code> 1). primary node在将更新同步到各个secondary nodes时，限于primary node的压力，往往只同步给有限几个secondary nodes，后续采用接力的方式
- 2). 同步过程的中间状态，包括同步失败的处理，以及access状态的返回，决定了系统的数据一致性
- 3). primary node宕机由于需要时间来发现（比如10s），在这段时间内无法更新数据
-</code></pre>
+<ol type="a">
+<li>一旦某台机器数据丢失，可以从剩余的所有机器上copy数据，数据恢复的效率高</li>
+<li>一台机器宕机，不会给任何单台机器增加明显压力；</li>
+<li>扩容容易</li>
+</ol>
+</li>
+</ol>
 
-<p>去中心化副本控制协议
-实例 （大部分分布式数据存储系统都使用primary－secondary副本控制协议）</p>
 
-<pre><code> 1). GFS: primary-secondary
- 2). PUNTS(yahoo!的分布式数据存储平台): 使用primary－secondary协议
- 3). Dynamo/Cassandra: 使用去中心化副本控制协议
- 4). Zookeeper: 使用去中心化协议选出primary node，之后就转变为中心化的副本控制协议
-</code></pre></blockquote>
+<h3>副本控制协议: 决定数据可用性和一致性的权衡</h3>
 
-<p>Lease机制：保证primary node和secondary node的一致性</p>
+<ul>
+<li>中心化副本控制协议：中心结点负责数据的更新，并发控制，协调副本一致性；单点故障
 
-<blockquote><p>primary node在向cache nodes同步数据时，还会附带一个时间戳表达这份数据的有效期。在有效期内primary node保证不修改数据，cache nodes可以放心使用数据。
-带来的cost是：若某个cache node提高修改元数据请求，primary node需要阻塞所有cache nodes对该份数据的读写请求，并等待到该份数据的lease超时才修改元数据。
-所以lease的时长比较关键：太长会导致availability下降，太短会导致cache nodes频繁同步primary node；常使用10s
-lease机制用于primary node的选择：primary node的更改主要由于结点宕机，而传统的Heartbeat的方法不能有效监控结点状态（存在网络失败，监控机器本身性能问题导致的延时等），故每当nodes给监控机器发heartbeat时，返回一个lease，若primary node心跳失败，则等待lease过期后，监控结点更换primary node
-lease机制应用的实例</p>
+<ul>
+<li>primary node在将更新同步到各个secondary nodes时，限于primary node的压力，往往只同步给有限几个secondary nodes，后续采用接力的方式</li>
+<li>同步过程的中间状态，包括同步失败的处理，以及access状态的返回，决定了系统的数据一致性</li>
+<li>primary node宕机由于需要时间来发现（比如10s），在这段时间内无法更新数据</li>
+</ul>
+</li>
+<li>去中心化副本控制协议</li>
+<li>实例 （大部分分布式数据存储系统都使用primary－secondary副本控制协议）
+   1). GFS: primary-secondary
+   2). PUNTS(yahoo!的分布式数据存储平台): 使用primary－secondary协议
+   3). Dynamo/Cassandra: 使用去中心化副本控制协议
+   4). Zookeeper: 使用去中心化协议选出primary node，之后就转变为中心化的副本控制协议</li>
+</ul>
 
-<pre><code> 1).  GFS中用于master挑选primary node
- 2). Chubby(google的分布式文件系统) 有2处使用了lease机制 a). secondary nodes承诺在一段时间内不重新选举primary node; b). primary node用于监控secondary nodes的状态
- 3). Zookeeper: primary node向client颁发lease
-</code></pre></blockquote>
 
-<p>Quorum机制: 可用性和一致性的权衡</p>
+<h3>Lease机制：保证secondary node和primary node的一致性</h3>
 
-<blockquote><p>在存在N个副本的情况下，对于更新操作，只要在W在副本上更新成功，则算该更新成功（“成功提交的更新操作”）。当读取R个副本时（限制R+W>N），就可以保证可以读到更新之后的数据。
-注意：仅依赖quorum机制无法知道最新成功提交的版本号，故无法保证强一致性（系统应该始终返回最新的成功提交的数据），需要通过其他方式获取系统最新成功提交的数据；
-Quorum机制体现了CAP理论中的availability（update时只需要更新了W个副本，read时只需要读取R个副本）和consistent（由于update或者read只需要在部分副本上成功即可，导致了仅follow Quorum机制不能保证强一致性）的权衡：</p></blockquote>
+<ul>
+<li>primary node在向cache nodes同步数据时，还会附带一个时间戳表达这份数据的有效期。在有效期内primary node保证不修改数据，cache nodes可以放心使用数据。</li>
+<li>带来的cost是：若某个cache node提高修改元数据请求，primary node需要阻塞所有cache nodes对该份数据的读写请求，并等待到该份数据的lease超时才修改元数据。</li>
+<li>所以lease的时长比较关键：太长会导致availability下降，太短会导致cache nodes频繁同步primary node；常使用10s</li>
+<li>lease机制用于primary node的选择：primary node的更改主要由于结点宕机，而传统的Heartbeat的方法不能有效监控结点状态（存在网络失败，监控机器本身性能问题导致的延时等），故每当nodes给监控机器发heartbeat时，返回一个lease，若primary node心跳失败，则等待lease过期后，监控结点更换primary node</li>
+<li>lease机制应用的实例</li>
+<li>GFS中用于master挑选primary node</li>
+<li>Chubby(google的分布式文件系统) 有2处使用了lease机制 a). secondary nodes承诺在一段时间内不重新选举primary node; b). primary node用于监控secondary nodes的状态</li>
+<li>Zookeeper: primary node向client颁发lease</li>
+</ul>
+
+
+<h3>Quorum机制: 可用性和一致性的权衡</h3>
+
+<ol>
+<li>在存在N个副本的情况下，对于更新操作，只要在W在副本上更新成功，则算该更新成功（“成功提交的更新操作”）。当读取R个副本时（限制R+W>N），就可以保证可以读到更新之后的数据。</li>
+<li>注意：仅依赖quorum机制无法知道最新成功提交的版本号，故无法保证强一致性（系统应该始终返回最新的成功提交的数据），需要通过其他方式获取系统最新成功提交的数据；</li>
+<li>Quorum机制体现了CAP理论中的availability（update时只需要更新了W个副本，read时只需要读取R个副本）和consistent（由于update或者read只需要在部分副本上成功即可，导致了仅follow Quorum机制不能保证强一致性）的权衡：</li>
+</ol>
+
 </div>
   
   
@@ -997,7 +1016,7 @@ Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big iss
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/10/12/distributed-system-theory/">分布式系统原理－notes</a>
+        <a href="/blog/2014/10/12/distributed-system-theory/">《分布式系统原理介绍》－notes</a>
       </li>
     
       <li class="post">
