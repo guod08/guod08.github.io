@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-10-13T21:34:47+08:00</updated>
+  <updated>2014-10-13T21:45:13+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -42,7 +42,7 @@
 <li>以机器为粒度的缺点：
 
 <ul>
-<li>一旦某台机器数据丢失，数据恢复的效率不高，因为一般需要从非常有限台机器copy数据。而且会比较消耗copy from机器的资源，往往需要让          一台机器下线，或者限制copy的速度；</li>
+<li>一旦某台机器数据丢失，数据恢复的效率不高，因为一般需要从非常有限台机器copy数据。而且会比较消耗copy from机器的资源，往往需要让一台机器下线，或者限制copy的速度；</li>
 <li>一旦某台机器宕机，压力被有限的几台副本机器分担（若3台机器互为副本，则剩余机器的数据访问压力提高50%）</li>
 <li>增加一台机器无法扩容，必须一下增加若干台机器（互为副本）</li>
 </ul>
@@ -58,9 +58,9 @@
 </ol>
 
 
-<h3>副本控制协议: 决定数据可用性和一致性的权衡</h3>
+<h3>副本控制协议: 控制各副本数据读写行为，使得副本满足一定可用性和一致性</h3>
 
-<ul>
+<ol>
 <li>中心化副本控制协议：中心结点负责数据的更新，并发控制，协调副本一致性；单点故障
 
 <ul>
@@ -79,12 +79,12 @@
 <li>Zookeeper: 使用去中心化协议选出primary node，之后就转变为中心化的副本控制协议</li>
 </ul>
 </li>
-</ul>
+</ol>
 
 
-<h3>Lease机制：保证secondary node和primary node的一致性</h3>
+<h3>Lease机制：保证secondary nodes和primary node的一致性</h3>
 
-<ul>
+<ol>
 <li>primary node在向cache nodes同步数据时，还会附带一个时间戳表达这份数据的有效期。在有效期内primary node保证不修改数据，cache nodes可以放心使用数据。</li>
 <li>带来的cost是：若某个cache node提高修改元数据请求，primary node需要阻塞所有cache nodes对该份数据的读写请求，并等待到该份数据的lease超时才修改元数据。</li>
 <li>所以lease的时长比较关键：太长会导致availability下降，太短会导致cache nodes频繁同步primary node；常使用10s</li>
@@ -97,16 +97,16 @@
 <li>Zookeeper: primary node向client颁发lease</li>
 </ul>
 </li>
-</ul>
+</ol>
 
 
 <h3>Quorum机制: 可用性和一致性的权衡</h3>
 
-<ul>
+<ol>
 <li>在存在N个副本的情况下，对于更新操作，只要在W在副本上更新成功，则算该更新成功（“成功提交的更新操作”）。当读取R个副本时（限制R+W>N），就可以保证可以读到更新之后的数据。</li>
 <li>注意：仅依赖quorum机制无法知道最新成功提交的版本号，故无法保证强一致性（系统应该始终返回最新的成功提交的数据），需要通过其他方式获取系统最新成功提交的数据；</li>
 <li>Quorum机制体现了CAP理论中的availability（update时只需要更新了W个副本，read时只需要读取R个副本）和consistent（由于update或者read只需要在部分副本上成功即可，导致了仅follow Quorum机制不能保证强一致性）的权衡：</li>
-</ul>
+</ol>
 
 ]]></content>
   </entry>
