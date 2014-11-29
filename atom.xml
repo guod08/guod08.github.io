@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-11-29T22:38:27+08:00</updated>
+  <updated>2014-11-29T23:07:16+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -39,12 +39,15 @@
 
 <p>在线广告程序化交易有如下一些stakeholders：
 <img src="http://guod08.github.io/images/personal/ads/programmatic_stakeholders.png">
-除了advertisers和publishers, 其他角色都不是必须的，因为广告主和内容提供商之间完全可以直接交易。</p>
+DSP(Demand side platform)可以认为其是一个有技术背景的代理商，广告主可以选择为展示，点击或者转化进行付费，DSP则和其他众多DSP通过竞价竞争广告位。DSP的数据和技术积累直接关系到其是否NB.
+SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生态里扮演一个中枢的角色。</p>
 
-<p>可以按照2个纬度分为4个类别，</p>
+<p>注意为了实现广告的程序化交易，除了advertisers和publishers, 其他角色都不是必须的，因为广告主和内容提供商之间完全可以直接交易。对于百度联盟，可以认为其同时扮演了Ad Network和DSP的角色，如果你既有内容资源又有广告主资源，你当然不希望和别人分享收益。</p>
 
-<p><img src="http://guod08.github.io/images/personal/ads/programmatic_types.png"/>
-<a href="http://www.iab.net/media/file/IAB_Digital_Simplified_Programmatic_Sept_2013.pdf">reference</a></p>
+<p>可以按照2个纬度（广告投放量是否被保证，以及是固定单价还是需要竞价）将在线广告的程序化交易分为4个类别：
+<img src="http://guod08.github.io/images/personal/ads/programmatic_types.png"/>
+<a href="http://www.iab.net/media/file/IAB_Digital_Simplified_Programmatic_Sept_2013.pdf">reference</a>
+Inventory即广告流量，广告主往往比较关心广告投放量是否能够放完，特别是对于大的品牌广告主。保证广告投放量的deal就是传统的Guaranteed deal. 对于广告商来说，其为广告的付费一直是fixed，其可以选择是为每次展示付1毛钱还是为每次点击付10块钱。这个表格中提到的Pricing指的是publisher或者SSP端看到的报价，而这个价格通常指的都是展示的单价(CPM)，如果广告主选择以CPM付费（给DSP或者SSP或者直接给publisher）,publisher端看到的该由该advertiser声称的报价通常是稳定的，但是如果广告主选择以点击甚至转化付费，DSP对不同的广告位的出价的差别就很可能由很大的差别。</p>
 
 <h3>实时竞价(Real-Time-Bidding)</h3>
 
