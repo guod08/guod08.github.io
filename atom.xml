@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-11-29T10:15:20+08:00</updated>
+  <updated>2014-11-29T10:32:19+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -27,18 +27,16 @@
     <link href="http://guod08.github.io/blog/2014/11/28/programmatic-digital-advertising/"/>
     <updated>2014-11-28T23:51:24+08:00</updated>
     <id>http://guod08.github.io/blog/2014/11/28/programmatic-digital-advertising</id>
-    <content type="html"><![CDATA[<p>今天看了一家叫做tubeMogulDSP公司的介绍，在这边总结一下我对在线广告市场程序化交易的理解。</p>
+    <content type="html"><![CDATA[<p>从2010年开始，一直在做搜索广告，联盟上下文广告，视频广告。这几年在线广告的程序化交易非常热，发展也很快，对其比较关注。这边总结一下我对在线广告市场程序化交易的理解。</p>
 
-<p>“程序化交易“即通过程序自动化地完成商品的买和卖，这在很多领域都有应用，最经典的就是金融市场中的股票，债券，货币，期货等的交易。其至少有2个好处，第一：将人从交易的各个环节中解放出来，让一切变得自动化，有效率；第二：这种程序带来的自动化使得全球资源的优化配置变得有可能；</p>
+<p>“程序化交易“即通过程序自动化地完成商品的买和卖，这在很多领域都有应用，最经典的就是金融市场中的股票，债券，货币，期货等的交易。其至少有2个好处，第一：将人从交易的各个环节中解放出来，让一切变得自动化，有效率；第二：这种程序带来的自动化使得全球资源的优化配置变得有可能。</p>
 
-<p>广告也不例外。程序化交易的这2点优势使得在线广告相比于传统媒体（比如电视）广告的优势更加明显。</p>
+<p>广告也不例外。程序化交易带来的这2点优势使得在线广告相比于传统媒体（比如电视）广告的优势更加明显。</p>
+
+<h4>在线广告程序化交易</h4>
 
 <p><img src="http://guod08.github.io/images/personal/ads/programmatic_types.png">
 <a href="http://www.iab.net/media/file/IAB_Digital_Simplified_Programmatic_Sept_2013.pdf">reference</a></p>
-
-<p><a href="http://1.bp.blogspot.com/-8wzBtjgBqoU/UJtG-I9yh3I/AAAAAAAAJzo/R2Bhb6OrD9g/s640/openrtb.jpg">http://1.bp.blogspot.com/-8wzBtjgBqoU/UJtG-I9yh3I/AAAAAAAAJzo/R2Bhb6OrD9g/s640/openrtb.jpg</a></p>
-
-<h4>在线广告程序化交易</h4>
 
 <h4>实时竞价(Real-Time-Bidding)</h4>
 
@@ -63,6 +61,8 @@
 <p><a href="http://www.tubemogul.com/">http://www.tubemogul.com/</a></p>
 
 <p><a href="http://www.iab.net/programmatic">http://www.iab.net/programmatic</a>  一家推动在线广告程序化交易行业发展的公司</p>
+
+<p><a href="http://1.bp.blogspot.com/-8wzBtjgBqoU/UJtG-I9yh3I/AAAAAAAAJzo/R2Bhb6OrD9g/s640/openrtb.jpg">http://1.bp.blogspot.com/-8wzBtjgBqoU/UJtG-I9yh3I/AAAAAAAAJzo/R2Bhb6OrD9g/s640/openrtb.jpg</a></p>
 
 <p>iPinyou的一篇对RTB的科普
 <a href="http://www.math.pku.edu.cn/teachers/yaoy/Spring2013/RTB101_iPinYou_XuehuaShen_English.pdf">http://www.math.pku.edu.cn/teachers/yaoy/Spring2013/RTB101_iPinYou_XuehuaShen_English.pdf</a></p>
