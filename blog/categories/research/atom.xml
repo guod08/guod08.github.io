@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Research | Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/blog/categories/research/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-11-30T00:04:20+08:00</updated>
+  <updated>2014-12-25T22:50:06+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -14,19 +14,23 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Some ML Slides From Hulu Internal]]></title>
-    <link href="http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal/"/>
-    <updated>2013-12-16T00:00:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/12/16/some-ML-slides-from-Hulu-internal</id>
-    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
+    <title type="html"><![CDATA[Slides of Some Machine Learning Talk I Shared in Hulu]]></title>
+    <link href="http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me/"/>
+    <updated>2014-12-16T00:00:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me</id>
+    <content type="html"><![CDATA[<p>Hulu has good traditional of engineering and research sharing, both internal and external.</p>
+
+<p>Below are slides of 5 machine learning talks from me.</p>
+
+<p><a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a> (one popular bayesian inference technique proposed by Thomas Minka)</p>
+
+<p><a href="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
 
 <p><a href="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
 
 <p><a href="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
 
 <p><a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
-
-<p><a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a> (one popular bayesian inference technique proposed by Thomas Minka)</p>
 ]]></content>
   </entry>
   
