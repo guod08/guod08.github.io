@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Slides of Some Machine Learning Talk I Shared in Hulu - Dong Guo's Blog</title>
+  <title>Spark Usage Tips - Dong Guo's Blog</title>
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Hulu has good traditional of engineering and research sharing, both internal and external. Below are slides of 5 machine learning talks from me. &hellip;">
+  <meta name="description" content="Highlights of Spark Spark makes distributed programming easy Although dataset is distributed on multiple nodes, Spark abstracts it as a RDD(resilient &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me">
+  <link rel="canonical" href="http://guod08.github.io/blog/2014/12/30/spark-usage-tips">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Dong Guo's Blog" type="application/atom+xml">
@@ -66,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">Slides of Some Machine Learning Talk I Shared in Hulu</h1>
+      <h1 class="entry-title">Spark Usage Tips</h1>
     
     
       <p class="meta">
@@ -82,7 +82,7 @@
   
 
 
-<time datetime="2014-12-16T00:00:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2014</time>
+<time datetime="2014-12-30T23:01:39+08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2014</time>
         
         
            | <a href="#comments">Comments</a>
@@ -92,19 +92,46 @@
   </header>
 
 
-<div class="entry-content"><p>Hulu has good traditional of engineering and research sharing, both internal and external.</p>
+<div class="entry-content"><h3>Highlights of Spark</h3>
 
-<p>Below are slides of 5 machine learning talks from me.</p>
+<h5>Spark makes distributed programming easy</h5>
 
-<p><a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">Expectation propagation</a> (one popular bayesian inference technique proposed by Thomas Minka)</p>
+<p>Although dataset is distributed on multiple nodes, Spark abstracts it as a RDD(resilient distributed dataset). The user interact with RDD as if it were a local dataset.</p>
 
-<p><a href="http://www.slideshare.net/guo_dong/machine-learning-introduction">Machine Learning Introduction</a></p>
+<p>Also, Spark provides much more operation functions comparing with M/R.
+<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">link</a></p>
 
-<p><a href="http://www.slideshare.net/guo_dong/feature-selection">Feature selection</a></p>
+<h5>Spark makes your application faster via better use memory</h5>
 
-<p><a href="http://www.slideshare.net/guo_dong/logistic-regressionpptx">Logistic regression</a></p>
+<p>You can cache your RDD in memory if it will be used multiple times. This is super useful for iteration calculation in Machine Learning algorithms.</p>
 
-<p><a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">Additive Model and boosting tree</a></p>
+<h3>Usage Tips</h3>
+
+<ol>
+<li><p>Run/Debug spark program in local before in cluster is efficient
+config: &ldquo;-Dspark.master=local -Dspark.app.name=Test -Xmx2G&rdquo; (also increase maximal memory for Heap)</p></li>
+<li><p>use cache cleverly
+use choose when memory is not enough will make you program runs slowly (due to memory-disk in-out switch)</p></li>
+<li><p>for broadcast data, directly use broadcast, don&rsquo;t translate it into Map or other data structure, and use them in map.</p></li>
+<li><p>Choose suitable parameters for spark-submit:</p>
+
+<p> <a href="http://spark.apache.org/docs/latest/submitting-applications.html">http://spark.apache.org/docs/latest/submitting-applications.html</a>
+  num-executor: AP totally has 10 machines, so we can at most set 10 workers
+  executor-cores: how many threads on each executor/worker
+  executor-cpu: how many cpu used for this worker. (cpu will be waste if executor-cpu is more than executor-cores)
+  executor-memory: there are 196G memory in each worker, choose suitable memory for your application (5g? 10g?)
+And you can pass dynamic parameters via spark-submit</p></li>
+<li><p>A portal is launched for each spark application run. You can check many informations then</p></li>
+<li><p>Spark throw NonSerializableException
+In RDD transformation, if an class/object is used, it must be defined as serializable
+&ldquo;So it is possible to read non-serializable types into an RDD &ndash; i.e. have an RDD of something that is not serializable (which seems counter intuitive). But once you wish to perform an operation on that RDD that requires the objects to be serializable, like repartition it needs to be serializable&rdquo;
+<a href="http://stackoverflow.com/questions/24224392/why-does-spark-throw-notserializableexception-org-apache-hadoop-io-nullwritable">http://stackoverflow.com/questions/24224392/why-does-spark-throw-notserializableexception-org-apache-hadoop-io-nullwritable</a>
+<a href="http://stackoverflow.com/questions/22592811/task-not-serializable-java-io-notserializableexception-when-calling-function-ou/22594142#22594142">http://stackoverflow.com/questions/22592811/task-not-serializable-java-io-notserializableexception-when-calling-function-ou/22594142#22594142</a></p></li>
+<li><p>Apply suitable memory using JMX(Java Management Extension)</p></li>
+<li><p>Use broadcast correctly
+<a href="http://ampcamp.berkeley.edu/wp-content/uploads/2012/06/matei-zaharia-amp-camp-2012-advanced-spark.pdf">http://ampcamp.berkeley.edu/wp-content/uploads/2012/06/matei-zaharia-amp-camp-2012-advanced-spark.pdf</a></p></li>
+</ol>
+
 </div>
 
 
@@ -127,14 +154,8 @@
   
 
 
-<time datetime="2014-12-16T00:00:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2014</time>
+<time datetime="2014-12-30T23:01:39+08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2014</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/research/'>research</a>
-  
-</span>
 
 
     </p>
@@ -150,10 +171,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/11/28/programmatic-digital-advertising/" title="Previous Post: Programmatic Digital Advertising">&laquo; Programmatic Digital Advertising</a>
+        <a class="basic-alignment left" href="/blog/2014/12/16/Machine-Learning-talks-from-me/" title="Previous Post: Slides of some Machine Learning talk I shared in Hulu">&laquo; Slides of some Machine Learning talk I shared in Hulu</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/30/spark-usage-tips/" title="Next Post: Spark usage tips">Spark usage tips &raquo;</a>
       
     </p>
   </footer>
