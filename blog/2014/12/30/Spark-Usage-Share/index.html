@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Spark Usage Tips - Dong Guo's Blog</title>
+  <title>Spark Usage Share - Dong Guo's Blog</title>
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Highlights of Spark Spark makes distributed programming easy Although dataset is distributed on multiple nodes, Spark abstracts it as a RDD(resilient &hellip;">
+  <meta name="description" content="Brief Introduction Spark is a general purpose distributed in memory computation engine. It&rsquo;s very hot in open source community and industry &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://guod08.github.io/blog/2014/12/30/spark-usage-tips">
+  <link rel="canonical" href="http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Dong Guo's Blog" type="application/atom+xml">
@@ -66,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">Spark Usage Tips</h1>
+      <h1 class="entry-title">Spark Usage Share</h1>
     
     
       <p class="meta">
@@ -92,26 +92,59 @@
   </header>
 
 
-<div class="entry-content"><h3>Highlights of Spark</h3>
+<div class="entry-content"><h3>Brief Introduction</h3>
 
-<h5>Spark makes distributed programming easy</h5>
+<p>Spark is a general purpose distributed in memory computation engine. It&rsquo;s very hot in <a href="https://github.com/apache/spark">open source community</a> and industry since 2013. Typically, Spark is used for iterative algorithms and other data analysis application. Below is a few highlights of Spark:</p>
 
-<p>Although dataset is distributed on multiple nodes, Spark abstracts it as a RDD(resilient distributed dataset). The user interact with RDD as if it were a local dataset.</p>
+<h5>Spark使得分布式编程更简单</h5>
 
-<p>Also, Spark provides much more operation functions comparing with M/R.
-<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">link</a></p>
+<p>Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。</p>
 
-<h5>Spark makes your application faster via better use memory</h5>
+<p>同时，Spark提供了相比MapReduce更丰富的API，使得编程更加简单，具体见：<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">link</a></p>
 
-<p>You can cache your RDD in memory if it will be used multiple times. This is super useful for iteration calculation in Machine Learning algorithms.</p>
+<h5>Spark通过利用内存提高了计算效率</h5>
 
-<h3>Usage Tips</h3>
+<p>你可以指定Spark将后续被反复使用的RDD cache在内存中，这样可以显著提高一些计算的速度，典型的就是很多机器学习算法的迭代过程。</p>
+
+<h5>Spark提供了一整套的数据分析和计算解决方案，降低了学习和维护成本</h5>
+
+<p><img class="left" src="/images/personal/engineering/spark/spark-components.png" width="600"></p>
 
 <ol>
-<li><p>Run/Debug spark program in local before in cluster is efficient
-config: &ldquo;-Dspark.master=local -Dspark.app.name=Test -Xmx2G&rdquo; (also increase maximal memory for Heap)</p></li>
-<li><p>use cache cleverly
-use choose when memory is not enough will make you program runs slowly (due to memory-disk in-out switch)</p></li>
+<li>Spark本身支持做batch的计算，比如每天机器学习模型的训练，各种数据的处；</li>
+<li>Spark Streaming可以用来做realtime计算和数据处理，Spark Streaming的<a href="https://spark.apache.org/docs/1.1.1/streaming-programming-guide.html">API</a>和Spark的比较类似，其实背后的实现也是把一段段的realtime数据用batch的方式去处理；</li>
+<li>MLlib实现了常用的机器学习和推荐算法，可以直接用或者作为baseline；</li>
+<li>Spark SQL使得可以通过SQL来对Hive表，Json文件等数据源进行查询，查询会被转变为一个Spark job；</li>
+<li>还有GraphX, 我没有用过，其用于一些图相关的计算；</li>
+</ol>
+
+
+<h5>Spark可以和MapReduce通过YARN共享机器资源</h5>
+
+<p><img class="left" src="/images/personal/engineering/spark/spark-mr-yarn.png" width="600"></p>
+
+<p>所有的存储(HDFS)，计算，内存资源都可以共享</p>
+
+<h5>Spark对数据源的访问</h5>
+
+<p>我们的数据源可能是在HDFS，Hbase，Cassandra或者Hive表中，Spark都可以从中读取数据组织成RDD。</p>
+
+<h3>Spark使用过程中的部分经验分享</h3>
+
+<ol>
+<li><p>理解spark application的运行原理
+ <img class="left" src="/images/personal/engineering/spark/driver-executors.png" width="600"></p></li>
+<li><p>使用yarn-client或者yarn-cluster模式运行spark应用之前，在IDE中配置spark local模式调试以及测试好代码</p>
+
+<p> spark的yanr-client或者yarn-cluster模式做一次测试比较耗时，因为涉及到代码打包以及上传。在IDE（推荐IntelliJ）中配置local模型用于debug和测试，将显著提升开发和测试效率；</p>
+
+<p> 在VM option中配置：&#8221;-Dspark.master=local -Dspark.app.name=Test -Xmx2G&#8221; (also increase maximal memory for Heap)
+ <img class="left" src="/images/personal/engineering/spark/spark-mr-yarn.png" width="600"></p></li>
+<li><p>聪明地使用cache()操作
+cache RDD需要考虑自己有多少内存，对于后续不需要多次使用的RDD不要cache，如果内存有限却又指定要cache，大量的时间将被花在memory和disk的in-out上</p></li>
+<li><p>正确地使用广播变量(broadcast variables)</p>
+
+<p> 需对于要在所有executors上访问的数据（只读），Spark提供了broadcast这种高效的实现: 在每个executor上cache一份被广播的数据，不需要每次在RDD操作过程中从driver传给exector(因为driver和exectuor之间的RDD操作可能发生非常多遍)。一种典型场景是driver端从数据库中读取了一份元数据dbData，exectors上需要用到，可以把dbData广播出去：&#8217;val brDbData = sparkContext.broadcast(dbData)&#8217;</p></li>
 <li><p>for broadcast data, directly use broadcast, don&rsquo;t translate it into Map or other data structure, and use them in map.</p></li>
 <li><p>Choose suitable parameters for spark-submit:</p>
 
@@ -215,7 +248,7 @@ In RDD transformation, if an class/object is used, it must be defined as seriali
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/12/30/spark-usage-tips/">Spark Usage Tips</a>
+        <a href="/blog/2014/12/30/Spark-Usage-Share/">Spark Usage Share</a>
       </li>
     
       <li class="post">
