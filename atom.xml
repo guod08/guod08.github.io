@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-01-10T22:51:22+08:00</updated>
+  <updated>2015-01-10T23:11:10+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -58,8 +58,17 @@
 <h3>Spark使用过程中的部分经验分享</h3>
 
 <ol>
-<li><p>理解spark application的运行原理
- <img class="left" src="http://guod08.github.io/images/personal/engineering/spark/driver-executors.png" width="600"></p></li>
+<li><p>理解spark application的运行原理， 可以避免犯很多错误</p>
+
+<p> <img class="left" src="http://guod08.github.io/images/personal/engineering/spark/driver-executors.png" width="600">
+ Driver中涉及到RDD操作的代码（比如RDD.map{}中的代码）需要Serialize后由Driver所在的Node传输给Executors所在的Nodes，并做Deserialize后在executors上执行，RDD操作中涉及到的数据结构，比如map中用到了一个user_id &ndash;> user_profile的hashtable，也需要由Driver所在的Node传输给Executors所在的Nodes. 这样可以更好地理解下面2个分享</p></li>
+<li><p>保证Rdd操作中的代码都是可序列化的，否则会有NonSerializableException</p>
+
+<p> 一种常见的错误是，在rdd1.map{objectOfClassA.fun}中，对象objectOfClassA所属的类ClassA需要是可序列化的，这也以为ClassA中用到的所有成员属性都是可序列化的。如果classA使用的某个成员属性无法序列化（或者标识为Serializable），scala中可以通过@transient关键字标明序列化ClassA时不序列化该成员变量</p></li>
+<li><p>正确地使用广播变量(broadcast variables)</p>
+
+<p> 需对于要在所有executors上访问的数据（只读），Spark提供了broadcast这种高效的实现: 在每个executor上cache一份被广播的数据，不需要每次在RDD操作过程中从driver传给exector(因为driver和exectuor之间的RDD操作可能发生非常多遍)。一种典型场景是driver端从数据库中读取了一份元数据dbData，exectors上需要用到，可以把dbData广播出去：&#8217;val brDbData = sparkContext.broadcast(dbData)&#8217;</p></li>
+<li><p>for broadcast data, directly use broadcast, don&rsquo;t translate it into Map or other data structure, and use them in map.</p></li>
 <li><p>使用yarn-client或者yarn-cluster模式运行spark应用之前，在IDE中配置spark local模式调试以及测试好代码</p>
 
 <p> spark的yanr-client或者yarn-cluster模式做一次测试比较耗时，因为涉及到代码打包以及上传。在IDE（推荐IntelliJ）中配置local模型用于debug和测试，将显著提升开发和测试效率；</p>
@@ -68,10 +77,6 @@
  <img class="left" src="http://guod08.github.io/images/personal/engineering/spark/spark-mr-yarn.png" width="600"></p></li>
 <li><p>聪明地使用cache()操作
 cache RDD需要考虑自己有多少内存，对于后续不需要多次使用的RDD不要cache，如果内存有限却又指定要cache，大量的时间将被花在memory和disk的in-out上</p></li>
-<li><p>正确地使用广播变量(broadcast variables)</p>
-
-<p> 需对于要在所有executors上访问的数据（只读），Spark提供了broadcast这种高效的实现: 在每个executor上cache一份被广播的数据，不需要每次在RDD操作过程中从driver传给exector(因为driver和exectuor之间的RDD操作可能发生非常多遍)。一种典型场景是driver端从数据库中读取了一份元数据dbData，exectors上需要用到，可以把dbData广播出去：&#8217;val brDbData = sparkContext.broadcast(dbData)&#8217;</p></li>
-<li><p>for broadcast data, directly use broadcast, don&rsquo;t translate it into Map or other data structure, and use them in map.</p></li>
 <li><p>Choose suitable parameters for spark-submit:</p>
 
 <p> <a href="http://spark.apache.org/docs/latest/submitting-applications.html">http://spark.apache.org/docs/latest/submitting-applications.html</a>
