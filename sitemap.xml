@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://guod08.github.io/blog/2013/10/12/distributed-system-theory/</loc>
-        <lastmod>2015-01-10T20:30:14+08:00</lastmod>
-    </url>
-    <url>
         <loc>http://guod08.github.io/blog/2013/10/20/shi-jian-guan-li/</loc>
         <lastmod>2014-01-05T10:32:28+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://guod08.github.io/blog/2013/11/12/distributed-system-theory/</loc>
+        <lastmod>2015-01-10T20:33:29+08:00</lastmod>
     </url>
     <url>
         <loc>http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing/</loc>
@@ -48,11 +48,11 @@
     </url>
     <url>
         <loc>http://guod08.github.io/blog/archives/</loc>
-        <lastmod>2015-01-10T20:30:14+08:00</lastmod>
+        <lastmod>2015-01-10T20:33:29+08:00</lastmod>
     </url>
     <url>
         <loc>http://guod08.github.io/</loc>
-        <lastmod>2015-01-10T20:30:14+08:00</lastmod>
+        <lastmod>2015-01-10T20:33:29+08:00</lastmod>
     </url>
     <url>
         <loc>http://guod08.github.io/robots.txt</loc>
