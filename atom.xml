@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2014-12-30T23:29:56+08:00</updated>
+  <updated>2015-01-10T20:21:59+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -246,7 +246,7 @@ SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[设计与实现一个优秀的广告流量预估系统的挑战]]></title>
+    <title type="html"><![CDATA[Challenges for a Word-class Ad Inventory Forecasting System]]></title>
     <link href="http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting/"/>
     <updated>2014-09-20T22:01:24+08:00</updated>
     <id>http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting</id>
