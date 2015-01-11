@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-01-11T20:42:52+08:00</updated>
+  <updated>2015-01-11T20:44:36+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -18,15 +18,14 @@
     <link href="http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share/"/>
     <updated>2014-12-30T23:01:39+08:00</updated>
     <id>http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share</id>
-    <content type="html"><![CDATA[<h3>简介</h3>
+    <content type="html"><![CDATA[<h3>Spark简介</h3>
 
 <p><a href="https://spark.apache.org/">Spark</a>是一个基于内存的分布式计算engine，最近1-2年在开源社区(<a href="https://github.com/apache/spark">github</a>)和工业界非常火，国内的一些公司也搭建自己的spark集群。典型的应用场景是大数据上的机器学习模型的训练以及各种数据的分析。</p>
 
 <h5>Spark使得分布式编程更简单</h5>
 
-<p>Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。</p>
-
-<p>同时，Spark提供了相比MapReduce更丰富的API(<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">文档</a>)，使得编程更加简单。</p>
+<p>Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。<br></br>
+同时，Spark提供了相比MapReduce更丰富的API(<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">文档</a>)，使得编程更加简单。</p>
 
 <h5>Spark通过充分利用内存提高计算效率</h5>
 
