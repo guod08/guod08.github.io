@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Brief Introduction Spark is a general purpose distributed in memory computation engine. It&rsquo;s very hot in open source community and industry &hellip;">
+  <meta name="description" content="简介 Spark是一个基于内存的分布式计算engine，最近1-2年在开源社区(github)和工业界非常火，国内的一些公司也搭建自己的spark集群。典型的应用场景是大数据上的机器学习模型的训练以及各种数据的分析。 Spark使得分布式编程更简单 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,19 +92,19 @@
   </header>
 
 
-<div class="entry-content"><h3>Brief Introduction</h3>
+<div class="entry-content"><h3>简介</h3>
 
-<p>Spark is a general purpose distributed in memory computation engine. It&rsquo;s very hot in <a href="https://github.com/apache/spark">open source community</a> and industry since 2013. Typically, Spark is used for iterative algorithms and other data analysis application. Below is a few highlights of Spark:</p>
+<p><a href="https://spark.apache.org/">Spark</a>是一个基于内存的分布式计算engine，最近1-2年在开源社区(<a href="https://github.com/apache/spark">github</a>)和工业界非常火，国内的一些公司也搭建自己的spark集群。典型的应用场景是大数据上的机器学习模型的训练以及各种数据的分析。</p>
 
 <h5>Spark使得分布式编程更简单</h5>
 
 <p>Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。</p>
 
-<p>同时，Spark提供了相比MapReduce更丰富的API，使得编程更加简单，具体见：<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">link</a></p>
+<p>同时，Spark提供了相比MapReduce更丰富的API(<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">文档</a>)，使得编程更加简单。</p>
 
-<h5>Spark通过利用内存提高了计算效率</h5>
+<h5>Spark通过充分利用内存提高计算效率</h5>
 
-<p>你可以指定Spark将后续被反复使用的RDD cache在内存中，这样可以显著提高一些计算的速度，典型的就是很多机器学习算法的迭代过程。</p>
+<p>随着数据量越来越大，内存越来越便宜，使用较多的内存让（某些类型的）计算效率提升10至100倍，对很多公司来说是比较划算的。Spark和Facebook的Presto都基于这样的思想。在Spark中，你可以指定将那些在后续需要被多次使用的RDD缓存在内存中，减少了IO的开销，可以显著提高如机器学习模型训练这种需要迭代计算的应用的效率。</p>
 
 <h5>Spark提供了一整套的数据分析和计算解决方案，降低了学习和维护成本</h5>
 
@@ -135,10 +135,10 @@
 <li><p>理解spark application的运行原理， 可以避免犯很多错误</p>
 
 <p> <img class="left" src="/images/personal/engineering/spark/driver-executors.png" width="600">
- Driver中涉及到RDD操作的代码（比如RDD.map{}中的代码）需要Serialize后由Driver所在的Node传输给Executors所在的Nodes，并做Deserialize后在executors上执行，RDD操作中涉及到的数据结构，比如map中用到了一个user_id &ndash;> user_profile的hashtable，也需要由Driver所在的Node传输给Executors所在的Nodes. 这样可以更好地理解下面2个分享</p></li>
+ Driver中涉及到RDD操作的代码（比如RDD.map{}中的代码）需要Serialize后由Driver所在的Node传输给Executors所在的Nodes，并做Deserialize后在executors上执行，RDD操作中涉及到的数据结构，比如map中用到了一个user_id &ndash;> user_profile的hashtable，也需要由Driver所在的Node传输给Executors所在的Nodes。理解了这点就可以更好理解下面2点分享</p></li>
 <li><p>保证Rdd操作中的代码都是可序列化的，否则会有NonSerializableException</p>
 
-<p> 一种常见的错误是，在rdd1.map{objectOfClassA.fun}中，对象objectOfClassA所属的类ClassA需要是可序列化的，这也以为ClassA中用到的所有成员属性都是可序列化的。如果classA使用的某个成员属性无法序列化（或者标识为Serializable），scala中可以通过@transient关键字标明序列化ClassA时不序列化该成员变量</p></li>
+<p> 一种常见的错误是，在rdd1.map{objectOfClassA.fun}中，对象objectOfClassA所属的类ClassA需要是可序列化的，这也以为ClassA中用到的所有成员属性都是可序列化的。如果classA使用的某个成员属性无法序列化（或者标识为Serializable），scala中可以通过@transient关键字标明序列化ClassA时不序列化该成员变量。</p></li>
 <li><p>正确地使用广播变量(broadcast variables)</p>
 
 <p> 需对于要在所有executors上访问的数据（只读），Spark提供了broadcast这种高效的实现: 在每个executor上cache一份被广播的数据，不需要每次在RDD操作过程中从driver传给exector(因为driver和exectuor之间的RDD操作可能发生非常多遍)。一种典型场景是driver端从数据库中读取了一份元数据dbData，exectors上需要用到，可以把dbData广播出去：&#8217;val brDbData = sparkContext.broadcast(dbData)&#8217;</p></li>
