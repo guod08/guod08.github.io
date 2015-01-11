@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-01-11T20:25:03+08:00</updated>
+  <updated>2015-01-11T20:40:08+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -34,7 +34,7 @@
 
 <h5>Spark提供了一整套的数据分析和计算解决方案，降低了学习和维护成本</h5>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/engineering/spark/spark-components.png" width="600"></p>
+<p><img src="http://guod08.github.io/images/personal/engineering/spark/spark-components.png" alt="" /></p>
 
 <ol>
 <li>Spark本身支持做batch的计算，比如每天机器学习模型的训练，各种数据的处；</li>
