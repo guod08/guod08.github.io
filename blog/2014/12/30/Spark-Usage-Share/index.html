@@ -97,7 +97,7 @@
 <ol>
 <li><p>Spark使得分布式编程更简单</p>
 
-<p> Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。同时，Spark提供了相比MapReduce更丰富的<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">API</a>，使得编程更加简单。</p></li>
+<p> Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。同时，Spark提供了相比MapReduce更丰富的<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">API</a>，相比MapReduce编程更加简单。</p></li>
 <li><p>Spark通过充分利用内存提高计算效率</p>
 
 <p> 随着数据量越来越大，内存越来越便宜，使用较多的内存让（某些类型的）计算效率提升10至100倍，对很多公司来说是比较划算的。Spark和Facebook的Presto都基于这样的思想。在Spark中，你可以指定将那些在后续需要被多次使用的RDD缓存在内存中，减少了IO的开销，可以显著提高如机器学习模型训练这种需要迭代计算的应用的效率。</p></li>
@@ -113,8 +113,9 @@
 </ul>
 </li>
 <li><p>Spark可以和MapReduce通过YARN共享机器资源
- <img src="/images/personal/engineering/spark/spark-mr-yarn.png" alt="" />
- 所有的存储(HDFS)，计算，内存资源都可以共享</p></li>
+ <img src="/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p>
+
+<p> 所有的存储(HDFS)，计算，内存资源都可以共享</p></li>
 </ol>
 
 
