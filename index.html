@@ -141,36 +141,28 @@
  Driver中涉及到RDD操作的代码（比如RDD.map{}中的代码）需要Serialize后由Driver所在的Node传输给Executors所在的Nodes，并做Deserialize后在executors上执行，RDD操作中涉及到的数据结构，比如map中用到了一个user_id &ndash;> user_profile的hashtable，也需要由Driver所在的Node传输给Executors所在的Nodes。理解了这点就可以更好理解下面2点分享</p></li>
 <li><p>保证Rdd操作中的代码都是可序列化的，否则会有NonSerializableException</p>
 
-<p> 一种常见的错误是，在rdd1.map{objectOfClassA.fun}中，对象objectOfClassA所属的类ClassA需要是可序列化的，这也以为ClassA中用到的所有成员属性都是可序列化的。如果classA使用的某个成员属性无法序列化（或者标识为Serializable），scala中可以通过@transient关键字标明序列化ClassA时不序列化该成员变量。</p></li>
+<p> 一种常见的错误是，在rdd1.map{objectOfClassA.fun}中，对象objectOfClassA所属的类ClassA需要是可序列化的，这也以为ClassA中用到的所有成员属性都是可序列化的。如果classA使用的某个成员属性无法序列化（或者标识为Serializable），scala中可以通过@transient关键字标明序列化ClassA时不序列化该成员变量。推荐stakoverflow的2个讨论：<a href="http://stackoverflow.com/questions/24224392/why-does-spark-throw-notserializableexception-org-apache-hadoop-io-nullwritable">link1</a> <a href="http://stackoverflow.com/questions/22592811/task-not-serializable-java-io-notserializableexception-when-calling-function-ou/22594142#22594142">link2</a></p></li>
 <li><p>正确地使用广播变量(broadcast variables)</p>
 
-<p> 需对于要在所有executors上访问的数据（只读），Spark提供了broadcast这种高效的实现: 在每个executor上cache一份被广播的数据，不需要每次在RDD操作过程中从driver传给exector(因为driver和exectuor之间的RDD操作可能发生非常多遍)。一种典型场景是driver端从数据库中读取了一份元数据dbData，exectors上需要用到，可以把dbData广播出去：&#8217;val brDbData = sparkContext.broadcast(dbData)&#8217;</p></li>
-<li><p>for broadcast data, directly use broadcast, don&rsquo;t translate it into Map or other data structure, and use them in map.</p></li>
+<p> 如果我们有一份const数据，需要在executors上用到，一个典型的例子是Driver从数据库中load了一份数据dbData，在很多RDD操作中都引用了dbData，这样的话，每次RDD操作，driver node都需要将dbData分发到各个executors node一遍（分享1中已经介绍了背景），这非常的低效，特别是dbData比较大且RDD操作次数较多时。Spark的广播变量使得Driver可以提前只给各个executors node传一遍（spark内部具体的实现可能是driver传给某几个executors，这几个executors再传给其余executors）。使用广播变量有一个我犯过的错误如下：
+ <pre><code> val brDbData = sparkContext.broadcast(dbData) //broadcast dbDataA, and name it as brDbData
+ val dbDataB = brDbData.value //no longer broadcast variable
+ oneRDD.map(x=>{dbDataB.getOrElse(key, -1); …})</code></pre>
+ 第一行将dbData已经广播出去且命名为brDbData，一定要在RDD操作中直接使用该广播变量，如果提前提取出值，第三行的RDD操作还需要将dbData传送一遍。正确的代码如下
+ <pre><code> val brDbData = sparkContext.broadcast(dbData) //broadcast dbDataA, and name it as brDbData
+ oneRDD.map(x=>{brDbData.value.getOrElse(key, -1); …})</code></pre></p></li>
 <li><p>使用yarn-client或者yarn-cluster模式运行spark应用之前，在IDE中配置spark local模式调试以及测试好代码</p>
 
 <p> spark的yanr-client或者yarn-cluster模式做一次测试比较耗时，因为涉及到代码打包以及上传。在IDE（推荐IntelliJ）中配置local模型用于debug和测试，将显著提升开发和测试效率；</p>
 
 <p> 在VM option中配置：&#8221;-Dspark.master=local -Dspark.app.name=Test -Xmx2G&#8221; (also increase maximal memory for Heap)
  <img class="left" src="/images/personal/engineering/spark/spark-mr-yarn.png" width="600"></p></li>
-<li><p>聪明地使用cache()操作
-cache RDD需要考虑自己有多少内存，对于后续不需要多次使用的RDD不要cache，如果内存有限却又指定要cache，大量的时间将被花在memory和disk的in-out上</p></li>
-<li><p>Choose suitable parameters for spark-submit:</p>
+<li><p>聪明地使用cache()操作</p>
 
-<p> <a href="http://spark.apache.org/docs/latest/submitting-applications.html">http://spark.apache.org/docs/latest/submitting-applications.html</a>
-  num-executor: AP totally has 10 machines, so we can at most set 10 workers
-  executor-cores: how many threads on each executor/worker
-  executor-cpu: how many cpu used for this worker. (cpu will be waste if executor-cpu is more than executor-cores)
-  executor-memory: there are 196G memory in each worker, choose suitable memory for your application (5g? 10g?)
-And you can pass dynamic parameters via spark-submit</p></li>
-<li><p>A portal is launched for each spark application run. You can check many informations then</p></li>
-<li><p>Spark throw NonSerializableException
-In RDD transformation, if an class/object is used, it must be defined as serializable
-&ldquo;So it is possible to read non-serializable types into an RDD &ndash; i.e. have an RDD of something that is not serializable (which seems counter intuitive). But once you wish to perform an operation on that RDD that requires the objects to be serializable, like repartition it needs to be serializable&rdquo;
-<a href="http://stackoverflow.com/questions/24224392/why-does-spark-throw-notserializableexception-org-apache-hadoop-io-nullwritable">http://stackoverflow.com/questions/24224392/why-does-spark-throw-notserializableexception-org-apache-hadoop-io-nullwritable</a>
-<a href="http://stackoverflow.com/questions/22592811/task-not-serializable-java-io-notserializableexception-when-calling-function-ou/22594142#22594142">http://stackoverflow.com/questions/22592811/task-not-serializable-java-io-notserializableexception-when-calling-function-ou/22594142#22594142</a></p></li>
-<li><p>Apply suitable memory using JMX(Java Management Extension)</p></li>
-<li><p>Use broadcast correctly
-<a href="http://ampcamp.berkeley.edu/wp-content/uploads/2012/06/matei-zaharia-amp-camp-2012-advanced-spark.pdf">http://ampcamp.berkeley.edu/wp-content/uploads/2012/06/matei-zaharia-amp-camp-2012-advanced-spark.pdf</a></p></li>
+<p> cache RDD需要考虑自己有多少内存，对于后续不需要多次使用的RDD不要cache，如果内存有限却又指定要cache，大量的时间将被花在memory和disk的in-out上</p></li>
+<li><p>为spark-submit选择合适的参数</p>
+
+<p> <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a>用于提交spark job，其可配置为job申请多少资源，包括Driver的内存和cpu，executor的个数，每个executor的内存，cpu和线程数。如果使用yarn做资源管理，只有内存是硬性占有的，一个job过多地申请内存，将会有资源浪费，可能会使别的job因为申请不到足够的内存无法跑。可以用JMX(Java Management Extension)来监控你的spark job到底消耗多少内存，可以指导你申请合适的内存大小。</p></li>
 </ol>
 
 </div>
