@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-01-11T20:44:36+08:00</updated>
+  <updated>2015-01-11T20:54:06+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -18,48 +18,36 @@
     <link href="http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share/"/>
     <updated>2014-12-30T23:01:39+08:00</updated>
     <id>http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share</id>
-    <content type="html"><![CDATA[<h3>Spark简介</h3>
-
-<p><a href="https://spark.apache.org/">Spark</a>是一个基于内存的分布式计算engine，最近1-2年在开源社区(<a href="https://github.com/apache/spark">github</a>)和工业界非常火，国内的一些公司也搭建自己的spark集群。典型的应用场景是大数据上的机器学习模型的训练以及各种数据的分析。</p>
-
-<h5>Spark使得分布式编程更简单</h5>
-
-<p>Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。<br></br>
-同时，Spark提供了相比MapReduce更丰富的API(<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">文档</a>)，使得编程更加简单。</p>
-
-<h5>Spark通过充分利用内存提高计算效率</h5>
-
-<p>随着数据量越来越大，内存越来越便宜，使用较多的内存让（某些类型的）计算效率提升10至100倍，对很多公司来说是比较划算的。Spark和Facebook的Presto都基于这样的思想。在Spark中，你可以指定将那些在后续需要被多次使用的RDD缓存在内存中，减少了IO的开销，可以显著提高如机器学习模型训练这种需要迭代计算的应用的效率。</p>
-
-<h5>Spark提供了一整套的数据分析和计算解决方案，降低了学习和维护成本</h5>
-
-<p><img src="http://guod08.github.io/images/personal/engineering/spark/spark-components.png" alt="" /><br></br></p>
+    <content type="html"><![CDATA[<p><a href="https://spark.apache.org/">Spark</a>是一个基于内存的分布式计算engine，最近1-2年在开源社区(<a href="https://github.com/apache/spark">github</a>)和工业界非常火，国内的一些公司也搭建自己的spark集群。典型的应用场景是大数据上的机器学习模型的训练以及各种数据的分析。如下是我理解的spark的优势</p>
 
 <ol>
+<li><p>Spark使得分布式编程更简单
+ Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。<br></br>
+同时，Spark提供了相比MapReduce更丰富的API(<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">文档</a>)，使得编程更加简单。</p></li>
+<li><p>Spark通过充分利用内存提高计算效率
+ 随着数据量越来越大，内存越来越便宜，使用较多的内存让（某些类型的）计算效率提升10至100倍，对很多公司来说是比较划算的。Spark和Facebook的Presto都基于这样的思想。在Spark中，你可以指定将那些在后续需要被多次使用的RDD缓存在内存中，减少了IO的开销，可以显著提高如机器学习模型训练这种需要迭代计算的应用的效率。</p></li>
+<li><p>Spark提供了一整套的数据分析和计算解决方案，降低了学习和维护成本
+ <img src="http://guod08.github.io/images/personal/engineering/spark/spark-components.png" alt="" /><br></br></p>
+
+<ul>
 <li>Spark本身支持做batch的计算，比如每天机器学习模型的训练，各种数据的处；</li>
 <li>Spark Streaming可以用来做realtime计算和数据处理，Spark Streaming的<a href="https://spark.apache.org/docs/1.1.1/streaming-programming-guide.html">API</a>和Spark的比较类似，其实背后的实现也是把一段段的realtime数据用batch的方式去处理；</li>
 <li>MLlib实现了常用的机器学习和推荐算法，可以直接用或者作为baseline；</li>
 <li>Spark SQL使得可以通过SQL来对Hive表，Json文件等数据源进行查询，查询会被转变为一个Spark job；</li>
 <li>还有GraphX, 我没有用过，其用于一些图相关的计算；</li>
+</ul>
+</li>
+<li><p>Spark可以和MapReduce通过YARN共享机器资源
+ <img src="http://guod08.github.io/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /><br></br>
+ 所有的存储(HDFS)，计算，内存资源都可以共享</p></li>
 </ol>
 
 
-<h5>Spark可以和MapReduce通过YARN共享机器资源</h5>
-
-<p><img class="left" src="http://guod08.github.io/images/personal/engineering/spark/spark-mr-yarn.png" width="600"></p>
-
-<p>所有的存储(HDFS)，计算，内存资源都可以共享</p>
-
-<h5>Spark对数据源的访问</h5>
-
-<p>我们的数据源可能是在HDFS，Hbase，Cassandra或者Hive表中，Spark都可以从中读取数据组织成RDD。</p>
-
-<h3>个人一些Spark的使用经验分享</h3>
+<h2>个人一些Spark的使用经验分享</h2>
 
 <ol>
-<li><p>理解spark application的运行原理， 可以避免犯很多错误</p>
-
-<p> <img class="left" src="http://guod08.github.io/images/personal/engineering/spark/driver-executors.png" width="600">
+<li><p>理解spark application的运行原理， 可以避免犯很多错误
+ <img src="http://guod08.github.io/images/personal/engineering/spark/driver-executors.png" alt="" /><br></br>
  Driver中涉及到RDD操作的代码（比如RDD.map{}中的代码）需要Serialize后由Driver所在的Node传输给Executors所在的Nodes，并做Deserialize后在executors上执行，RDD操作中涉及到的数据结构，比如map中用到了一个user_id &ndash;> user_profile的hashtable，也需要由Driver所在的Node传输给Executors所在的Nodes。理解了这点就可以更好理解下面2点分享</p></li>
 <li><p>保证Rdd操作中的代码都是可序列化的，否则会有NonSerializableException</p>
 
@@ -85,6 +73,7 @@
 <li><p>为spark-submit选择合适的参数</p>
 
 <p> <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a>用于提交spark job，其可配置为job申请多少资源，包括Driver的内存和cpu，executor的个数，每个executor的内存，cpu和线程数。如果使用yarn做资源管理，只有内存是硬性占有的，一个job过多地申请内存，将会有资源浪费，可能会使别的job因为申请不到足够的内存无法跑。可以用JMX(Java Management Extension)来监控你的spark job到底消耗多少内存，可以指导你申请合适的内存大小。</p></li>
+<li><p>Spark可以访问众多的数据源：比如HDFS, HBase, Cassandra或者Hive表（Hive on Spark)， 直接得到一个RDD用作后续处理</p></li>
 </ol>
 
 ]]></content>
