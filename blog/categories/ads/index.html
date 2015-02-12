@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>在线广告中的cookie Matching - Dong Guo's Blog</title>
+  <title>Category: Ads - Dong Guo's Blog</title>
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="用户定向是在线广告的核心优势之一，数据是用户定向的基础，而cookie matching技术可以将用户在各个站点上的数据关联在一起，使得re-targeting成为可能。 cookie matching有很多的应用场景，典型的有2种，一种是在DMP(Data Management Platform &hellip;">
+  <meta name="description" content="Category: ads">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction">
+  <link rel="canonical" href="http://guod08.github.ioblog/categories/ads">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Dong Guo's Blog" type="application/atom+xml">
@@ -62,137 +62,37 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">在线广告中的cookie Matching</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-12T13:45:00+08:00" pubdate data-updated="true">Feb 12<span>th</span>, 2015</time>
-        
-        
-           | <a href="#comments">Comments</a>
-        
-      </p>
+    <h1 class="entry-title">Category: Ads</h1>
     
   </header>
-
-
-<div class="entry-content"><p>用户定向是在线广告的核心优势之一，数据是用户定向的基础，而cookie matching技术可以将用户在各个站点上的数据关联在一起，使得re-targeting成为可能。</p>
-
-<p>cookie matching有很多的应用场景，典型的有2种，一种是在DMP(Data Management Platform)生态中，另一种是在RTB(Real-time bidding)中。下面介绍下在这2种场景中cookie matching是如何实现的。</p>
-
-<p><img src="http://dongguo.me/images/personal/ads/cookie_matching_DMP.png" alt="" /></p>
-
-<ol>
-<li>用户U访问jd.com, jd从用户browser中获取jd_cookie_id(jd.com的cookies id);</li>
-<li>jd的页面中预先嵌入了BlueKai的js脚本，会有一个302重定向请求转发给BlueKai, 用户的browser中会生成BlueKai的cookies,同时用户的jd_cookie_id会被发送给BlueKai;</li>
-<li>BlueKai在其后端service中纪录下BlueKai_cookie_id和jd_cookie_id的映射关系</li>
-<li>用户U某一次去了yahoo.com浏览新闻，假设事先yahoo和jd签了一笔重定向的广告订单</li>
-<li>yahoo的ad server在给用户U挑选广告前，访问BlueKai server，BlueKai会在其数据库中检索Bluekai_cookie_id对应了哪些站点的cookie_id</li>
-<li>BlueKai给yahoo ad server返回用户U的tags（包含了哪些站点的cookie_id），如果其中包含了jd_cookie_id，则jd的广告可能会播放给该用户看</li>
-</ol>
-
-
-<p><img src="http://dongguo.me/images/personal/ads/cookie_matching_RTB.png" alt="" /></p>
-
-<ol>
-<li>用户U访问jd.com, jd用从户browser中获取jd_cookie_id(jd.com的cookies id);</li>
-<li>jd的页面预先嵌入了PinYou的脚本，同样的会为BlueKai生成cookie，同时请求Pinyou分配cookie mapping任务;</li>
-<li>Pinyou给jd返回一个beacon，其中包含ad exchange地址，和用户U的Pinyou_cookie_id;</li>
-<li>jd会通过该beacon向DoubleClick发送cookie matching请求，包含了pinyou_cookie_id;</li>
-<li>doubleclick通过302重定向向Pinyou发送doubleclick_cookie_id;</li>
-<li>Pinyou在其数据库中存储doubleclick_cookie_id和pinyou_cookie_id的映射关系；</li>
-<li>用户U某一次去yahoo.com浏览新闻，yahoo事先接入了double click广告平台售卖广告；</li>
-<li>yahoo的ad server会向double click发送广告请求，double click会将用户U的doubleclick_cookie_id发送给Pinyou等DSP, Pinyou通过cookie matching数据库找到pinyou_cookie_id, 再检查其对应了哪些站点的cookie_id，如果包含了jd_cookie_id，Pinyou就可能会为jd的广告竞争该广告位</li>
-<li>double click返回挑中的广告让yahoo播放</li>
-</ol>
-
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">Dong Guo</span></span>
-
-      
-
-
-
-
-
+  <div id="blog-archives" class="category">
 
 
 
   
+  <h2>2015</h2>
+
+<article>
+  
+<h1><a href="/blog/2015/02/12/cookies-matching-introduction/">在线广告中的cookie Matching</a></h1>
+<time datetime="2015-02-12T13:45:00+08:00" pubdate><span class='month'>Feb</span> <span class='day'>12</span> <span class='year'>2015</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/ads/'>ads</a></span>
+</footer>
 
 
-<time datetime="2015-02-12T13:45:00+08:00" pubdate data-updated="true">Feb 12<span>th</span>, 2015</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/ads/'>ads</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/12/30/Spark-Usage-Share/" title="Previous Post: Spark使用经验分享">&laquo; Spark使用经验分享</a>
-      
-      
-    </p>
-  </footer>
 </article>
 
-
-  <section>
-    <h1>Comments</h1>
-    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread"></div>
-<script type="text/javascript">
-    var duoshuoQuery = {short_name:"guod08"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
-<!-- Duoshuo Comment END -->
 </div>
-  </section>
+
+  
+</article>
+
 
 </div>
 
