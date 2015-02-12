@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Challenges for a Word-class Ad Inventory Forecasting System - Dong Guo's Blog</title>
+  <title>在线广告中的cookie Matching - Dong Guo's Blog</title>
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Key words: Ad Inventory Forecasting, Ad serving, Online advertising. 广告流量预估是各家采取保量模式售卖广告位的公司都必须要做的，无论是传统的电视媒体还是各家互联网公司。
-一句话介绍就是给定未来任意一段时间区间（通过在一年内）， &hellip;">
+  <meta name="description" content=" ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting">
+  <link rel="canonical" href="http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Dong Guo's Blog" type="application/atom+xml">
@@ -67,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">Challenges for a Word-class Ad Inventory Forecasting System</h1>
+      <h1 class="entry-title">在线广告中的cookie Matching</h1>
     
     
       <p class="meta">
@@ -83,7 +82,7 @@
   
 
 
-<time datetime="2014-09-20T22:01:24+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2014</time>
+<time datetime="2015-02-12T13:45:00+08:00" pubdate data-updated="true">Feb 12<span>th</span>, 2015</time>
         
         
            | <a href="#comments">Comments</a>
@@ -93,43 +92,9 @@
   </header>
 
 
-<div class="entry-content"><p>Key words: Ad Inventory Forecasting, Ad serving, Online advertising.</p>
+<div class="entry-content"><p><img src="/images/personal/ads/cookie_matching_DMP.png" alt="" /></p>
 
-<p>广告流量预估是各家采取保量模式售卖广告位的公司都必须要做的，无论是传统的电视媒体还是各家互联网公司。
-一句话介绍就是给定未来任意一段时间区间（通过在一年内），在任意给定定向条件（比如demographic限定，geographic限定，上下文内容限定，平台限定，时间段限定等）下，预估对于各种形态的广告（比如视频，图片，文本广告）分别有多少可以卖。</p>
-
-<h4>实现一个优秀的广告流量预估系统的挑战在什么地方呢？至少包括如下几点</h4>
-
-<ol>
-<li><p>在大数据量下保证快速的查询响应时间</p>
-
-<ul>
-<li>大数据体现在2点，首先是广告数据条目多，另外是定向条件多。当有100类定向条件，每类可以有2种取值时，不同定向条件的组合数目虽然不会到2<sup>100</sup>级别，但到billion级别还是可能的。如何做到近于实时的查询？<br></br></li>
-</ul>
-</li>
-<li><p>复杂多样的干扰因素对预估准确性的影响</p>
-
-<ul>
-<li>业务本身的波动性对广告流量的影响</li>
-<li>业务变动对广告流量的影响</li>
-<li>突发时间对广告流量的影响<br></br></li>
-</ul>
-</li>
-<li><p>具体业务逻辑的复杂性增加了系统逻辑的复杂性</p>
-
-<ul>
-<li>典型的业务流程是来了一个广告订单，在系统种查询是否有足够的流量可以售卖，但是查询得到的流量是满足定向条件的总流量，而单个订单的在投放过程种会有各种约束，比如不能给单个用户在一天中重复播放同一个广告商的广告。所以实际能够售卖给该订单的广告量一定少于查询到的总流量。这就需要在预估中考虑广告播放的频率限制；<br></br></li>
-</ul>
-</li>
-<li><p>和Ad server(广告投放服务器)逻辑的协调</p>
-
-<ul>
-<li>通常同一个广告位会有多个广告qualify，Ad server决定了具体放哪个广告。在ad server逻辑不发生变化的情况下，可以利用历史数据（广告总量在各个定向条件上的分布）进行预估，但是一旦ad server逻辑发生变动，广告流量预告系统最好能实时作出调整，而不是收集了一个月数据之后才发应过来。<br></br></li>
-</ul>
-</li>
-<li><p>流量预估只是第一步，流量的管理或者说全局的统筹优化是最大化收益的必要。</p></li>
-</ol>
-
+<p><img src="/images/personal/ads/cookie_matching_RTB.png" alt="" /></p>
 </div>
 
 
@@ -152,7 +117,7 @@
   
 
 
-<time datetime="2014-09-20T22:01:24+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2014</time>
+<time datetime="2015-02-12T13:45:00+08:00" pubdate data-updated="true">Feb 12<span>th</span>, 2015</time>
       
 
 
@@ -169,10 +134,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/" title="Previous Post: Druid in practise: An open-source infrastructure for Real-time Analytics on large dataset">&laquo; Druid in practise: An open-source infrastructure for Real-time Analytics on large dataset</a>
+        <a class="basic-alignment left" href="/blog/2014/12/30/Spark-Usage-Share/" title="Previous Post: Spark使用经验分享">&laquo; Spark使用经验分享</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/11/28/programmatic-digital-advertising/" title="Next Post: Programmatic Digital Advertising">Programmatic Digital Advertising &raquo;</a>
       
     </p>
   </footer>

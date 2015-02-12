@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-01-11T21:09:23+08:00</updated>
+  <updated>2015-02-12T13:53:07+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在线广告中的cookie Matching]]></title>
+    <link href="http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction/"/>
+    <updated>2015-02-12T13:45:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction</id>
+    <content type="html"><![CDATA[<p><img src="http://guod08.github.io/images/personal/ads/cookie_matching_DMP.png" alt="" /></p>
+
+<p><img src="http://guod08.github.io/images/personal/ads/cookie_matching_RTB.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Spark使用经验分享]]></title>
