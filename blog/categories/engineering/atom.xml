@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/blog/categories/engineering/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-03-02T15:21:03+08:00</updated>
+  <updated>2015-03-02T15:25:14+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -52,9 +52,9 @@
   
   <entry>
     <title type="html"><![CDATA[Druid介绍与实践]]></title>
-    <link href="http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/"/>
+    <link href="http://guod08.github.io/blog/2014/05/05/druid-introduction-and-practise/"/>
     <updated>2014-05-05T22:25:34+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset</id>
+    <id>http://guod08.github.io/blog/2014/05/05/druid-introduction-and-practise</id>
     <content type="html"><![CDATA[<h3>关键词</h3>
 
 <p>Druid, column-stores, distributed system, bitmaps indexing</p>
@@ -92,6 +92,8 @@
 其相对比较轻量级，文档非常完善，也比较容易上手。</p>
 
 <h3>Druid介绍</h3>
+
+<p>如何搭建一个Druid cluster请参考我<a href="">另一篇文章</a></p>
 
 <h4>概念</h4>
 
