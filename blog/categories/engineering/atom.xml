@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/blog/categories/engineering/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-03-02T14:52:06+08:00</updated>
+  <updated>2015-03-02T15:21:03+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Druid 实践]]></title>
-    <link href="http://guod08.github.io/blog/2015/02/25/druid-shi-jian/"/>
-    <updated>2015-02-25T12:00:38+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/02/25/druid-shi-jian</id>
+    <title type="html"><![CDATA[Druid Cluster Setup]]></title>
+    <link href="http://guod08.github.io/blog/2015/03/02/druid-cluster-setup/"/>
+    <updated>2015-03-02T14:53:25+08:00</updated>
+    <id>http://guod08.github.io/blog/2015/03/02/druid-cluster-setup</id>
     <content type="html"><![CDATA[<p>Druid介绍见我另一篇<a href="http://dongguo.me/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/">文章</a>，本文介绍如何一步步安装Druid cluster，以及简单的性能评测。</p>
 
 <h2>安装</h2>
