@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-03-02T14:50:44+08:00</updated>
+  <updated>2015-03-02T14:52:06+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -288,7 +288,7 @@ SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Druid Introduction: An Open-source Infrastructure for Real-time Analytics on Large Dataset]]></title>
+    <title type="html"><![CDATA[Druid介绍与实践]]></title>
     <link href="http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/"/>
     <updated>2014-05-05T22:25:34+08:00</updated>
     <id>http://guod08.github.io/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset</id>
