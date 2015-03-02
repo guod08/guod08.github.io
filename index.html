@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Druid介绍见我另一篇文章，本文介绍如何一步步安装Druid cluster，以及简单的性能评测。 安装 准备工作 机器准备 环境配置：JDK 安装Druid mysql配置 手动创建3张表: druid_config, druid_rules, druid_segments &hellip;">
+  <meta name="description" content="本文介绍如何搭建Druid cluster，Druid的介绍与应用见另一篇文章 Druid的官网也有详细的文档，建议浏览一遍。本文对关键部分做一些梳理，总结一些比较坑的点。 机器准备 Druid包含若干个services和nodes，我的配置如下（如果没有多个机器， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,35 +95,80 @@
   </header>
 
 
-  <div class="entry-content"><p>Druid介绍见我另一篇<a href="http://dongguo.me/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/">文章</a>，本文介绍如何一步步安装Druid cluster，以及简单的性能评测。</p>
+  <div class="entry-content"><p>本文介绍如何搭建Druid cluster，Druid的介绍与应用见<a href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/">另一篇文章</a></p>
 
-<h2>安装</h2>
+<p>Druid的官网也有详细的<a href="http://druid.io/docs/latest/">文档</a>，建议浏览一遍。本文对关键部分做一些梳理，总结一些比较坑的点。</p>
 
-<h4>准备工作</h4>
+<h2>机器准备</h2>
 
-<p>机器准备</p>
+<p>Druid包含若干个services和nodes，我的配置如下（如果没有多个机器，当然可以将所有模块都起在一台机器上）</p>
 
-<p>环境配置：JDK</p>
+<ul>
+<li>services/nodes on machine1: Mysql server, Zookepper server, coordinator node, overlord node (indexing service)</li>
+<li>services/nodes on machine2: Historical node, Realtime node</li>
+<li>services/nodes on machine3: Broker node</li>
+</ul>
 
-<h4>安装Druid</h4>
 
-<p>mysql配置</p>
+<p>3台机器都安装配置好java (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get">how</a>)</p>
 
-<p>手动创建3张表: druid_config, druid_rules, druid_segments</p>
+<h2>安装配置依赖</h2>
+
+<h4>mysql配置</h4>
+
+<p>按照Druid的文档安装mysql并创建一个新的用户druid/diurd。理论上Druid在后续步骤会在database druid中创建3张表druid_config, druid_rules和druid_segments。如果最终你发现没有这3张表，可以手动创建。</p>
 
 <h4>安装Zookeeper</h4>
 
-<h4>启动各个nodes</h4>
+<p>安装启动，无坑</p>
 
-<p>coordinator node, historical node, broker node</p>
+<h4>Deep storage</h4>
 
-<p>配置runtime.properties</p>
+<p>如果是local模式（全部都在一台机器上），使用本地磁盘作为deep storage是最简单的，对于cluster，较简单的方式是大家（indexing services, historical node, realtime node）挂载一块公共的磁盘(比如nfs方式)，这样historical node就可以同步deep storage上的segments，realtime node也可以将segments同步到deep storage上来。</p>
 
-<h4>Indexing Service</h4>
+<p>在实际应用中数据量通常比较大，常常会使用hdfs作为deep storage，为了能够将segments写入到hdfs中，</p>
 
-<h2>评测</h2>
+<h3>配置启动Druid各个nodes</h3>
 
-<h2>参考文章</h2>
+<p>对于如下每个node/service，Druid都有一个配置文件runtime.properties（较新的版本将一些公共的配置提取了出来），每个node/service都配置下druid.zk.service.host为zookeeper的地址。</p>
+
+<ul>
+<li>coordinator node: 无坑，在machine1上启动</li>
+<li><p>historical node: Druid默认Deep storage数据路径为/tmp/druid/localStorage, 可通过配置druid.storage.storageDirectory=XXX来覆盖。</p>
+
+<p>  <code>
+druid.storage.type=local
+druid.storage.storageDirectory=/mnt/data/druid/localStorage
+druid.segmentCache.locations=[{"path": "/mnt/data/druid/indexCache", "maxSize"\: 10000000000}]
+ </code>
+  如果deep storage是hdfs，则修改druid.storage.type=hdfs，druid.storage.storageDirectory为hdfs上的路径</p></li>
+<li><p>broker node: 无坑，在machine3上启动；</p></li>
+<li><p>indexing service:</p>
+
+<p>  <code>
+druid.indexer.task.hadoopWorkingPath=hdfs://elsaudnn001.prod.hulu.com/user/guodong/druid
+druid.storage.type=hdfs
+druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/druid
+ </code>
+  对应deep storage是hdfs</p></li>
+<li>realtime node: 需要使用kafka，参考官网文档即可；</li>
+</ul>
+
+
+<h3>数据导入</h3>
+
+<p>使用indexing services是Druid推荐的数据导入方式，数据的input和output都可以是本地/挂载磁盘或者hdfs。
+如果要读写hdfs，需要保证druid引用的hadoop版本和你使用的版本一致。</p>
+
+<p>另外Druid引用了2.5.0版本的protobuf，而2.1.0之前版本的hadoop使用的是更老的protobuf版本（如2.4.0a），如果你遇到protobuf版本冲突的问题，需要修改druid的pom.xml<a href="http://druid.io/docs/latest/Build-from-source.html">重新打包</a></p>
+
+<h2>参考</h2>
+
+<ol>
+<li><a href="http://druid.io/docs/latest/">官方文档</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/druid-development">google groups讨论区</a></li>
+</ol>
+
 </div>
   
   
@@ -587,7 +632,7 @@ SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生�
 
 <h3>Druid介绍</h3>
 
-<p>如何搭建一个Druid cluster请参考我<a href="">另一篇文章</a></p>
+<p><strong>如何搭建一个Druid cluster请参考我<a href="http://dongguo.me/blog/2015/03/02/druid-cluster-setup/">另一篇文章</a></strong></p>
 
 <h4>概念</h4>
 
