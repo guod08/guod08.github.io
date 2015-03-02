@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Advertising - Dong Guo's Blog</title>
+  <title>Druid 实践 - Dong Guo's Blog</title>
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Category: advertising">
+  <meta name="description" content="Druid介绍见我另一篇文章，本文介绍如何一步步安装Druid cluster，以及简单的性能评测。 安装 准备工作 机器准备 环境配置：JDK 安装Druid mysql配置 手动创建3张表: druid_config, druid_rules, druid_segments &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://guod08.github.ioblog/categories/advertising">
+  <link rel="canonical" href="http://guod08.github.io/blog/2015/02/25/druid-shi-jian">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Dong Guo's Blog" type="application/atom+xml">
@@ -62,37 +62,136 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Advertising</h1>
+    
+      <h1 class="entry-title">Druid 实践</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-25T12:00:38+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2015</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Druid介绍见我另一篇<a href="http://dongguo.me/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/">文章</a>，本文介绍如何一步步安装Druid cluster，以及简单的性能评测。</p>
 
-  
-  <h2>2014</h2>
+<h2>安装</h2>
 
-<article>
-  
-<h1><a href="/blog/2014/11/28/programmatic-digital-advertising/">Programmatic Digital Advertising</a></h1>
-<time datetime="2014-11-28T23:51:24+08:00" pubdate><span class='month'>Nov</span> <span class='day'>28</span> <span class='year'>2014</span></time>
+<h4>准备工作</h4>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/advertising/'>advertising</a></span>
-</footer>
+<p>机器准备</p>
 
+<p>环境配置：JDK</p>
 
-</article>
+<h4>安装Druid</h4>
 
+<p>mysql配置</p>
+
+<p>手动创建3张表: druid_config, druid_rules, druid_segments</p>
+
+<h4>安装Zookeeper</h4>
+
+<h4>启动各个nodes</h4>
+
+<p>coordinator node, historical node, broker node</p>
+
+<p>配置runtime.properties</p>
+
+<h4>Indexing Service</h4>
+
+<h2>评测</h2>
+
+<h2>参考文章</h2>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Dong Guo</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-25T12:00:38+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/engineering/'>engineering</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/02/12/cookies-matching-introduction/" title="Previous Post: 在线广告中的cookie matching">&laquo; 在线广告中的cookie matching</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"guod08"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END -->
+</div>
+  </section>
 
 </div>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="过去三年参与的广告相关的项目都基于各种各样的分布式存储和计算系统，比如hdfs, hbase, cassandra cluster, memcached cluster, Druid, hadoop和spark。最近在研究各个系统的原理，周末浏览了一本电子书《分布式系统原理介绍》， &hellip;">
+  <meta name="description" content="Microsoft published a paper in ICML 2009 named &lsquo;Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,110 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR Prediction of Bing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-01T22:07:00+08:00" pubdate data-updated="true">Dec 1<span>st</span>, 2013</time>
+        
+        
+           | <a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Microsoft published a paper in ICML 2009 named &lsquo;Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft&rsquo;s Bing Search Engine&rsquo;,
+which is claimed won the competition of most accurate and scalable CTR predictor across MS.
+This article shows how to inference this model(let&rsquo;s call it Ad predictor) step-by-step.</p>
+
+<h2>Pros. and Cons.</h2>
+
+<p>I like it because it&rsquo;s totally based on Bayesian, and Bayesian is beautiful. Online learning is naturally supported, and the precition accuracy is comparable with FTRL and OWLQN. And both training and prediction is light-weight and fast.
+Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big issue when applied on big dataset with huge amount of features.</p>
+
+<h2>Inference using Expectation Propagation step by step</h2>
+
+<p>Firstly, following is the factor graph of ad predictor.
+<img class="left" src="/images/personal/research/ep/adPredictor.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step1.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step2.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step3.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step4.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step5.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step6.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step7_1.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step7_2.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step7_3.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step7_4.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step8.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step9.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step10.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step11.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step12.png" width="1200"></p>
+
+<p><img class="left" src="/images/personal/research/ep/ep_step13.png" width="1200"></p>
+
+<p>For each sample, we can use the formula of step 13 to update the posterior parameter of W, which is very easy to be implemented.</p>
+
+<h2>Prediction</h2>
+
+<p>After training, we can predict with following formula:
+<img class="left" src="/images/personal/research/ep/ep_predict.png" width="1200"></p>
+
+<h2>Prediction Accuracy</h2>
+
+<p>I compared it with FTRL and OWLQN on one dataset for age&amp;gender prediction. AUC of this model is comparable with OWLQN and FTRL, so I recommend you have a try in your case.</p>
+
+<h2>Insights</h2>
+
+<ol>
+<li><p>You can find variance of each feature increases after every exposure, which makes sense.</p></li>
+<li><p>This model shows samples with more features will have bigger variance, which does not make sense very much. I think the reason is we assume all the features are independent. Any insights from you?</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -285,6 +389,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/25/druid-shi-jian/">Druid 实践</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/12/cookies-matching-introduction/">在线广告中的cookie Matching</a>
       </li>
     
@@ -305,7 +413,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/">Druid in Practise: An Open-source Infrastructure for Real-time Analytics on Large Dataset</a>
+        <a href="/blog/2014/05/05/druid-an-infrastructure-for-real-time-analytics-on-large-dataset/">Druid Introduction: An Open-source Infrastructure for Real-time Analytics on Large Dataset</a>
       </li>
     
       <li class="post">
@@ -318,10 +426,6 @@
     
       <li class="post">
         <a href="/blog/2013/12/02/gaussian-and-truncated-gaussian/">Gaussian and Truncated Gaussian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR Prediction of Bing</a>
       </li>
     
   </ul>
