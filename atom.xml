@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-03-24T16:05:51+08:00</updated>
+  <updated>2015-03-24T17:15:33+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,24 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[What I Learned in My First Job(non Tech Part)]]></title>
-    <link href="http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-non-tech-part/"/>
-    <updated>2015-03-24T11:28:08+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-non-tech-part</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What I Learned in My First Job(tech Part)]]></title>
-    <link href="http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-tech-part/"/>
-    <updated>2015-03-24T11:27:43+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-tech-part</id>
-    <content type="html"><![CDATA[<p>Hulu是我的第一份工作，从</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[What I Learned in My First Job]]></title>
@@ -58,17 +40,13 @@
 
 <p>所以大数据这块在未来有挑战性的是业务逻辑，每个公司都有自己相对独特的业务，理清业务，分清主次，平衡商业和技术，利用大数据技术给公司创造最大价值是个人价值最大化的方式。这背后需要的是对大数据领域全面的了解和架构能力，商业思维和团队管理。这也是我目前的职业发展目标。</p>
 
-<h5>技术发展 vs 带团队</h5>
+<h5>个人技术发展 vs 带团队</h5>
 
 <p>我身边有不少技术流同事比较排斥带团队，想要100%的精力放在技术钻研上，我非常理解，有一段时间我也这么想。现在我开始思考一个更好的平衡，身边也有同事作出了很好的榜样。</p>
 
 <p>带团队对个人成长的益处也是很明显的，让自己有更高的视野，培养商业思维，更大地发挥自己影响力和价值的机会，在承担更多责任的同时获得更多的回报。</p>
 
 <p>带团队一定会占用一定的精力：为团队制订目标，项目规划，团队建设，与团队成员定期沟通，为team负责，做一些没人愿意干的活。解决的方法有2个，第一是delegate工作，比如设立一个PM的角色负责项目规划和对外沟通，将TB的安排分配给某个细心热心的同事；第二个是更努力勤奋，在承担更多的责任带领团队奔向目标的同时还要提高技术的深度和广度，只能更加努力，我理解这是职业生涯某个阶段必须要经历的。</p>
-
-<h5>深度 vs 广度</h5>
-
-<p>俩者并不矛盾，正如给自己在技术领域定位，在聚焦1-2个领域的同时，努力扩大自己的广度。</p>
 
 <h5>做一个积极的学习者</h5>
 
@@ -84,9 +62,22 @@
 </ul>
 
 
-<h5>时间管理</h5>
+<h5>时间和效率管理</h5>
+
+<p>在Hulu的几年，时间管理上有一些心得，有些点执行得不够好，下一份工作要做到。</p>
+
+<ul>
+<li>每天早上的第一件事情就是做计划（前一天晚上应该更好），精确到半小时。按照优先级排序，每完成一项就标注，比较有成就感。注意尽力让自己不要被打断；</li>
+<li>给邮件分类，取消邮件提醒，避免被邮件打断，集中午饭后和晚饭后2个时间段阅读回复邮件；</li>
+<li>早上的时间最高效，我很享受很早到办公司，一个人把重要的事情先处理完，这样晚上甚至下午的时间可以用来读文章或者尝试新的东西；</li>
+</ul>
+
 
 <h5>质量 vs 效率</h5>
+
+<p>质量体现在工作的每个细节中，比如说发邮件，在我刚来Hulu时</p>
+
+<p>自我感觉自己做事情的质量还可以，效率上可以更高一些。</p>
 
 <p>（快速浏览，done is better than perfect）</p>
 
