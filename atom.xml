@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://guod08.github.io/atom.xml" rel="self"/>
   <link href="http://guod08.github.io/"/>
-  <updated>2015-03-02T16:43:33+08:00</updated>
+  <updated>2015-03-24T16:05:51+08:00</updated>
   <id>http://guod08.github.io/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,125 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What I Learned in My First Job(non Tech Part)]]></title>
+    <link href="http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-non-tech-part/"/>
+    <updated>2015-03-24T11:28:08+08:00</updated>
+    <id>http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-non-tech-part</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What I Learned in My First Job(tech Part)]]></title>
+    <link href="http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-tech-part/"/>
+    <updated>2015-03-24T11:27:43+08:00</updated>
+    <id>http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job-tech-part</id>
+    <content type="html"><![CDATA[<p>Hulu是我的第一份工作，从</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What I Learned in My First Job]]></title>
+    <link href="http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job/"/>
+    <updated>2015-03-24T11:26:00+08:00</updated>
+    <id>http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job</id>
+    <content type="html"><![CDATA[<p>Hulu是我的第一份工作，从2011年1月开始实习，7月毕业后正式加入，到15年春天，有四年的时间了。</p>
+
+<h2>技术部分</h2>
+
+<h5>在技术领域的定位</h5>
+
+<p>互联网行业太大了，从技术角度来说至少包含了硬件研发，前端，后端service，基础架构，数据平台，策略算法等领域。绝大部分人都不能做到在每一个领域精耕细作。可行的方式就是一段时间内聚焦在自己有激情（最好也有基础）的1个领域发力，关注另外1－2个领域的技术发展，同时follow整个行业的大的趋势和变化。</p>
+
+<p>第一份工作的一个收获就是我确定了自己未来几年的技术定位：聚焦在策略算法（包括机器学习，数据挖掘，策略优化等）上，follow数据存储计算平台和后端service的技术进展，关注整个行业大的趋势和变化。</p>
+
+<h5>规划职业发展路线</h5>
+
+<p>规划自己的career path就是在问：十年后你想做什么，成为什么样的人？这是比给自己技术领域定位更大更长远的问题。想明白这个问题可以让自己更有目标，在做选择的时候看得更远。</p>
+
+<p>我的技术发展路线基本在大数据这一块，从下面的基础架构，数据平台，到上面的策略算法，业务逻辑。大数据现在比较热，但是和每一次技术浪潮一样，这波浪潮也会过去，我的判断是大概5到10年。不是说大数据没有用武之地，而是说这块的技术会越来越成熟，越来越工具化。</p>
+
+<p>开源社区和一些相关的技术公司正在以风卷残云的速度推进基础架构和数据平台的稳定性和工具化。（Clourdea和H提供的工具让Hadoop系列工具的安装变得一键傻瓜式，集群的管理和维护可以通过图形界面方便地管理；Hbase越来越成熟稳定，可以搞定T到P级别的数据存储访问；Spark以飞快的速度变成稳定，可以部署在上千台机器在P级别的内存里计算）</p>
+
+<p>上面的策略和算法也有越来越成熟，特别是有丰富的lib来使用（我觉得大部分公司使用工业界经典的算法和经验，最多尝试学术界新的研究成果就可以觉得大部分问题了），比如spark的mllib，在最新的1.3版本里实现了大部分经典的机器学习，推荐系统和数据挖掘算法。我相信2年之内开源社区就会提供好用的工具（比weka好用）让你在图形界面里通过鼠标拖拽和简单输入解决大部分ML和DM问题。对于很多优化算法，也有现成的实现，不需要自己去推导实现。</p>
+
+<p>所以大数据这块在未来有挑战性的是业务逻辑，每个公司都有自己相对独特的业务，理清业务，分清主次，平衡商业和技术，利用大数据技术给公司创造最大价值是个人价值最大化的方式。这背后需要的是对大数据领域全面的了解和架构能力，商业思维和团队管理。这也是我目前的职业发展目标。</p>
+
+<h5>技术发展 vs 带团队</h5>
+
+<p>我身边有不少技术流同事比较排斥带团队，想要100%的精力放在技术钻研上，我非常理解，有一段时间我也这么想。现在我开始思考一个更好的平衡，身边也有同事作出了很好的榜样。</p>
+
+<p>带团队对个人成长的益处也是很明显的，让自己有更高的视野，培养商业思维，更大地发挥自己影响力和价值的机会，在承担更多责任的同时获得更多的回报。</p>
+
+<p>带团队一定会占用一定的精力：为团队制订目标，项目规划，团队建设，与团队成员定期沟通，为team负责，做一些没人愿意干的活。解决的方法有2个，第一是delegate工作，比如设立一个PM的角色负责项目规划和对外沟通，将TB的安排分配给某个细心热心的同事；第二个是更努力勤奋，在承担更多的责任带领团队奔向目标的同时还要提高技术的深度和广度，只能更加努力，我理解这是职业生涯某个阶段必须要经历的。</p>
+
+<h5>深度 vs 广度</h5>
+
+<p>俩者并不矛盾，正如给自己在技术领域定位，在聚焦1-2个领域的同时，努力扩大自己的广度。</p>
+
+<h5>做一个积极的学习者</h5>
+
+<p>视野局限在手头的工作是不够的，follow技术圈和行业的发展很有必要。下面的一些点有些是我在关注的，有些是需要加强的：</p>
+
+<ul>
+<li>和同事，特别是别的组的同事多多交流，了解公司各个部门和team在做什么，他们关注什么，有什么值得学习和合作的；</li>
+<li>积极参加公司内部的技术分享，特别是别的组的，用1个小时了解别人几个月做的事实在是很划算；</li>
+<li>订阅阅读，我在用feedly，比较好用，如果你关注大数据，可以订阅“Hadoop Weekly”, &ldquo;Databricks&#8221;以及一些技术公司的技术博客;</li>
+<li>关注top conferences(ICML, KDD, AAAI, WSDM…), 90%的文章只需要看下标题，剩下的读读摘要和实验，需要精读或者实现的很少；</li>
+<li>关注github trend;</li>
+<li>微信的部分公众帐号(InfoQ, CSDN, 架构师之路..)</li>
+</ul>
+
+
+<h5>时间管理</h5>
+
+<h5>质量 vs 效率</h5>
+
+<p>（快速浏览，done is better than perfect）</p>
+
+<h5>技术分享</h5>
+
+<h5>做一个好的演讲者</h5>
+
+<h5>做技术总结</h5>
+
+<h5>动手去实践</h5>
+
+<h5>团队合作</h5>
+
+<h5>全力以赴，没有不可能</h5>
+
+<h5>成熟</h5>
+
+<h5>更大的视野，</h5>
+
+<h2>非技术部分</h2>
+
+<h5>老朋友的离开</h5>
+
+<h5>心态</h5>
+
+<h5>和公司一起成长</h5>
+
+<h5>承担责任</h5>
+
+<h5>从依靠别人到让别人依靠</h5>
+
+<h5>成为一个leader</h5>
+
+<h5>做一个杰出的leader</h5>
+
+<h5>工作中竞争关系的处理</h5>
+
+<h5>对上manage</h5>
+
+<h5>多和同事交流</h5>
+
+<h2>下一段旅程</h2>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Druid Cluster Setup]]></title>
