@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Research | Dong Guo's Blog]]></title>
-  <link href="http://guod08.github.io/blog/categories/research/atom.xml" rel="self"/>
-  <link href="http://guod08.github.io/"/>
-  <updated>2015-03-25T13:08:44+08:00</updated>
-  <id>http://guod08.github.io/</id>
+  <link href="http://dongguo.me/blog/categories/research/atom.xml" rel="self"/>
+  <link href="http://dongguo.me/"/>
+  <updated>2015-03-28T18:21:36+08:00</updated>
+  <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Slides of Some Machine Learning Talk I Shared in Hulu]]></title>
-    <link href="http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me/"/>
+    <link href="http://dongguo.me/blog/2014/12/16/Machine-Learning-talks-from-me/"/>
     <updated>2014-12-16T00:00:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me</id>
+    <id>http://dongguo.me/blog/2014/12/16/Machine-Learning-talks-from-me</id>
     <content type="html"><![CDATA[<p>Hulu has good traditional of engineering and research sharing, both internal and external.</p>
 
 <p>Below are slides of 5 machine learning talks from me.</p>
@@ -36,9 +36,9 @@
   
   <entry>
     <title type="html"><![CDATA[Classification Models]]></title>
-    <link href="http://guod08.github.io/blog/2013/12/15/classification-models/"/>
+    <link href="http://dongguo.me/blog/2013/12/15/classification-models/"/>
     <updated>2013-12-15T00:35:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/12/15/classification-models</id>
+    <id>http://dongguo.me/blog/2013/12/15/classification-models</id>
     <content type="html"><![CDATA[<p>During my past 3 years in career, following classifiers are often used for classification tasks.</p>
 
 <h2>Typcial classifiers comparision</h2>
@@ -117,9 +117,9 @@ See more details of this model in another <a href="http://guod08.github.io/me/bl
   
   <entry>
     <title type="html"><![CDATA[Bayesian CTR Prediction of Bing]]></title>
-    <link href="http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing/"/>
+    <link href="http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/"/>
     <updated>2013-12-01T22:07:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing</id>
+    <id>http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing</id>
     <content type="html"><![CDATA[<p>Microsoft published a paper in ICML 2009 named &lsquo;Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft&rsquo;s Bing Search Engine&rsquo;,
 which is claimed won the competition of most accurate and scalable CTR predictor across MS.
 This article shows how to inference this model(let&rsquo;s call it Ad predictor) step-by-step.</p>

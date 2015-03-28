@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ads | Dong Guo's Blog]]></title>
-  <link href="http://guod08.github.io/blog/categories/ads/atom.xml" rel="self"/>
-  <link href="http://guod08.github.io/"/>
-  <updated>2015-03-25T13:08:44+08:00</updated>
-  <id>http://guod08.github.io/</id>
+  <link href="http://dongguo.me/blog/categories/ads/atom.xml" rel="self"/>
+  <link href="http://dongguo.me/"/>
+  <updated>2015-03-28T18:21:36+08:00</updated>
+  <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[在线广告中的cookie Matching]]></title>
-    <link href="http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction/"/>
+    <link href="http://dongguo.me/blog/2015/02/12/cookies-matching-introduction/"/>
     <updated>2015-02-12T13:45:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction</id>
+    <id>http://dongguo.me/blog/2015/02/12/cookies-matching-introduction</id>
     <content type="html"><![CDATA[<p>用户定向是在线广告的核心优势之一，数据是用户定向的基础，而cookie matching技术可以将用户在各个站点上的数据关联在一起，使得re-targeting成为可能。</p>
 
 <p>cookie matching有很多的应用场景，典型的有2种，一种是在DMP(Data Management Platform)生态中，另一种是在RTB(Real-time bidding)中。下面介绍下在这2种场景中cookie matching是如何实现的。</p>

@@ -1,71 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://guod08.github.io/blog/2013/10/20/shi-jian-guan-li/</loc>
+        <loc>http://dongguo.me/blog/2013/10/20/shi-jian-guan-li/</loc>
         <lastmod>2014-01-05T10:32:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2013/11/12/distributed-system-theory/</loc>
-        <lastmod>2015-01-10T20:33:29+08:00</lastmod>
+        <loc>http://dongguo.me/blog/2013/11/12/distributed-system-theory/</loc>
+        <lastmod>2015-01-10T20:33:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing/</loc>
+        <loc>http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/</loc>
         <lastmod>2014-01-05T10:32:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2013/12/02/gaussian-and-truncated-gaussian/</loc>
+        <loc>http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian/</loc>
         <lastmod>2014-01-07T00:14:08+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2013/12/15/classification-models/</loc>
+        <loc>http://dongguo.me/blog/2013/12/15/classification-models/</loc>
         <lastmod>2014-01-07T00:15:00+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2014/01/01/expectation-propagation/</loc>
+        <loc>http://dongguo.me/blog/2014/01/01/expectation-propagation/</loc>
         <lastmod>2014-01-09T16:08:32+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2014/05/05/druid-introduction-and-practise/</loc>
+        <loc>http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/</loc>
         <lastmod>2015-03-02T15:28:30+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting/</loc>
+        <loc>http://dongguo.me/blog/2014/09/20/ad-inventory-forecasting/</loc>
         <lastmod>2015-01-10T20:21:34+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2014/11/28/programmatic-digital-advertising/</loc>
+        <loc>http://dongguo.me/blog/2014/11/28/programmatic-digital-advertising/</loc>
         <lastmod>2014-11-30T00:04:02+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me/</loc>
-        <lastmod>2014-12-25T22:47:15+08:00</lastmod>
+        <loc>http://dongguo.me/blog/2014/12/16/Machine-Learning-talks-from-me/</loc>
+        <lastmod>2014-12-25T22:47:14+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share/</loc>
-        <lastmod>2015-01-11T21:09:11+08:00</lastmod>
+        <loc>http://dongguo.me/blog/2014/12/30/Spark-Usage-Share/</loc>
+        <lastmod>2015-01-11T21:09:10+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction/</loc>
+        <loc>http://dongguo.me/blog/2015/02/12/cookies-matching-introduction/</loc>
         <lastmod>2015-02-12T14:49:30+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2015/03/02/druid-cluster-setup/</loc>
-        <lastmod>2015-03-02T16:43:17+08:00</lastmod>
+        <loc>http://dongguo.me/blog/2015/03/02/druid-cluster-setup/</loc>
+        <lastmod>2015-03-02T16:43:16+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job/</loc>
-        <lastmod>2015-03-25T13:08:39+08:00</lastmod>
+        <loc>http://dongguo.me/blog/2015/03/24/what-i-learned-in-my-first-job/</loc>
+        <lastmod>2015-03-25T13:09:36+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/blog/archives/</loc>
-        <lastmod>2015-03-25T13:08:39+08:00</lastmod>
+        <loc>http://dongguo.me/blog/archives/</loc>
+        <lastmod>2015-03-25T13:09:36+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/</loc>
-        <lastmod>2015-03-25T13:08:39+08:00</lastmod>
+        <loc>http://dongguo.me/</loc>
+        <lastmod>2015-03-25T13:09:36+08:00</lastmod>
     </url>
     <url>
-        <loc>http://guod08.github.io/robots.txt</loc>
-        <lastmod>2014-01-04T16:29:43+08:00</lastmod>
+        <loc>http://dongguo.me/robots.txt</loc>
+        <lastmod>2014-01-04T16:29:42+08:00</lastmod>
     </url>
 </urlset>

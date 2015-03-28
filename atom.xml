@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Dong Guo's Blog]]></title>
-  <link href="http://guod08.github.io/atom.xml" rel="self"/>
-  <link href="http://guod08.github.io/"/>
-  <updated>2015-03-25T13:08:44+08:00</updated>
-  <id>http://guod08.github.io/</id>
+  <link href="http://dongguo.me/atom.xml" rel="self"/>
+  <link href="http://dongguo.me/"/>
+  <updated>2015-03-28T18:21:36+08:00</updated>
+  <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[我在第一份工作中学到了什么]]></title>
-    <link href="http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job/"/>
+    <link href="http://dongguo.me/blog/2015/03/24/what-i-learned-in-my-first-job/"/>
     <updated>2015-03-24T11:26:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/03/24/what-i-learned-in-my-first-job</id>
+    <id>http://dongguo.me/blog/2015/03/24/what-i-learned-in-my-first-job</id>
     <content type="html"><![CDATA[<p>Hulu是我的第一份工作。从2011年1月开始实习，7月毕业后正式加入，到15年春天，正好是本科4年的长度，在这里对这4年作个总结。</p>
 
 <h4>1. 定位自己的技术领域</h4>
@@ -81,8 +81,9 @@
 <p>高质量和高效率有一些不可调和的地方，这就需要依据事情的优先级来，比如code review需要的细致程度取决于代码的重要性，有没有别的高质量reviewers帮忙。但是很多时候高质量保证了长期的高效率，比如：</p>
 
 <ul>
-<li><p>如果代码比较烂或者跑得太慢，请务必集中时间立刻彻底改进它，否则这些代码以后会成为你的时间黑洞。
-  <code>实例：我曾经有半年的陷入在开发一个项目的某个模块（一个逻辑略复杂的spark应用），3个月开发完之后开始在集群上测试，跑得很慢，内存消耗也很大，但是勉强还能接受。虽然负责集群管理的team有所抱怨，自己一次完整的测试也要花4个小时，但是我还是没有足够重视。后来代码需要引入新的逻辑，由于之前代码质量不高，新逻辑的引入很痛苦，调试的时间也比较长。由于在spark集群中跑得时间太长内存消耗太大，经常会突然挂掉。挣扎了一段时间的小修小补后，终于下定决心梳理逻辑，重构代码，彻底修改了spark程序的并行逻辑，执行时间下降到了半个小时，内存使用大大减少，代码逻辑也简单很多了，这个改变要是在早期就做，肯定能节省很多时间。</code></p></li>
+<li><p>如果代码比较烂或者跑得太慢，请务必集中时间立刻彻底改进它，否则这些代码以后会成为你的时间黑洞。</p>
+
+<p>  <code>实例：我曾经有半年的陷入在开发一个项目的某个模块（一个逻辑略复杂的spark应用），3个月开发完之后开始在集群上测试，跑得很慢，内存消耗也很大，但是勉强还能接受。虽然负责集群管理的team有所抱怨，自己一次完整的测试也要花4个小时，但是我还是没有足够重视。后来代码需要引入新的逻辑，由于之前代码质量不高，新逻辑的引入很痛苦，调试的时间也比较长。由于在spark集群中跑得时间太长内存消耗太大，经常会突然挂掉。挣扎了一段时间的小修小补后，终于下定决心梳理逻辑，重构代码，彻底修改了spark程序的并行逻辑，执行时间下降到了半个小时，内存使用大大减少，代码逻辑也简单很多了，这个改变要是在早期就做，肯定能节省很多时间。</code></p></li>
 <li><p>在动手进行正式编码开发前，确保对数据做细致的分析，否则可能浪费掉一周的编码时间（不要假设任何来源的数据是没有问题的）；</p></li>
 <li><p>你可以先用某个新语言或者工具，但是有时间了请务必搞透它，否则以后会付出代价；</p>
 
@@ -119,9 +120,9 @@
   
   <entry>
     <title type="html"><![CDATA[Druid Cluster Setup]]></title>
-    <link href="http://guod08.github.io/blog/2015/03/02/druid-cluster-setup/"/>
+    <link href="http://dongguo.me/blog/2015/03/02/druid-cluster-setup/"/>
     <updated>2015-03-02T14:53:25+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/03/02/druid-cluster-setup</id>
+    <id>http://dongguo.me/blog/2015/03/02/druid-cluster-setup</id>
     <content type="html"><![CDATA[<p>本文介绍如何搭建Druid cluster，Druid的介绍与应用见<a href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/">另一篇文章</a></p>
 
 <p>Druid的官网也有详细的<a href="http://druid.io/docs/latest/">文档</a>，建议浏览一遍。本文对关键部分做一些梳理，总结一些比较坑的点。</p>
@@ -201,9 +202,9 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
   
   <entry>
     <title type="html"><![CDATA[在线广告中的cookie Matching]]></title>
-    <link href="http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction/"/>
+    <link href="http://dongguo.me/blog/2015/02/12/cookies-matching-introduction/"/>
     <updated>2015-02-12T13:45:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/02/12/cookies-matching-introduction</id>
+    <id>http://dongguo.me/blog/2015/02/12/cookies-matching-introduction</id>
     <content type="html"><![CDATA[<p>用户定向是在线广告的核心优势之一，数据是用户定向的基础，而cookie matching技术可以将用户在各个站点上的数据关联在一起，使得re-targeting成为可能。</p>
 
 <p>cookie matching有很多的应用场景，典型的有2种，一种是在DMP(Data Management Platform)生态中，另一种是在RTB(Real-time bidding)中。下面介绍下在这2种场景中cookie matching是如何实现的。</p>
@@ -239,9 +240,9 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
   
   <entry>
     <title type="html"><![CDATA[Spark使用经验分享]]></title>
-    <link href="http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share/"/>
+    <link href="http://dongguo.me/blog/2014/12/30/Spark-Usage-Share/"/>
     <updated>2014-12-30T23:01:39+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/12/30/Spark-Usage-Share</id>
+    <id>http://dongguo.me/blog/2014/12/30/Spark-Usage-Share</id>
     <content type="html"><![CDATA[<p><a href="https://spark.apache.org/">Spark</a>是一个基于内存的分布式计算engine，最近1-2年在开源社区(<a href="https://github.com/apache/spark">github</a>)和工业界非常火，国内的一些公司也搭建自己的spark集群。典型的应用场景是大数据上的机器学习模型的训练以及各种数据分析。下面是我理解的spark的优势:</p>
 
 <ol>
@@ -252,7 +253,7 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
 
 <p> 随着数据量越来越大，内存越来越便宜，使用较多的内存让（某些类型的）计算效率提升10至100倍，对很多公司来说是比较划算的。Spark和Facebook的Presto都基于这样的思想。在Spark中，你可以指定将那些在后续需要被多次使用的RDD缓存在内存中，减少了IO的开销，可以显著提高如机器学习模型训练这种需要迭代计算的应用的效率。</p></li>
 <li><p>Spark提供了一整套的数据分析和计算解决方案，降低了学习和维护成本
- <img src="http://guod08.github.io/images/personal/engineering/spark/spark-components.png" alt="" /></p>
+ <img src="http://dongguo.me/images/personal/engineering/spark/spark-components.png" alt="" /></p>
 
 <ul>
 <li>Spark本身支持做batch的计算，比如每天机器学习模型的训练，各种数据的处；</li>
@@ -263,7 +264,7 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
 </ul>
 </li>
 <li><p>Spark可以和MapReduce通过YARN共享机器资源
- <img src="http://guod08.github.io/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p>
+ <img src="http://dongguo.me/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p>
 
 <p> 所有的存储(HDFS)，计算，内存资源都可以共享</p></li>
 </ol>
@@ -273,7 +274,7 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
 
 <ol>
 <li><p>理解spark application的运行原理， 可以避免犯很多错误
- <img src="http://guod08.github.io/images/personal/engineering/spark/driver-executors.png" alt="" />
+ <img src="http://dongguo.me/images/personal/engineering/spark/driver-executors.png" alt="" />
  Driver中涉及到RDD操作的代码（比如RDD.map{}中的代码）需要Serialize后由Driver所在的Node传输给Executors所在的Nodes，并做Deserialize后在executors上执行，RDD操作中涉及到的数据结构，比如map中用到了一个user_id &ndash;> user_profile的hashtable，也需要由Driver所在的Node传输给Executors所在的Nodes。理解了这点就可以更好理解下面2点分享</p></li>
 <li><p>保证Rdd操作中的代码都是可序列化的，否则会有NonSerializableException</p>
 
@@ -292,7 +293,7 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
 <p> spark的yanr-client或者yarn-cluster模式做一次测试比较耗时，因为涉及到代码打包以及上传。在IDE（推荐IntelliJ）中配置local模型用于debug和测试，将显著提升开发和测试效率；</p>
 
 <p> 在VM option中配置：&#8221;-Dspark.master=local -Dspark.app.name=Test -Xmx2G&#8221; (also increase maximal memory for Heap)
- <img src="http://guod08.github.io/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p></li>
+ <img src="http://dongguo.me/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p></li>
 <li><p>聪明地使用cache()操作</p>
 
 <p> cache RDD需要考虑自己有多少内存，对于后续不需要多次使用的RDD不要cache，如果内存有限却又指定要cache，大量的时间将被花在memory和disk的in-out上</p></li>
@@ -307,9 +308,9 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
   
   <entry>
     <title type="html"><![CDATA[Slides of Some Machine Learning Talk I Shared in Hulu]]></title>
-    <link href="http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me/"/>
+    <link href="http://dongguo.me/blog/2014/12/16/Machine-Learning-talks-from-me/"/>
     <updated>2014-12-16T00:00:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/12/16/Machine-Learning-talks-from-me</id>
+    <id>http://dongguo.me/blog/2014/12/16/Machine-Learning-talks-from-me</id>
     <content type="html"><![CDATA[<p>Hulu has good traditional of engineering and research sharing, both internal and external.</p>
 
 <p>Below are slides of 5 machine learning talks from me.</p>
@@ -328,9 +329,9 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
   
   <entry>
     <title type="html"><![CDATA[Programmatic Digital Advertising]]></title>
-    <link href="http://guod08.github.io/blog/2014/11/28/programmatic-digital-advertising/"/>
+    <link href="http://dongguo.me/blog/2014/11/28/programmatic-digital-advertising/"/>
     <updated>2014-11-28T23:51:24+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/11/28/programmatic-digital-advertising</id>
+    <id>http://dongguo.me/blog/2014/11/28/programmatic-digital-advertising</id>
     <content type="html"><![CDATA[<p>从2010年开始开始工作，一直在做搜索广告，联盟上下文广告以及视频广告。这几年RTB，或者更广义的广告的程序化交易非常火。在这边总结一下我的理解。</p>
 
 <p>“程序化交易“即通过程序自动化地完成商品的买和卖，这在很多领域都有应用，最经典的就是金融市场中的股票，债券，货币，期货等的交易。其至少有2个好处，第一：将人从交易的各个环节中解放出来，让一切变得自动化，有效率；第二：这种程序带来的自动化使得更大范围(甚至全球)资源的优化配置变得有可能。</p>
@@ -342,14 +343,14 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
 <h3>在线广告程序化交易</h3>
 
 <p>在线广告程序化交易有如下一些stakeholders：
-<img src="http://guod08.github.io/images/personal/ads/programmatic_stakeholders.png">
+<img src="http://dongguo.me/images/personal/ads/programmatic_stakeholders.png">
 DSP(Demand side platform)可以认为其是一个有技术背景的代理商，广告主可以选择为展示，点击或者转化进行付费，DSP则和其他众多DSP通过竞价竞争广告位。DSP的数据和技术积累直接关系到其是否NB.
 SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生态里扮演一个中枢的角色。</p>
 
 <p>注意为了实现广告的程序化交易，除了advertisers和publishers, 其他角色都不是必须的，因为广告主和内容提供商之间完全可以直接交易。对于百度联盟，可以认为其同时扮演了Ad Network和DSP的角色，如果你既有内容资源又有广告主资源，你当然不希望和别人分享收益。</p>
 
 <p>可以按照2个纬度（广告投放量是否被保证，以及是固定单价还是需要竞价）将在线广告的程序化交易分为4个类别：
-<img src="http://guod08.github.io/images/personal/ads/programmatic_types.png"/>
+<img src="http://dongguo.me/images/personal/ads/programmatic_types.png"/>
 <a href="http://www.iab.net/media/file/IAB_Digital_Simplified_Programmatic_Sept_2013.pdf">reference</a></p>
 
 <p>Inventory即广告流量，广告主往往比较关心广告投放量是否能够放完，特别是对于大的品牌广告主。保证广告投放量的deal就是传统的Guaranteed deal. 对于广告商来说，其为广告的付费一直是fixed，其可以选择是为每次展示付1毛钱还是为每次点击付10块钱。这个表格中提到的Pricing指的是publisher或者SSP端看到的报价，而这个价格通常指的都是展示的单价(CPM)，如果广告主选择以CPM付费（给DSP或者SSP或者直接给publisher）,publisher端看到的该由该advertiser声称的报价通常是稳定的，但是如果广告主选择以点击甚至转化付费，DSP对不同的广告位的出价的差别就很可能由很大的差别。</p>
@@ -393,9 +394,9 @@ SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生�
   
   <entry>
     <title type="html"><![CDATA[Challenges for a Word-class Ad Inventory Forecasting System]]></title>
-    <link href="http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting/"/>
+    <link href="http://dongguo.me/blog/2014/09/20/ad-inventory-forecasting/"/>
     <updated>2014-09-20T22:01:24+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/09/20/ad-inventory-forecasting</id>
+    <id>http://dongguo.me/blog/2014/09/20/ad-inventory-forecasting</id>
     <content type="html"><![CDATA[<p>Key words: Ad Inventory Forecasting, Ad serving, Online advertising.</p>
 
 <p>广告流量预估是各家采取保量模式售卖广告位的公司都必须要做的，无论是传统的电视媒体还是各家互联网公司。
@@ -438,9 +439,9 @@ SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生�
   
   <entry>
     <title type="html"><![CDATA[Druid介绍与实践]]></title>
-    <link href="http://guod08.github.io/blog/2014/05/05/druid-introduction-and-practise/"/>
+    <link href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/"/>
     <updated>2014-05-05T22:25:34+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/05/05/druid-introduction-and-practise</id>
+    <id>http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise</id>
     <content type="html"><![CDATA[<h3>关键词</h3>
 
 <p>Druid, column-stores, distributed system, bitmaps indexing</p>
@@ -568,9 +569,9 @@ SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生�
   
   <entry>
     <title type="html"><![CDATA[Expectation Propagation: Theory and Application]]></title>
-    <link href="http://guod08.github.io/blog/2014/01/01/expectation-propagation/"/>
+    <link href="http://dongguo.me/blog/2014/01/01/expectation-propagation/"/>
     <updated>2014-01-01T22:04:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/01/01/expectation-propagation</id>
+    <id>http://dongguo.me/blog/2014/01/01/expectation-propagation</id>
     <content type="html"><![CDATA[<h2>简介</h2>
 
 <p>第一次接触EP是10年在百度实习时，当时组里面正有计划把线上的CTR预估模型改成支持增量更新的版本，读到了微软一篇基于baysian的CTR预估模型的文章（见推荐阅读5），文章中没有给出推导的细节，自己也没有继续研究。今年在PRML中读Approximal inference这章对EP有了一些了解，同时参考了其它相关的一些资料，在这里和大家探讨。</p>
@@ -640,43 +641,43 @@ BP的核心为如下3点：</p>
 </ul>
 
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/marginal_dis_variable_node.png" width=400 align=top /></p>
 
 <p>(注：上图来之PRML)</p>
 
 <p>前面提到过图模型的联合分布可以分解为若干因子的乘积，每个因子对应一个factor node：</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width=500 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/posterior_dis_variable_node_f1.png" width=500 align=top /></p>
 
 <p>每个variable node的边缘分布为与其直接相连的factor nodes传递过来的message的乘积：</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width=700 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/posterior_dis_variable_node_f2.png" width=700 align=top /></p>
 
 <ul>
 <li><strong>从factor node到variable node的消息传递</strong></li>
 </ul>
 
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/message_factor_to_variable.png" width=400 align=bottom /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/message_factor_to_variable.png" width=400 align=bottom /></p>
 
 <p>(注：上图来之PRML)</p>
 
 <p>从factor node f传递到variable node x的message为：与f直接相连（除了x）的variable nodes传递到f的messages与f本身的乘积的积分（积分变量为与f直接相连的除x之外的所有variable nodes）：</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width=600 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/message_factor_to_variable_f1.png" width=600 align=top /></p>
 
 <ul>
 <li><strong>从variable node到factor node的消息传递</strong></li>
 </ul>
 
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/message_variable_to_factor.png" width=400 align=bottom /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/message_variable_to_factor.png" width=400 align=bottom /></p>
 
 <p>(注：上图来之PRML)</p>
 
 <p>从variable node x到factor node f的message为：与x直接相连的factor nodes（除f以外）传递到x的messages的乘积：</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width=400 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/message_variable_to_factor_f1.png" width=400 align=top /></p>
 
 <p>更多细节请参考PRML</p>
 
@@ -684,43 +685,43 @@ BP的核心为如下3点：</p>
 
 <p>在实际的问题中，要么后验分布本身比较复杂（推荐阅读3中的Clutter example），要么最大化后验的计算比较复杂，要么破坏了具体算法的假设（比如EP要求图中的所有message都是指数族），所以常常会用（有良好性质的）指数族分布近似实际的概率分布。</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/moment_matching_1.png" width=600 align=top />
-<img src="http://guod08.github.io/images/personal/research/ep-intro/moment_matching_2.png" width=300 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/moment_matching_1.png" width=600 align=top />
+<img src="http://dongguo.me/images/personal/research/ep-intro/moment_matching_2.png" width=300 align=top /></p>
 
 <p>用一个分布去近似另一个分布的常见方法是最小化KL散度:</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/moment_matching_3.png" width=600 align=top />
-<img src="http://guod08.github.io/images/personal/research/ep-intro/moment_matching_4.png" width=600 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/moment_matching_3.png" width=600 align=top />
+<img src="http://dongguo.me/images/personal/research/ep-intro/moment_matching_4.png" width=600 align=top /></p>
 
 <p>我们发现通过最小化KL散度得到的‘最接近’p(x)的q(x)可以简单地通过匹配充分统计量的期望得到。</p>
 
 <p>当q(x)为高斯分布的时候，我们知道其充分统计量u(x)=(x, x<sup>2</sup>)，这时通过KL散度最小化近似分布近似的方法称为moment matching(匹配矩)</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/moment_matching_5.png" width=600 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/moment_matching_5.png" width=600 align=top /></p>
 
 <p>为什么称为匹配矩呢，看看矩的定义就知道了：</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/moment_matching_6.png" width=350 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/moment_matching_6.png" width=350 align=top /></p>
 
 <h2>期望传播方法-理论</h2>
 
 <p>EP的思想：在图模型中，用高斯分布近似每一个factors，然后&#8217;approximate each factor in turn in the context of all remaining facotrs&#8217;.</p>
 
 <p>下面为具体的算法：
-<img src="http://guod08.github.io/images/personal/research/ep-intro/ep_def.png" width=800 align=top />
+<img src="http://dongguo.me/images/personal/research/ep-intro/ep_def.png" width=800 align=top />
 (注：本算法参考了PRML)</p>
 
 <p>下面通过Minka博士论文中的例子‘clutter problem’来解释：每个观察样本以(1-w)的概率由高斯分布N(x|sita, I)生成，以w的概率由noise生成（同样也是高斯分布N(x|0, aI)），于是：
-<img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_1.png" width=400 align=top />
-<img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_2.png" width=200 align=top /></p>
+<img src="http://dongguo.me/images/personal/research/ep-intro/clutter_problem_1.png" width=400 align=top />
+<img src="http://dongguo.me/images/personal/research/ep-intro/clutter_problem_2.png" width=200 align=top /></p>
 
 <p>按照EP的思想，我们用一个单高斯q(sita)去近似混合高斯p(x|sita)
-<img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_3.png" width=400 align=top /></p>
+<img src="http://dongguo.me/images/personal/research/ep-intro/clutter_problem_3.png" width=400 align=top /></p>
 
 <p>单高斯去近似混合高斯听起来效果一定不好，但实际上，由于EP在近似的时候乘了其他所有factors的高斯近似之后的上下文，考虑到很多个高斯分布相乘之后的方差一般都很小，所有实际上单高斯只需要在很小的区间近似好混合高斯即可。如下图：</p>
 
-<p><img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_4.png" width=350 align=top />
-<img src="http://guod08.github.io/images/personal/research/ep-intro/clutter_problem_5.png" width=350 align=top /></p>
+<p><img src="http://dongguo.me/images/personal/research/ep-intro/clutter_problem_4.png" width=350 align=top />
+<img src="http://dongguo.me/images/personal/research/ep-intro/clutter_problem_5.png" width=350 align=top /></p>
 
 <p>(注：上面2张图来之PRML)</p>
 
@@ -774,14 +775,14 @@ paper中称这个model为ad predictor，其在我的数据集上预估效果很�
   
   <entry>
     <title type="html"><![CDATA[Classification Models]]></title>
-    <link href="http://guod08.github.io/blog/2013/12/15/classification-models/"/>
+    <link href="http://dongguo.me/blog/2013/12/15/classification-models/"/>
     <updated>2013-12-15T00:35:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/12/15/classification-models</id>
+    <id>http://dongguo.me/blog/2013/12/15/classification-models</id>
     <content type="html"><![CDATA[<p>During my past 3 years in career, following classifiers are often used for classification tasks.</p>
 
 <h2>Typcial classifiers comparision</h2>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/classifiers/classifiers_compare.png" width="800"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/classifiers/classifiers_compare.png" width="800"></p>
 
 <h2>Decision Tree</h2>
 
@@ -855,66 +856,66 @@ See more details of this model in another <a href="http://guod08.github.io/me/bl
   
   <entry>
     <title type="html"><![CDATA[Gaussian and Truncated Gaussian]]></title>
-    <link href="http://guod08.github.io/blog/2013/12/02/gaussian-and-truncated-gaussian/"/>
+    <link href="http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian/"/>
     <updated>2013-12-02T18:30:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/12/02/gaussian-and-truncated-gaussian</id>
+    <id>http://dongguo.me/blog/2013/12/02/gaussian-and-truncated-gaussian</id>
     <content type="html"><![CDATA[<p>Everybody knows about Gaussian distribution, and Gaussian is very popular in Bayesian world and even in our life. This article summaries typical operation of Gaussian, and something about Truncated Guassian distribution.</p>
 
 <h2>Gaussian</h2>
 
 <h3>pdf and cdf</h3>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/gaussian/gaussian_pdf.png" width="350" title="'Gaussian pdf'" >
-<img class="right" src="http://guod08.github.io/images/personal/research/gaussian/gaussian_cdf.png" width="350" title="'Gaussian cdf'" >
-<img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_1.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/gaussian/gaussian_pdf.png" width="350" title="'Gaussian pdf'" >
+<img class="right" src="http://dongguo.me/images/personal/research/gaussian/gaussian_cdf.png" width="350" title="'Gaussian cdf'" >
+<img src="http://dongguo.me/images/personal/research/gaussian/gaussian_1.png" width="1200"></p>
 
 <h3>Sum/substraction of two independent Gaussian random variables</h3>
 
-<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_plus2.png" width="1200">
+<p><img src="http://dongguo.me/images/personal/research/gaussian/gaussian_plus2.png" width="1200">
 Please take care upper formula only works when x1 and x2 are independent. And it&rsquo;s easy to get the distribution for variable x=x1-x2
 See <a href="http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter7.pdf">here</a> for the detils of inference</p>
 
 <h3>Product of two Gaussian pdf</h3>
 
-<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_multiple2.png" width="1200">
+<p><img src="http://dongguo.me/images/personal/research/gaussian/gaussian_multiple2.png" width="1200">
 Please take care x is no longer a gaussian distribution. And you can find it&rsquo;s very elegant to use &lsquo;precision&rsquo; and &lsquo;precision adjusted mean&rsquo; for Gaussian operation like multiply and division.
 See <a href="http://www.tina-vision.net/docs/memos/2003-003.pdf">here</a> for the detils of inference</p>
 
 <h3>Division of two Gaussian pdf</h3>
 
-<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_divide2.png" width="1200"></p>
+<p><img src="http://dongguo.me/images/personal/research/gaussian/gaussian_divide2.png" width="1200"></p>
 
 <h3>Intergral of the product of two gaussian distribution</h3>
 
-<p><img src="http://guod08.github.io/images/personal/research/gaussian/gaussian_integral.png" width="1200"></p>
+<p><img src="http://dongguo.me/images/personal/research/gaussian/gaussian_integral.png" width="1200"></p>
 
 <h2>Truncated Gaussian</h2>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/gaussian/tg_pdf.png" width="350" title="'Gaussian pdf'" >
-<img class="right" src="http://guod08.github.io/images/personal/research/gaussian/tg_cdf.png" width="350" title="'Gaussian cdf'" ></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/gaussian/tg_pdf.png" width="350" title="'Gaussian pdf'" >
+<img class="right" src="http://dongguo.me/images/personal/research/gaussian/tg_cdf.png" width="350" title="'Gaussian cdf'" ></p>
 
 <p>Truncated Gaussian distribution is very simple: it&rsquo;s just one conditional (Gaussian) distribution.
 Suppose variable x belongs to Gaussian distribution, then x conditional on x belongs to (a, b) has a truncated Gaussian distribution.
-<img src="http://guod08.github.io/images/personal/research/gaussian/tg_def.png" width="1200"></p>
+<img src="http://dongguo.me/images/personal/research/gaussian/tg_def.png" width="1200"></p>
 
 <h3>Calculate expectation of Truncated Gaussian</h3>
 
-<p><img src="http://guod08.github.io/images/personal/research/gaussian/tg_e1.png" width="1200">
-<img src="http://guod08.github.io/images/personal/research/gaussian/tg_e2.png" width="1200"></p>
+<p><img src="http://dongguo.me/images/personal/research/gaussian/tg_e1.png" width="1200">
+<img src="http://dongguo.me/images/personal/research/gaussian/tg_e2.png" width="1200"></p>
 
 <h3>Calculate variance of Truncated Gaussian</h3>
 
-<p><img src="http://guod08.github.io/images/personal/research/gaussian/tg_v1.png" width="1200">
-<img src="http://guod08.github.io/images/personal/research/gaussian/tg_v2.png" width="1200">
-<img src="http://guod08.github.io/images/personal/research/gaussian/tg_v3.png" width="1200"></p>
+<p><img src="http://dongguo.me/images/personal/research/gaussian/tg_v1.png" width="1200">
+<img src="http://dongguo.me/images/personal/research/gaussian/tg_v2.png" width="1200">
+<img src="http://dongguo.me/images/personal/research/gaussian/tg_v3.png" width="1200"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Bayesian CTR Prediction of Bing]]></title>
-    <link href="http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing/"/>
+    <link href="http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/"/>
     <updated>2013-12-01T22:07:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/12/01/bayesian-ctr-prediction-for-bing</id>
+    <id>http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing</id>
     <content type="html"><![CDATA[<p>Microsoft published a paper in ICML 2009 named &lsquo;Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft&rsquo;s Bing Search Engine&rsquo;,
 which is claimed won the competition of most accurate and scalable CTR predictor across MS.
 This article shows how to inference this model(let&rsquo;s call it Ad predictor) step-by-step.</p>
@@ -927,48 +928,48 @@ Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big iss
 <h2>Inference using Expectation Propagation step by step</h2>
 
 <p>Firstly, following is the factor graph of ad predictor.
-<img class="left" src="http://guod08.github.io/images/personal/research/ep/adPredictor.png" width="1200"></p>
+<img class="left" src="http://dongguo.me/images/personal/research/ep/adPredictor.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step1.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step1.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step2.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step2.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step3.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step3.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step4.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step4.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step5.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step5.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step6.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step6.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_1.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_1.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_2.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_2.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_3.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_3.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step7_4.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_4.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step8.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step8.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step9.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step9.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step10.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step10.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step11.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step11.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step12.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step12.png" width="1200"></p>
 
-<p><img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_step13.png" width="1200"></p>
+<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step13.png" width="1200"></p>
 
 <p>For each sample, we can use the formula of step 13 to update the posterior parameter of W, which is very easy to be implemented.</p>
 
 <h2>Prediction</h2>
 
 <p>After training, we can predict with following formula:
-<img class="left" src="http://guod08.github.io/images/personal/research/ep/ep_predict.png" width="1200"></p>
+<img class="left" src="http://dongguo.me/images/personal/research/ep/ep_predict.png" width="1200"></p>
 
 <h2>Prediction Accuracy</h2>
 
@@ -986,9 +987,9 @@ Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big iss
   
   <entry>
     <title type="html"><![CDATA[Notes for Distributed System Theory]]></title>
-    <link href="http://guod08.github.io/blog/2013/11/12/distributed-system-theory/"/>
+    <link href="http://dongguo.me/blog/2013/11/12/distributed-system-theory/"/>
     <updated>2013-11-12T23:23:27+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/11/12/distributed-system-theory</id>
+    <id>http://dongguo.me/blog/2013/11/12/distributed-system-theory</id>
     <content type="html"><![CDATA[<p>过去三年参与的广告相关的项目都基于各种各样的分布式存储和计算系统，比如hdfs, hbase, cassandra cluster, memcached cluster, Druid, hadoop和spark。最近在研究各个系统的原理，周末浏览了一本电子书<a href="http://www.valleytalk.org/wp-content/uploads/2012/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D.pdf">《分布式系统原理介绍》</a>，介绍了很多重要的基础知识，推荐浏览。</p>
 
 <h3>Key words:</h3>
@@ -1084,9 +1085,9 @@ Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big iss
   
   <entry>
     <title type="html"><![CDATA[更高效地工作学习]]></title>
-    <link href="http://guod08.github.io/blog/2013/10/20/shi-jian-guan-li/"/>
+    <link href="http://dongguo.me/blog/2013/10/20/shi-jian-guan-li/"/>
     <updated>2013-10-20T20:53:00+08:00</updated>
-    <id>http://guod08.github.io/blog/2013/10/20/shi-jian-guan-li</id>
+    <id>http://dongguo.me/blog/2013/10/20/shi-jian-guan-li</id>
     <content type="html"><![CDATA[<p>周末浏览了一本书《小强升职记》，介绍了工作中事情管理的很多经验，个人觉得帮助挺大，在这边分享一下。</p>
 
 <ol>

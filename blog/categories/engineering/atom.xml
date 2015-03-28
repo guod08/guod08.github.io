@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Engineering | Dong Guo's Blog]]></title>
-  <link href="http://guod08.github.io/blog/categories/engineering/atom.xml" rel="self"/>
-  <link href="http://guod08.github.io/"/>
-  <updated>2015-03-25T13:08:44+08:00</updated>
-  <id>http://guod08.github.io/</id>
+  <link href="http://dongguo.me/blog/categories/engineering/atom.xml" rel="self"/>
+  <link href="http://dongguo.me/"/>
+  <updated>2015-03-28T18:21:36+08:00</updated>
+  <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Druid Cluster Setup]]></title>
-    <link href="http://guod08.github.io/blog/2015/03/02/druid-cluster-setup/"/>
+    <link href="http://dongguo.me/blog/2015/03/02/druid-cluster-setup/"/>
     <updated>2015-03-02T14:53:25+08:00</updated>
-    <id>http://guod08.github.io/blog/2015/03/02/druid-cluster-setup</id>
+    <id>http://dongguo.me/blog/2015/03/02/druid-cluster-setup</id>
     <content type="html"><![CDATA[<p>本文介绍如何搭建Druid cluster，Druid的介绍与应用见<a href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/">另一篇文章</a></p>
 
 <p>Druid的官网也有详细的<a href="http://druid.io/docs/latest/">文档</a>，建议浏览一遍。本文对关键部分做一些梳理，总结一些比较坑的点。</p>
@@ -97,9 +97,9 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
   
   <entry>
     <title type="html"><![CDATA[Druid介绍与实践]]></title>
-    <link href="http://guod08.github.io/blog/2014/05/05/druid-introduction-and-practise/"/>
+    <link href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/"/>
     <updated>2014-05-05T22:25:34+08:00</updated>
-    <id>http://guod08.github.io/blog/2014/05/05/druid-introduction-and-practise</id>
+    <id>http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise</id>
     <content type="html"><![CDATA[<h3>关键词</h3>
 
 <p>Druid, column-stores, distributed system, bitmaps indexing</p>
