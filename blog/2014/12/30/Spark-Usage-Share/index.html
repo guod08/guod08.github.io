@@ -143,7 +143,10 @@
 
 <p> 在VM option中配置：&#8221;-Dspark.master=local -Dspark.app.name=Test -Xmx2G&#8221; (also increase maximal memory for Heap)
  <img src="/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p></li>
-<li><p>聪明地使用cache()操作</p>
+<li><p>充分利用spark的并行性</p>
+
+<p> 理想的情况是整个代码的逻辑是对一个或几个RDD做处理，这时候spark的并行性往往是充分利用的。有时候代码逻辑会更复杂，比如你需要统计一年中每一天的一些数值，由于代码逻辑比较复杂，一种简单的“偷懒”方式是用一个for循环，在for循环内部做RDD的操作，这种情况是要努力避免的，务必思考将不同date的统计并行化。我写过的两个应用中都遇到了这种情况：优化之后速度提升非常明显。</p></li>
+<li><p>使用cache()操作</p>
 
 <p> cache RDD需要考虑自己有多少内存，对于后续不需要多次使用的RDD不要cache，如果内存有限却又指定要cache，大量的时间将被花在memory和disk的in-out上</p></li>
 <li><p>为spark-submit选择合适的参数</p>
