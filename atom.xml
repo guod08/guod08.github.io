@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://dongguo.me/atom.xml" rel="self"/>
   <link href="http://dongguo.me/"/>
-  <updated>2015-03-28T18:49:26+08:00</updated>
+  <updated>2015-03-28T19:25:18+08:00</updated>
   <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -14,12 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Test]]></title>
-    <link href="http://dongguo.me/blog/2015/03/28/test/"/>
-    <updated>2015-03-28T18:22:37+08:00</updated>
-    <id>http://dongguo.me/blog/2015/03/28/test</id>
-    <content type="html"><![CDATA[<p>test
-test</p>
+    <title type="html"><![CDATA[使用Shadowsocks科学上网]]></title>
+    <link href="http://dongguo.me/blog/2015/03/28/shi-yong-shadowsockske-xue-shang-wang/"/>
+    <updated>2015-03-28T18:54:43+08:00</updated>
+    <id>http://dongguo.me/blog/2015/03/28/shi-yong-shadowsockske-xue-shang-wang</id>
+    <content type="html"><![CDATA[<p>离开了墙外的Hulu，以后科学上网需要自力更生了。昨天尝试了Shadowsocks，确实稳定易用价格低，推荐给需要的同学。</p>
+
+<p>Shadowsocks的介绍和安装过程（windows/MacOs/ios/Android）在这篇经典的文章中有详细的介绍：<a href="http://www.jianshu.com/p/08ba65d1f91a">ShadowSocks—科学上网之瑞士军刀</a>。测试了按照说明可以设置成功。</p>
 ]]></content>
   </entry>
   
