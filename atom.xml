@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://dongguo.me/atom.xml" rel="self"/>
   <link href="http://dongguo.me/"/>
-  <updated>2015-03-28T18:21:36+08:00</updated>
+  <updated>2015-03-28T18:23:42+08:00</updated>
   <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test]]></title>
+    <link href="http://dongguo.me/blog/2015/03/28/test/"/>
+    <updated>2015-03-28T18:22:37+08:00</updated>
+    <id>http://dongguo.me/blog/2015/03/28/test</id>
+    <content type="html"><![CDATA[<p>test
+test</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[我在第一份工作中学到了什么]]></title>
