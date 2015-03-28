@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://dongguo.me/atom.xml" rel="self"/>
   <link href="http://dongguo.me/"/>
-  <updated>2015-03-28T20:07:00+08:00</updated>
+  <updated>2015-03-28T20:08:28+08:00</updated>
   <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -26,12 +26,10 @@
 
 <p><img src="http://dongguo.me/images/personal/engineering/shadowsocks/shadow1.png" alt="Shadowsocks账号设置" /></p>
 
-<p>Shadowsocks的账号网络上有机会找到一些免费的，不过都是和很多人共享，且不稳定（比如密码改变），靠谱的方式是在VPS（虚拟专用服务器）上部署自己的Shadowsocks服务。我用了这家（<a href="http://it-player.com/">http://it-player.com/</a>, 非广告）的服务，最低一年29￥，非常划算了。</p>
-
-<p>（在购买之前，你可以使用它的临时账号）</p>
+<p>Shadowsocks的账号网络上有机会找到一些免费的，不过都是和很多人共享，且不稳定（比如密码改变），靠谱的方式是在VPS（虚拟专用服务器）上部署自己的Shadowsocks服务。我用了这家（<a href="http://it-player.com/">http://it-player.com/</a>, 非广告）的服务，最低一年29￥，非常划算了。在购买之前，你可以使用它的临时账号。</p>
 
 <p>这家的VPS里已经配置好了Shadowsocks服务的安装程序，只需要在网页操作鼠标操作就可以安装好，复制端口号，密码，和VPS的ip配置到本地Shadowsocks客户端
-<img src="http://dongguo.me/images/personal/engineering/shadowsocks/shadow2.png" alt="在VPS中安装配置Shadowsocks服务" /></p>
+<img src="http://dongguo.me/images/personal/engineering/shadowsocks/shadow3.png" alt="在VPS中安装配置Shadowsocks服务" /></p>
 ]]></content>
   </entry>
   
