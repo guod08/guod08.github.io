@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Data_platform | Dong Guo's Blog]]></title>
+  <link href="http://dongguo.me/blog/categories/data-platform/atom.xml" rel="self"/>
+  <link href="http://dongguo.me/"/>
+  <updated>2015-03-29T23:42:41+08:00</updated>
+  <id>http://dongguo.me/</id>
+  <author>
+    <name><![CDATA[Dong Guo]]></name>
+    <email><![CDATA[-----------------------]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Druid Cluster Setup]]></title>
+    <link href="http://dongguo.me/blog/2015/03/02/druid-cluster-setup/"/>
+    <updated>2015-03-02T14:53:25+08:00</updated>
+    <id>http://dongguo.me/blog/2015/03/02/druid-cluster-setup</id>
+    <content type="html"><![CDATA[<p>本文介绍如何搭建Druid cluster，Druid的介绍与应用见<a href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/">另一篇文章</a></p>
+
+<p>Druid的官网也有详细的<a href="http://druid.io/docs/latest/">文档</a>，建议浏览一遍。本文对关键部分做一些梳理，总结一些比较坑的点。</p>
+
+<h2>机器准备</h2>
+
+<p>Druid包含若干个services和nodes，我的配置如下（如果没有多个机器，当然可以将所有模块都起在一台机器上）</p>
+
+<ul>
+<li>services/nodes on machine1: Mysql server, Zookepper server, coordinator node, overlord node (indexing service)</li>
+<li>services/nodes on machine2: Historical node, Realtime node</li>
+<li>services/nodes on machine3: Broker node</li>
+</ul>
+
+
+<p>3台机器都安装配置好java (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get">how</a>)</p>
+
+<h2>安装配置依赖</h2>
+
+<h4>mysql配置</h4>
+
+<p>按照Druid的文档安装mysql并创建一个新的用户druid/diurd。理论上Druid在后续步骤会在database druid中创建3张表druid_config, druid_rules和druid_segments。如果最终你发现没有这3张表，可以手动创建。</p>
+
+<h4>安装Zookeeper</h4>
+
+<p>安装启动，无坑</p>
+
+<h4>Deep storage</h4>
+
+<p>如果是local模式（全部都在一台机器上），使用本地磁盘作为deep storage是最简单的，对于cluster，较简单的方式是大家（indexing services, historical node, realtime node）挂载一块公共的磁盘(比如nfs方式)，这样historical node就可以同步deep storage上的segments，realtime node也可以将segments同步到deep storage上来。</p>
+
+<p>在实际应用中数据量通常比较大，常常会使用hdfs作为deep storage，为了能够将segments写入到hdfs中，</p>
+
+<h3>配置启动Druid各个nodes</h3>
+
+<p>对于如下每个node/service，Druid都有一个配置文件runtime.properties（较新的版本将一些公共的配置提取了出来），每个node/service都配置下druid.zk.service.host为zookeeper的地址。</p>
+
+<ul>
+<li>coordinator node: 无坑，在machine1上启动</li>
+<li><p>historical node: Druid默认Deep storage数据路径为/tmp/druid/localStorage, 可通过配置druid.storage.storageDirectory=XXX来覆盖。</p>
+
+<p>  <code>
+druid.storage.type=local
+druid.storage.storageDirectory=/mnt/data/druid/localStorage
+druid.segmentCache.locations=[{"path": "/mnt/data/druid/indexCache", "maxSize"\: 10000000000}]
+ </code>
+  如果deep storage是hdfs，则修改druid.storage.type=hdfs，druid.storage.storageDirectory为hdfs上的路径</p></li>
+<li><p>broker node: 无坑，在machine3上启动；</p></li>
+<li><p>indexing service:</p>
+
+<p>  <code>
+druid.indexer.task.hadoopWorkingPath=hdfs://elsaudnn001.prod.hulu.com/user/guodong/druid
+druid.storage.type=hdfs
+druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/druid
+ </code>
+  对应deep storage是hdfs</p></li>
+<li>realtime node: 需要使用kafka，参考官网文档即可；</li>
+</ul>
+
+
+<h3>数据导入</h3>
+
+<p>使用indexing services是Druid推荐的数据导入方式，数据的input和output都可以是本地/挂载磁盘或者hdfs。
+如果要读写hdfs，需要保证druid引用的hadoop版本和你使用的版本一致。</p>
+
+<p>另外Druid引用了2.5.0版本的protobuf，而2.1.0之前版本的hadoop使用的是更老的protobuf版本（如2.4.0a），如果你遇到protobuf版本冲突的问题，需要修改druid的pom.xml<a href="http://druid.io/docs/latest/Build-from-source.html">重新打包</a></p>
+
+<h2>参考</h2>
+
+<ol>
+<li><a href="http://druid.io/docs/latest/">官方文档</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/druid-development">google groups讨论区</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Druid介绍与实践]]></title>
+    <link href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/"/>
+    <updated>2014-05-05T22:25:34+08:00</updated>
+    <id>http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise</id>
+    <content type="html"><![CDATA[<h3>关键词</h3>
+
+<p>Druid, column-stores, distributed system, bitmaps indexing</p>
+
+<h3>应用场景</h3>
+
+<p>最近在设计一个系统来预估未来一年的广告流量，不是总流量，是任意时间段任何定向(Targeting)条件约束情况下的流量。定向条件有近百种（内容类别，设备平台，用户地域，用户人口属性等），整个时间区间不同组合数（也就是数据行数）是亿级别。目标是秒级的查询响应时间。一个简单的数据例子如下：
+<img src="http://dongguo.me/images/personal/engineering/druid/druid_data_example.png" width=800 align=bottom /></p>
+
+<h3>存储系统选择</h3>
+
+<h4>Mysql不是适合的选择</h4>
+
+<p>最容易想到的是用Mysql作为数据存放和查询引擎，由于数据行数太多，Mysql必须通过创建索引或者组合索引来加速查询。典型的查询包含若干个定向类别，这些定向条件的组合是非常多的（top 80%的查询也会包含几十种组合），故需要创建非常多的组合索引，代价很高。另外，对于那些没有创建组合索引的查询，查询时间完全不能接受。实际测试结果是加了组合索引后整体查询速度提升有限。</p>
+
+<h4>为什么没有用Hbase或者Hive</h4>
+
+<p>Hbase本身是一个经典的基于hdfs的分布式存储系统，通常来说其是行存储的，当创建column families之后，每个column family是列存储的（代价就是当通过key查询某行的时候，需要从多个不连续的存储空间读数据，具体可<a href="http://stackoverflow.com/questions/11816609/column-based-or-row-based-for-hbase">参考</a>)。在这个应用中，可以为每个定向类别（包括日期）创建一个单独的column family，但是据我所知Hbase本身没有为column family创建bitmap indexing（<a href="https://issues.apache.org/jira/browse/HBASE-6014">参考</a>），查询速度应该会受到影响。另外不用Hbase的一个原因是我希望存储系统尽量轻量级，最好不要安装hadoop。</p>
+
+<p>Hive将查询转化为M/R任务，没法保证查询的快速响应（比如M/R cluster资源竞争很激烈时），而且使用Hive需要以来hadoop cluster，对这个应用来说也略微重量级。</p>
+
+<h4>我们需要一个高可用的分布式的列存储系统</h4>
+
+<p>我们的核心需求包含2点，一是查询速度快，二是系统的拓展性好，最好是分布式的。</p>
+
+<p>第一点要求意味着最好用column-store而不是row-store，在这个应用中，虽然定向类别有近百种，但是单次查询通常只会涉及几个。对于修改操作较少且查询往往只涉及少数几列的场景使用column-store可以获得快一个量级的查询速度。而且column-store可以通过bitmap indexing，encoding，以及compression来优化查询速度和存储开销。<a href="http://www.infoq.com/cn/articles/bigdata-store-choose">还存储还是列存储</a></p>
+
+<p>第二点要求一方面是由于我们的数据量较大，并行存储和查询可以减少时间开销，另一方面是数据量每年还在快速上涨，以后可以简单地通过加机器来应对。</p>
+
+<p>对系统的其他要求比较普遍：系统可用性要高，稳定，轻量级，易于上手。</p>
+
+<h4>为什么Druid是适合的选择</h4>
+
+<p>Druid满足我们上面2点要求，其是一个开源的、分布式的、列存储系统，特别适用于大数据上的（准）实时分析统计。且具有较好的稳定性（Highly Available）。
+其相对比较轻量级，文档非常完善，也比较容易上手。</p>
+
+<h3>Druid介绍</h3>
+
+<p><strong>如何搭建一个Druid cluster请参考我<a href="http://dongguo.me/blog/2015/03/02/druid-cluster-setup/">另一篇文章</a></strong></p>
+
+<h4>概念</h4>
+
+<p><strong>Segment</strong>: Druid中有个重要的数据单位叫segment，其是Druid通过bitmap indexing从raw data生成的（batch or realtime）。segment保证了查询的速度。可以自己设置每个segment对应的数据粒度，这个应用中广告流量查询的最小粒度是天，所以每天的数据会被创建成一个segment。注意segment是不可修改的，如果需要修改，只能够修改raw data，重新创建segment了。</p>
+
+<h4>架构</h4>
+
+<p><img src="http://dongguo.me/images/personal/engineering/druid/druid_system.png" width=800 align=bottom /></p>
+
+<p><strong>Druid本身包含5个组成部分</strong>：Broker nodes, Historical nodes, Realtime nodes, Coordinator Nodes和indexing services. 分别的作用如下：</p>
+
+<ul>
+<li>Broker nodes: 负责响应外部的查询请求，通过查询Zookeeper将请求划分成segments分别转发给Historical和Real-time nodes，最终合并并返回查询结果给外部；</li>
+<li>Historial nodes: 负责'Historical' segments的存储和查询。其会从deep storage中load segments，并响应Broder nodes的请求。Historical nodes通常会在本机同步deep storage上的部分segments，所以即使deep storage不可访问了，Historical nodes还是能serve其同步的segments的查询；</li>
+<li>Real-time nodes: 用于存储和查询热数据，会定期地将数据build成segments移到Historical nodes。一般会使用外部依赖kafka来提高realtime data ingestion的可用性。如果不需要实时ingest数据到cluter中，可以舍弃Real-time nodes，只定时地batch ingestion数据到deep storage；</li>
+<li>Coordinator nodes: 可以认为是Druid中的master，其通过Zookeeper管理Historical和Real-time nodes，且通过Mysql中的metadata管理Segments</li>
+<li>Druid中通常还会起一些indexing services用于数据导入，batch data和streaming data都可以通过给indexing services发请求来导入数据。</li>
+</ul>
+
+
+<p><strong>Druid还包含3个外部依赖</strong></p>
+
+<ul>
+<li>Mysql：存储Druid中的各种metadata（里面的数据都是Druid自身创建和插入的），包含3张表："druid_config"（通常是空的）, &ldquo;druid_rules"（coordinator nodes使用的一些规则信息，比如哪个segment从哪个node去load）和“druid_segments”（存储每个segment的metadata信息）；</li>
+<li>Deep storage: 存储segments，Druid目前已经支持本地磁盘，NFS挂载磁盘，HDFS，S3等。Deep Storage的数据有2个来源，一个是<a href="http://druid.io/docs/0.6.104/Batch-ingestion.html">batch Ingestion</a>, 另一个是real-time nodes；</li>
+<li>ZooKeeper: 被Druid用于管理当前cluster的状态，比如记录哪些segments从Real-time nodes移到了Historical nodes；</li>
+</ul>
+
+
+<h4>查询</h4>
+
+<p>Druid的查询是通过给Broker Nodes发送HTTP POST请求（也可以直接给Historical or Realtime Node），具体可见Druid<a href="http://druid.io/docs/latest/Tutorial:-All-About-Queries.html">官方文档</a>。查询条件的描述是json文件，查询的response也是json格式。Druid的查询包含如下4种：</p>
+
+<ul>
+<li><a href="http://druid.io/docs/latest/TimeBoundaryQuery.html">Time Boundary Queries</a>: 用于查询全部数据的时间跨度</li>
+<li><a href="http://druid.io/docs/latest/GroupByQuery.html">groupBy Queries</a>: 是Druid的最典型查询方式，非常类似于Mysql的groupBy查询。query body中几个元素可以这么理解：
+
+<ul>
+<li>&ldquo;aggregation&rdquo;: 对应mysql"select XX from"部分，即你想查哪些列的聚合结果;</li>
+<li>&ldquo;dimensions&rdquo;: 对应mysql"group by XX"，即你想基于哪些列做聚合;</li>
+<li>&ldquo;filter&rdquo;: 对应mysql"where XX"条件，即过滤条件；</li>
+<li>&ldquo;granularity&rdquo;: 数据聚合的粒度;</li>
+</ul>
+</li>
+<li><a href="http://druid.io/docs/latest/TimeseriesQuery.html">Timeseries queries</a>: 其统计满足filter条件的"rows"上某几列的聚合结果，相比"groupBy Queries"不指定基于哪几列进行聚合，效率更高;</li>
+<li><a href="http://druid.io/docs/latest/TopNQuery.html">TopN queries</a>: 用于查询某一列上按照某种metric排序的最常见的N个values;</li>
+</ul>
+
+
+<h3>本文小结</h3>
+
+<ol>
+<li>Druid是一个开源的，分布式的，列存储的，适用于实时数据分析的系统，文档详细，易于上手；
+
+<ul>
+<li>Druid在设计时充分考虑到了Highly Available，各种nodes挂掉都不会使得druid停止工作（但是状态会无法更新）；</li>
+<li>Druid中的各个components之间耦合性低，如果不需要streaming data ingestion完全可以忽略realtime node；</li>
+<li>Druid的数据单位Segment是不可修改的，我们的做法是生成新的segments替换现有的；</li>
+<li>Druid使用Bitmap indexing加速column-store的查询速度，使用了一个叫做<a href="http://ricerca.mat.uniroma3.it/users/colanton/docs/concise.pdf">CONCISE</a>的算法来对bitmap indexing进行压缩，使得生成的segments比原始文本文件小很多；</li>
+</ul>
+</li>
+<li>在我们的应用场景下（一共10几台机器，数据大概100列，行数是亿级别），平均查询时间&lt;2秒，是同样机器数目的Mysql cluter的1/100 ~ 1/10；</li>
+<li>Druid的一些“局限”：
+
+<ul>
+<li>Segment的不可修改性简化了Druid的实现，但是如果你有修改数据的需求，必须重新创建segment，而bitmap indexing的过程是比较耗时的；</li>
+<li>Druid能接受的数据的格式相对简单，比如不能处理嵌套结构的数据</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>参考资料&amp;推荐阅读</h3>
+
+<ol>
+<li><a href="http://druid.io/docs/latest/">官方文档</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/druid-development">google groups讨论区</a></li>
+<li><a href="http://static.druid.io/docs/druid.pdf">Druid: A Real-time Analytical Data Store</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Bitmap_index">Bitmap indexing wikepedia</a></li>
+<li><a href="http://ricerca.mat.uniroma3.it/users/colanton/docs/concise.pdf">Bitmap indexing compression algorithm used by Druid</a></li>
+<li><a href="http://www.infoq.com/cn/articles/bigdata-store-choose">行存储or列存储？</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
