@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Computing_ads, | Dong Guo's Blog]]></title>
+  <title><![CDATA[Category: Computing_ads | Dong Guo's Blog]]></title>
   <link href="http://dongguo.me/blog/categories/computing-ads/atom.xml" rel="self"/>
   <link href="http://dongguo.me/"/>
-  <updated>2015-03-29T23:57:43+08:00</updated>
+  <updated>2015-03-30T00:18:45+08:00</updated>
   <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -46,6 +46,116 @@
 <li>用户U某一次去yahoo.com浏览新闻，yahoo事先接入了double click广告平台售卖广告；</li>
 <li>yahoo的ad server会向double click发送广告请求，double click会将用户U的doubleclick_cookie_id发送给Pinyou等DSP, Pinyou通过cookie matching数据库找到pinyou_cookie_id, 再检查其对应了哪些站点的cookie_id，如果包含了jd_cookie_id，Pinyou就可能会为jd的广告竞争该广告位</li>
 <li>double click返回挑中的广告让yahoo播放</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Programmatic Digital Advertising]]></title>
+    <link href="http://dongguo.me/blog/2014/11/28/programmatic-digital-advertising/"/>
+    <updated>2014-11-28T23:51:24+08:00</updated>
+    <id>http://dongguo.me/blog/2014/11/28/programmatic-digital-advertising</id>
+    <content type="html"><![CDATA[<p>从2010年开始开始工作，一直在做搜索广告，联盟上下文广告以及视频广告。这几年RTB，或者更广义的广告的程序化交易非常火。在这边总结一下我的理解。</p>
+
+<p>“程序化交易“即通过程序自动化地完成商品的买和卖，这在很多领域都有应用，最经典的就是金融市场中的股票，债券，货币，期货等的交易。其至少有2个好处，第一：将人从交易的各个环节中解放出来，让一切变得自动化，有效率；第二：这种程序带来的自动化使得更大范围(甚至全球)资源的优化配置变得有可能。</p>
+
+<p>广告也不例外。相比于传统线下媒体（比如电视）广告，互联网广告（这里我们默认是显示广告，不包括由几家巨头独营的搜索广告市场）有很多优势，最显著的也是2点，第一：用户在互联网的数据可以被用来做广告的精准投放，比如你在浏览很多网站的时候都有可能看到京东的广告，而广告的内容是你之前在京东浏览过的商品；第二：也是由于数据的获取更方便，互联网广告的质和量能更容易被度量，比如广告主可以仅为点击而不是展示付费，且点击次数很容易track。</p>
+
+<p>当然这还不够完美，对于一个广告主，其终极目标是把自己的广告投放到全球最相关的用户上，可能出现在上万个不同的站点上，而自己只需要定义每次展示，点击，或者转化的付费（当然也可以为不同的站点指定不同的单价），广告主或者其代理不需要和各个内容提供商或内容提供商的代理分别扯皮。联盟广告（如百度联盟，阿里妈妈）实现了广告交易的程序化，但仅是其中特殊的一种。</p>
+
+<h3>在线广告程序化交易</h3>
+
+<p>在线广告程序化交易有如下一些stakeholders：
+<img src="http://dongguo.me/images/personal/ads/programmatic_stakeholders.png">
+DSP(Demand side platform)可以认为其是一个有技术背景的代理商，广告主可以选择为展示，点击或者转化进行付费，DSP则和其他众多DSP通过竞价竞争广告位。DSP的数据和技术积累直接关系到其是否NB.
+SSP(Supply side platform)则将publishers进行整合。Ad Network在这个生态里扮演一个中枢的角色。</p>
+
+<p>注意为了实现广告的程序化交易，除了advertisers和publishers, 其他角色都不是必须的，因为广告主和内容提供商之间完全可以直接交易。对于百度联盟，可以认为其同时扮演了Ad Network和DSP的角色，如果你既有内容资源又有广告主资源，你当然不希望和别人分享收益。</p>
+
+<p>可以按照2个纬度（广告投放量是否被保证，以及是固定单价还是需要竞价）将在线广告的程序化交易分为4个类别：
+<img src="http://dongguo.me/images/personal/ads/programmatic_types.png"/>
+<a href="http://www.iab.net/media/file/IAB_Digital_Simplified_Programmatic_Sept_2013.pdf">reference</a></p>
+
+<p>Inventory即广告流量，广告主往往比较关心广告投放量是否能够放完，特别是对于大的品牌广告主。保证广告投放量的deal就是传统的Guaranteed deal. 对于广告商来说，其为广告的付费一直是fixed，其可以选择是为每次展示付1毛钱还是为每次点击付10块钱。这个表格中提到的Pricing指的是publisher或者SSP端看到的报价，而这个价格通常指的都是展示的单价(CPM)，如果广告主选择以CPM付费（给DSP或者SSP或者直接给publisher）,publisher端看到的该由该advertiser声称的报价通常是稳定的，但是如果广告主选择以点击甚至转化付费，DSP对不同的广告位的出价的差别就很可能由很大的差别。</p>
+
+<p>Automated Guaranteed相比传统的广告售卖方式差别不大，主要是让流程变得自动化。注意premium内容的售卖通常是这种方式（比如Hulu以及yahoo首页），这就意味着程序化交易的scope超脱了狭义的RTB, 也适用并有利于premium内容的售卖;</p>
+
+<p>Unreserved Fixed Rate由比较大的实际意义，对于premium的内容，其大部分的Inventory还是会通过传统的方式一笔一笔和大广告主谈（大广告主的deal细节比较复杂），剩余有多少蛋糕可以卖给中小广告主？很难保证，所以通过不保量的方式程序化售卖出去是一个很理想的选择;</p>
+
+<p>Invitation-Only Auction和Open Auction差别不大，只是前者限制只接入部分DSP或者advertisers，2者都是我们常说的RTB。</p>
+
+<h3>实时竞价(Real-Time-Bidding)</h3>
+
+<p>这边不展开介绍，有2个资源对RTB有很清晰的介绍</p>
+
+<p><a href="https://www.youtube.com/watch?v=-Glgi9RRuJs&amp;index=2&amp;list=PL6aT9elthI51NOdkxxV3m7O3vIA_A9C5u">Youtube: how an Ad is Served with Real Time Bidding</a></p>
+
+<p><a href="http://www.math.pku.edu.cn/teachers/yaoy/Spring2013/RTB101_iPinYou_XuehuaShen_English.pdf">iPinyou 沈学华的一篇科普</a></p>
+
+<p>RTB这块对数据的要求还是比较高的。涉及到全互联网的数据共享，用户隐私又是一个棘手的问题。想想央视某年的315报道。</p>
+
+<h3>新变化和问题</h3>
+
+<p>相比RTB一直给人在垃圾流量做买卖的印象，越来越多高质量的publisher愿意接入到Ad Network中，小广告主也有机会了，程序化交易越来越普及；</p>
+
+<p>质量的控制，包括广告的质量以及内容的质量；标准的统一，比如广告位的尺寸，视频广告的清晰度和风格等; 数据的获取以及隐私；</p>
+
+<h3>一些推荐的资源</h3>
+
+<p><a href="http://www.iab.net/">Interactive Advertising Bureau</a>: 一家致力于建立标准，推动在线广告行业发展的公司
+<a href="http://www.iab.net/programmatic">IAB programmatic</a></p>
+
+<p><a href="http://www.iab.net/iablog/2014/11/top-10-things-you-need-to-know-about-programmatic.html">TOP 10 thinks you need to know about programmatic</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=-Glgi9RRuJs&amp;index=2&amp;list=PL6aT9elthI51NOdkxxV3m7O3vIA_A9C5u">Youtube: how an Ad is Served with Real Time Bidding</a></p>
+
+<p><a href="http://www.math.pku.edu.cn/teachers/yaoy/Spring2013/RTB101_iPinYou_XuehuaShen_English.pdf">iPinyou 沈学华的一篇科普</a></p>
+
+<p><a href="http://www.tubemogul.com/">TubeMogul, 一家典型的DSP公司</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Challenges for a Word-class Ad Inventory Forecasting System]]></title>
+    <link href="http://dongguo.me/blog/2014/09/20/ad-inventory-forecasting/"/>
+    <updated>2014-09-20T22:01:24+08:00</updated>
+    <id>http://dongguo.me/blog/2014/09/20/ad-inventory-forecasting</id>
+    <content type="html"><![CDATA[<p>Key words: Ad Inventory Forecasting, Ad serving, Online advertising.</p>
+
+<p>广告流量预估是各家采取保量模式售卖广告位的公司都必须要做的，无论是传统的电视媒体还是各家互联网公司。
+一句话介绍就是给定未来任意一段时间区间（通过在一年内），在任意给定定向条件（比如demographic限定，geographic限定，上下文内容限定，平台限定，时间段限定等）下，预估对于各种形态的广告（比如视频，图片，文本广告）分别有多少可以卖。</p>
+
+<h4>实现一个优秀的广告流量预估系统的挑战在什么地方呢？至少包括如下几点</h4>
+
+<ol>
+<li><p>在大数据量下保证快速的查询响应时间</p>
+
+<ul>
+<li>大数据体现在2点，首先是广告数据条目多，另外是定向条件多。当有100类定向条件，每类可以有2种取值时，不同定向条件的组合数目虽然不会到2<sup>100</sup>级别，但到billion级别还是可能的。如何做到近于实时的查询？<br></br></li>
+</ul>
+</li>
+<li><p>复杂多样的干扰因素对预估准确性的影响</p>
+
+<ul>
+<li>业务本身的波动性对广告流量的影响</li>
+<li>业务变动对广告流量的影响</li>
+<li>突发时间对广告流量的影响<br></br></li>
+</ul>
+</li>
+<li><p>具体业务逻辑的复杂性增加了系统逻辑的复杂性</p>
+
+<ul>
+<li>典型的业务流程是来了一个广告订单，在系统种查询是否有足够的流量可以售卖，但是查询得到的流量是满足定向条件的总流量，而单个订单的在投放过程种会有各种约束，比如不能给单个用户在一天中重复播放同一个广告商的广告。所以实际能够售卖给该订单的广告量一定少于查询到的总流量。这就需要在预估中考虑广告播放的频率限制；<br></br></li>
+</ul>
+</li>
+<li><p>和Ad server(广告投放服务器)逻辑的协调</p>
+
+<ul>
+<li>通常同一个广告位会有多个广告qualify，Ad server决定了具体放哪个广告。在ad server逻辑不发生变化的情况下，可以利用历史数据（广告总量在各个定向条件上的分布）进行预估，但是一旦ad server逻辑发生变动，广告流量预告系统最好能实时作出调整，而不是收集了一个月数据之后才发应过来。<br></br></li>
+</ul>
+</li>
+<li><p>流量预估只是第一步，流量的管理或者说全局的统筹优化是最大化收益的必要。</p></li>
 </ol>
 
 ]]></content>
