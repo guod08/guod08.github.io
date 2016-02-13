@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>日记2016/02/13:'Semi-supervised Learning', 'Reinforcement Learning' - Dong Guo's Blog</title>
+  <title>日记2016/02/13:周志华老师的新书：机器学习 - Dong Guo's Blog</title>
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="明天是2016春节后的第一个工作日，新年要有新气象，其中一件就是要多写博客，将每天的想法和收获总结下来。 今天在石家庄家里翻了翻周志华老师的新书《机器学习》，
-">
+  <meta name="description" content="明天是2016春节后的第一个工作日，新年要有新气象，其中一件就是要多写博客，将每天的想法和收获总结下来。 今天在石家庄家里翻了翻周志华老师的新书《机器学习》，ML基础的内容基本都包括了，讲得比较通俗易懂，公式推导比比李航的《统计学习方法》更少一些。个人还是比较推荐的。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">日记2016/02/13:'Semi-supervised Learning', 'Reinforcement Learning'</h1>
+      <h1 class="entry-title">日记2016/02/13:周志华老师的新书：机器学习</h1>
     
     
       <p class="meta">
@@ -95,7 +94,21 @@
 
 <div class="entry-content"><p>明天是2016春节后的第一个工作日，新年要有新气象，其中一件就是要多写博客，将每天的想法和收获总结下来。</p>
 
-<p>今天在石家庄家里翻了翻<a href="http://baike.baidu.com/link?url=xdFC18IQF7u8JEswP8b1UsdZaFBJKJBmOt0k01MNkC7dqcPX3PCCkDFKecp8tht90mOXQShnAApPW6jIlbTNn1t6SVxchMQ61u0WrWdV7w3">周志华</a>老师的新书《机器学习》，</p>
+<p>今天在石家庄家里翻了翻<a href="http://cs.nju.edu.cn/zhouzh/">周志华</a>老师的新书《机器学习》，ML基础的内容基本都包括了，讲得比较通俗易懂，公式推导比比李航的《统计学习方法》更少一些。个人还是比较推荐的。</p>
+
+<p>重点翻了翻半监督学习和强化学习这2章。做一些笔记如下</p>
+
+<h2>半监督学习</h2>
+
+<p>基于“相似的样本有相似的label”的合理假设，未标记样本为样本分布提供了信息，故可以提高有监督学习的效果。</p>
+
+<p>一种典型的半监督学习模型是TSVM（Transductive SVM），其在目标函数中包含了未标注样本的松弛向量，求解方法类似于EM思想，E步对未标注样本进行预测，M步调整分类面；一个要点是未标注样本的预测结果通常是显然不如有标注样本的label靠谱的，所以在目标函数中这2类样本的松弛向量的权重有差别，且未标注样本的权重随着多轮迭代不断上升。</p>
+
+<h2>强化学习</h2>
+
+<p>强化学习的应用场景很广，比如曾经很火的Flappy Bird和最近很火的Google的AlphaGo（围棋AI）。</p>
+
+<p>明天补充细节，碎觉</p>
 </div>
 
 
@@ -179,7 +192,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/02/13/ri-ji-2016-02-13-semi-supervised-learning-Reinforcement-learning/">日记2016/02/13:'Semi-supervised Learning', 'Reinforcement Learning'</a>
+        <a href="/blog/2016/02/13/ri-ji-2016-02-13-semi-supervised-learning-Reinforcement-learning/">日记2016/02/13:周志华老师的新书：机器学习</a>
       </li>
     
       <li class="post">
