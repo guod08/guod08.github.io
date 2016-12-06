@@ -127,10 +127,10 @@
 <p>美团外卖配送算法在某些方面比滴滴的订单分配更复杂：</p>
 
 <ol>
-<li><p>滴滴订单分配的对象是司机和乘客，而美团配送需要考虑三方（骑手、乘客、餐厅）。增加了不少复杂性，比如需要考虑商家备餐时间的不确定性和差异性</p></li>
-<li><p>滴滴大部分订单都不是拼车，而美团骑车平均会一次性配送5个订单，订单匹配和组合的效率是核心问题</p></li>
-<li><p>路径规划的复杂性更高（设想一个骑车同时被分配了5个订单，候选的路径数）</p></li>
-<li><p>配送目的地的复杂性：外卖配送的目的地很多是小区（送达X号楼X单元X层的房间）和写字楼（楼层），应该要考虑更多的骑手个性化</p></li>
+<li>滴滴订单分配的对象是司机和乘客，而美团配送需要考虑三方（骑手、乘客、餐厅）。增加了不少复杂性，比如需要考虑商家备餐时间的不确定性和差异性</li>
+<li>滴滴大部分订单都不是拼车，而美团骑车平均会一次性配送5个订单，订单匹配和组合的效率是核心问题</li>
+<li>路径规划的复杂性更高（设想一个骑车同时被分配了5个订单，候选的路径数）</li>
+<li>配送目的地的复杂性：外卖配送的目的地很多是小区（送达X号楼X单元X层的房间）和写字楼（楼层），应该要考虑更多的骑手个性化</li>
 </ol>
 
 
@@ -139,27 +139,39 @@
 
 <p>这里的“压单”是等待更多类似的订单，聚合起来一起分配给骑手。有点类似滴滴的拼车等待</p>
 
-<p>在用的几个重要平台
-1、场景回放平台
-2、算法仿真环境（派单场景下）
-3、分布式计算平台</p>
+<p>在用的几个重要平台</p>
+
+<ol>
+<li>场景回放平台</li>
+<li>算法仿真环境（派单场景下）</li>
+<li>分布式计算平台</li>
+</ol>
+
 
 <h2>微信朋友圈基于社交相似度的定向广告技术</h2>
 
 <p>简介：lookalike是一种经典的广告定向技术，指的是找出和指定目标人群类似的人群。微信使用了包含图特征的有监督学习找出的目标微信用户做广告定向，相比广告随机投放给active用户，可以提高2-3倍的点击率。</p>
 
-<p>算法概况：目标是预估指定用户和另一个微信用户的相似度
-1. 训练样本的label获取：找出公共展示广告较多的用户pair，计算其相似度：共同点击广告个数/共同展示的广告个数
-2. 使用了用户pair之间的社交相似性特征，通过node2vec network embedding算法生成
-3. 机器学习模型：SVR，GBDT+LR都做了尝试</p>
+<h4>算法概况：目标是预估指定用户和另一个微信用户的相似度</h4>
 
-<p>使用node2vec生成社交相似度特征   node2vec = Biased Random Walk + Word2Vec
+<ol>
+<li>训练样本的label获取：找出公共展示广告较多的用户pair，计算其相似度：共同点击广告个数/共同展示的广告个数</li>
+<li>使用了用户pair之间的社交相似性特征，通过node2vec network embedding算法生成</li>
+<li>机器学习模型：SVR，GBDT+LR都做了尝试</li>
+</ol>
+
+
+<h4>使用node2vec生成社交相似度特征</h4>
+
+<p>node2vec = Biased Random Walk + Word2Vec
 node2vec in KDD 2016： <a href="http://www.kdd.org/kdd2016/papers/files/rfp0218-groverA.pdf">http://www.kdd.org/kdd2016/papers/files/rfp0218-groverA.pdf</a>
 强调了调参（网络深度和广度参数p、q）的重要性</p>
 
-<p>GBDT+LR组合模型（通过GBDT学习出高区分性的组合特征，输入到LR中）
-Paper from Facebook：<a href="http://www.quinonero.net/Publications/predicting-clicks-facebook.pdf">http://www.quinonero.net/Publications/predicting-clicks-facebook.pdf</a> (ADKDD 2014)
-腾讯和阿里都做了尝试：<a href="http://www.cbdio.com/BigData/2015-08/27/content_3750170.htm">http://www.cbdio.com/BigData/2015-08/27/content_3750170.htm</a></p>
+<h4>GBDT+LR组合模型（通过GBDT学习出高区分性的组合特征，输入到LR中）</h4>
+
+<p>Paper from Facebook：<a href="http://www.quinonero.net/Publications/predicting-clicks-facebook.pdf">http://www.quinonero.net/Publications/predicting-clicks-facebook.pdf</a> (ADKDD 2014)
+腾讯和阿里都做了尝试：<a href="http://www.cbdio.com/BigData/2015-08/27/content_3750170.htm">http://www.cbdio.com/BigData/2015-08/27/content_3750170.htm</a>
+<img src="http://dongguo.me/images/personal/archsummit/weixin.png" alt="" /></p>
 
 <h2>一点资讯：兴趣引擎-深度融合搜索和推荐</h2>
 
@@ -169,12 +181,13 @@ WAND泛化了AND和OR操作，是更强大的匹配操作符</p></li>
 <li><p>异构索引：由于需要在几个维度（近期和长期内容、编辑精品vs抓取内容、垂直频道vs全局内容、热门推荐和个性化推荐）上兼顾搜索和推荐的效果，搞了若干个内容索引，后面会做自适应索引召回（基于对query或者用户的理解决定从哪些索引返回结果）</p></li>
 <li><p>自适应索引召回策略：对Query做意图理解，决定返回的文章
 除了搜索词本身，还考虑了时下热点，用户浏览搜索上下文，用户兴趣图谱，用户demography等信息
-决定从哪些下游索引、服务、内容中获取结果，以及排序</p></li>
+决定从哪些下游索引、服务、内容中获取结果，以及排序
+<img src="http://dongguo.me/images/personal/archsummit/yidianzixun.png" alt="" /></p></li>
 <li><p>树状知识图谱
 提到了其在用，未透露技术细节。树状知识图谱应该是内容推荐和搜索的关键模块</p></li>
 <li><p>模型训练与更新
 online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Learning），声称在用Parameter server
-模型使用了流行的FTRL
+模型使用了流行的<a href="http://www.cnblogs.com/EE-NovRain/p/3810737.html">FTRL</a>
 实验框架支持feature configuration</p></li>
 </ol>
 
@@ -185,7 +198,8 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 <li><p>几种主流的问答匹配技术：rule-based模板式匹配，基于检索的模型，基于统计机器翻译SMT，基于深度学习模型
 阿里目前以前三者为主，基于深度学习模型在探索</p></li>
 <li><p>基于检索的问答模型还是基础方案
-基本是搜索的一套方法，在复杂问答场景不胜任（意图识别，上下文对话）</p></li>
+基本是搜索的一套方法，在复杂问答场景不胜任（意图识别，上下文对话）
+<img src="http://dongguo.me/images/personal/archsummit/ali-qa.png" alt="" /></p></li>
 <li><p>意图识别，被抽象成分类问题解决
 该部分非常有挑战性，阿里也还停留在基础阶段
 深度学习被应用在该分类任务中</p></li>
@@ -202,11 +216,15 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 <p>已开源：<a href="https://github.com/TalkingData/Fregata">https://github.com/TalkingData/Fregata</a>
 基于Spark实现的分布式机器学习算法库，目前只有几个基础的模型(LR、softmax、RDT)，声称相比MLlib有更快的训练速度和更好的模型效果。</p>
 
-<p>几个点评：
-1. 提出了基于SGD改进的GSA（Greedy Step Averaging）优化算法（出发点是解决SGD等常见的优化算法需要选择learning rate的问题），该算法是Fregata实验效果优于MLlib的主要原因。文章见：<a href="https://arxiv.org/pdf/1611.03608v1.pdf">https://arxiv.org/pdf/1611.03608v1.pdf</a>
-2. Fregata强调样本一遍过完，无需多次迭代，提高了训练速度（我理解这取决于给定算法是否需要迭代，Fregata目前实现的少数几个模型不依赖于多遍迭代）
-3. Fregata对标MLlib，同基于Spark，依然没有解决训练样本特征维度过高（百万/千万级）无法训练的问题，不如Parameter Server
-4. 目前只实现了LR、softmax、RDT少数几个模型，且尚不兼容Spark1.6以上的版本</p>
+<p>几个点评：</p>
+
+<ol>
+<li>提出了基于SGD改进的GSA（Greedy Step Averaging）优化算法（出发点是解决SGD等常见的优化算法需要选择learning rate的问题），该算法是Fregata实验效果优于MLlib的主要原因。文章见：<a href="https://arxiv.org/pdf/1611.03608v1.pdf">https://arxiv.org/pdf/1611.03608v1.pdf</a></li>
+<li>Fregata强调样本一遍过完，无需多次迭代，提高了训练速度（我理解这取决于给定算法是否需要迭代，Fregata目前实现的少数几个模型不依赖于多遍迭代）</li>
+<li>Fregata对标MLlib，同基于Spark，依然没有解决训练样本特征维度过高（百万/千万级）无法训练的问题，不如Parameter Server</li>
+<li>目前只实现了LR、softmax、RDT少数几个模型，且尚不兼容Spark1.6以上的版本</li>
+</ol>
+
 
 <h2>第四范式：其构建机器学习产品的介绍</h2>
 
@@ -218,26 +236,26 @@ Transfer learning：目前也只是在尝试而已</p>
 <h2>阿里巴巴-天猫双11容量规划演进</h2>
 
 <ol>
-<li>容量规划经历了的几个阶段：“经验判断”（“单机扛100万PV”），到“线上压测”，到“场景化”压测（“场景化”，“全链路压测”）</li>
-</ol>
-
-
-<p>压测和容量评估，不能以“点”的方式，要做场景化压测和评估</p>
-
-<ol>
+<li><p>容量规划经历了的几个阶段：“经验判断”（“单机扛100万PV”），到“线上压测”，到“场景化”压测（“场景化”，“全链路压测”）
+<img src="http://dongguo.me/images/personal/archsummit/ali-double11.png" alt="" />
+压测和容量评估，不能以“点”的方式，要做场景化压测和评估</p></li>
 <li><p>容量评估&amp;压测平台：自动化，最终自动生成压测报告，例行执行；可以控制流量要求（比如5万笔交易每秒）
-容量评估主流程：</p></li>
+容量评估主流程：
+<img src="http://dongguo.me/images/personal/archsummit/ali-double11-2.png" alt="" /></p></li>
 <li><p>流量隔离压测 + 配比拉平
-阿里经历过直接在线上做全链路压测，为了线上分享和人员精力消耗（“几百人坐在一起盯着自己系统”），采取了在隔离的集群上做压测（可能占全部机器资源的90%），压测完找到合理的机器分配比之后，再在全部服务器上做配比拉平</p></li>
+阿里经历过直接在线上做全链路压测，为了线上分享和人员精力消耗（“几百人坐在一起盯着自己系统”），采取了在隔离的集群上做压测（可能占全部机器资源的90%），压测完找到合理的机器分配比之后，再在全部服务器上做配比拉平
+<img src="http://dongguo.me/images/personal/archsummit/ali-double11-3.png" alt="" /></p></li>
 </ol>
 
 
 <h2>百度：Spider3.0背后的数据处理系统（数据库Tera，文件系统BFS）</h2>
 
 <ol>
-<li><p>百度整体的大数据架构技术栈（大多已开源：<a href="https://github.com/baidu%EF%BC%89">https://github.com/baidu%EF%BC%89</a></p></li>
+<li><p>百度整体的大数据架构技术栈（大多已开源：<a href="https://github.com/baidu%EF%BC%89">https://github.com/baidu%EF%BC%89</a>
+<img src="http://dongguo.me/images/personal/archsummit/baidu1.png" alt="" /></p></li>
 <li><p>整个Spider3.0处理流程（增量处理、流式处理，基本都围绕Tera数据库读写）
-数据爬取延迟从spider2.0的2~3天，降低到spider3.0的5分钟</p></li>
+数据爬取延迟从spider2.0的2~3天，降低到spider3.0的5分钟
+<img src="http://dongguo.me/images/personal/archsummit/baidu2.png" alt="" /></p></li>
 <li><p>Tera：百度高性能分布式NoSQL数据库Tera
 》对标google BigTable，加强版Hbase，已开源：<a href="https://github.com/baidu/tera">https://github.com/baidu/tera</a>
 》keywords：分布式、列存储，支持分布式事务，万亿条记录，百PB容量，亿级QPS读写，全局有序表，快照支持回滚
@@ -250,7 +268,10 @@ Transfer learning：目前也只是在尝试而已</p>
 
 <h2>LinkedIn：Lessons in Internet scale stream processing（海量流数据处理经验总结）</h2>
 
-<p>Apache Samza: LinkedIn开源的分布式流数据处理系统，对应于Storm和Spark Streaming，号称计算性能优于MR和Spark。 目前除LinkedIn，Uber、Netflix等公司也在用Samza。</p>
+<p><img src="http://dongguo.me/images/personal/archsummit/linkedin1.png" alt="" /></p>
+
+<p>Apache Samza: LinkedIn开源的分布式流数据处理系统，对应于Storm和Spark Streaming，号称计算性能优于MR和Spark。 目前除LinkedIn，Uber、Netflix等公司也在用Samza。
+<img src="http://dongguo.me/images/personal/archsummit/linkedin2.png" alt="" /></p>
 
 <p>Apache Kafka: 也是LinkedIn开源，Kafka是LinkedIn做数据Ingestion的主流选项。演讲者估算了下，当日处理量小于100Billion message，小于5K个partitions的时候，将Kafka Cluster托管在第三方是更便宜的选择，高于该阈值，企业自己部署和安装更划算。</p>
 </div>
@@ -426,7 +447,7 @@ Transfer learning：目前也只是在尝试而已</p>
 
 <p>滴滴今年的待遇我了解是高于BAT的，对大牛更是不手软，欢迎来聊。</p>
 
-<h4>有兴趣欢迎联系我：<a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#103;&#117;&#x6f;&#x64;&#111;&#x6e;&#x67;&#x40;&#100;&#x69;&#x64;&#105;&#99;&#104;&#x75;&#x78;&#105;&#x6e;&#103;&#46;&#99;&#x6f;&#109;">&#x67;&#117;&#x6f;&#x64;&#111;&#110;&#103;&#x40;&#100;&#105;&#100;&#x69;&#99;&#x68;&#x75;&#x78;&#x69;&#110;&#103;&#46;&#99;&#x6f;&#x6d;</a></h4>
+<h4>有兴趣欢迎联系我：<a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#103;&#x75;&#x6f;&#x64;&#x6f;&#x6e;&#103;&#64;&#x64;&#105;&#x64;&#x69;&#x63;&#104;&#x75;&#120;&#105;&#x6e;&#x67;&#46;&#99;&#x6f;&#x6d;">&#103;&#117;&#111;&#100;&#111;&#x6e;&#x67;&#x40;&#x64;&#105;&#100;&#x69;&#99;&#x68;&#x75;&#120;&#x69;&#x6e;&#103;&#46;&#99;&#111;&#x6d;</a></h4>
 </div>
   
   
@@ -517,7 +538,7 @@ Transfer learning：目前也只是在尝试而已</p>
 
 <p>第三，滴滴的招聘质量提升非常快，3个月前我刚入职，周边同学大概还是百度同学的平均水平，现在我参与的面试，发的offer的质量基本和hulu差不多了。</p>
 
-<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x67;&#x75;&#x6f;&#100;&#x6f;&#110;&#x67;&#64;&#x64;&#x69;&#x64;&#105;&#x74;&#x61;&#120;&#x69;&#x2e;&#x63;&#x6f;&#109;&#x2e;&#x63;&#x6e;">&#103;&#x75;&#x6f;&#100;&#111;&#110;&#x67;&#x40;&#x64;&#105;&#100;&#x69;&#x74;&#x61;&#120;&#x69;&#46;&#x63;&#111;&#109;&#x2e;&#x63;&#x6e;</a></p>
+<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x67;&#117;&#x6f;&#x64;&#x6f;&#110;&#x67;&#x40;&#100;&#x69;&#100;&#x69;&#116;&#x61;&#120;&#105;&#46;&#99;&#111;&#x6d;&#x2e;&#99;&#110;">&#103;&#x75;&#x6f;&#100;&#x6f;&#110;&#x67;&#64;&#100;&#x69;&#x64;&#x69;&#116;&#97;&#x78;&#105;&#46;&#99;&#111;&#x6d;&#46;&#x63;&#x6e;</a></p>
 </div>
   
   
