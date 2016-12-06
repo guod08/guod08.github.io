@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="ArchSummit2016上周开了2天，是一个偏架构技术的会，也有不少talk结合了架构和算法一起介绍。我听了十几个和大数据架构和算法比较相关的talk，做了一点小结分享给大家，有兴趣的可以当面探讨。 Highlights 订单分配：美团和菜鸟物流（阿里旗下）都简单介绍了自己的订单分配算法， &hellip;">
+  <meta name="description" content="上周去参加了ArchSummit 2016，是一个偏架构技术的会，也有不少talk结合了架构和算法一起介绍。我听了十几个和大数据架构和算法比较相关的talk，做了一点小结分享给大家 Highlights 订单分配：美团和菜鸟物流（阿里旗下）都简单介绍了自己的订单分配算法，和滴滴分单场景有近似之处。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,7 +92,7 @@
   </header>
 
 
-<div class="entry-content"><p>ArchSummit2016上周开了2天，是一个偏架构技术的会，也有不少talk结合了架构和算法一起介绍。我听了十几个和大数据架构和算法比较相关的talk，做了一点小结分享给大家，有兴趣的可以当面探讨。</p>
+<div class="entry-content"><p>上周去参加了<a href="http://bj2016.archsummit.com/">ArchSummit 2016</a>，是一个偏架构技术的会，也有不少talk结合了架构和算法一起介绍。我听了十几个和大数据架构和算法比较相关的talk，做了一点小结分享给大家</p>
 
 <h3>Highlights</h3>
 
@@ -115,7 +115,7 @@
 </ol>
 
 
-<p>slides 下载</p>
+<p>  <a href="http://ppt.geekbang.org/archsummit?nsukey=MGPCD1KdjIFyTTA2WehJpfsI%2BEoSPTzxdRHeqxnX8k1LsItgo6LdQLj4gOce0AUOmRLaavVtW0pSWnZ0Qt3VPo%2Fdyd1q%2BgmMjte64qRe9oCfhp23M8oMEFFKg7OsNO2aGXHKkPKEZWDb1DBSjaUXnZiRlfYhgr%2FMzH1TJc2AXwfxd%2FDzXYVIjrX485s1B0OE">slides 下载</a></p>
 
 <h2>美团：即时物流调度平台实践</h2>
 
@@ -131,7 +131,8 @@
 3、路径规划的复杂性更高（设想一个骑车同时被分配了5个订单，候选的路径数）
 4、配送目的地的复杂性：外卖配送的目的地很多是小区（送达X号楼X单元X层的房间）和写字楼（楼层），应该要考虑更多的骑手个性化</p>
 
-<p>美团的订单分配算法演进</p>
+<p>美团的订单分配算法演进
+<img src="http://dongguo.me/images/personal/archsummit/meituan.png" alt="" /></p>
 
 <p>这里的“压单”是等待更多类似的订单，聚合起来一起分配给骑手。有点类似滴滴的拼车等待</p>
 
