@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="上周去参加了ArchSummit 2016，是一个偏架构技术的会，也有一些talk结合了架构和算法一起介绍。我听了十几个和大数据架构和算法比较相关的talk，做了一点小结分享给大家。 Highlights 订单分配：美团和菜鸟物流（阿里旗下）都简单介绍了自己的订单分配算法，和滴滴分单场景有近似之处 &hellip;">
+  <meta name="description" content="越来越多人和公司认同data-drivern决策的必要性，不仅是滴滴、Google、Microsoft、Linkedin、Amazon这些科技公司，也包括传统意义上的非技术公司。Data-drivern的核心是Controlled experiment（即大家常说的A/B Testing)， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,142 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/12/18/experiment/">Controlled Experiments</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-12-18T23:29:32+08:00" pubdate data-updated="true">Dec 18<span>th</span>, 2016</time>
+        
+        
+           | <a href="/blog/2016/12/18/experiment/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>越来越多人和公司认同data-drivern决策的必要性，不仅是滴滴、Google、Microsoft、Linkedin、Amazon这些科技公司，也包括传统意义上的非技术公司。Data-drivern的核心是Controlled experiment（即大家常说的A/B Testing)，按照字面理解就是将其它影响因素都control住，保持一致，实验结果只由预设的不同方案影响。</p>
+
+<p>在滴滴算法团队，很多时间和精力都在做各种策略和算法实验，比如我们比较不同的订单分配策略哪个可以让接驾时间更短，比如评估新的动态定价策略对乘客的留存和活跃度有什么样的影响。基于近期在做实验方面遇到的一些挑战思考，以及上个周末看的几篇文章写一个小结在这里。先介绍几个controlled experiment相关的基础而重要的点，总结做controlled experiment中的一些遇到的难点和挑战，最后是一些实验方案和架构的构想（大多是Google和Microsoft等公司的经验）。</p>
+
+<h3>1. 几个基础&amp;重要的知识点</h3>
+
+<h4>1.1. A/A Testing</h4>
+
+<h4>1.2. Hypothesis Testing</h4>
+
+<h4>1.3. Sociation or Causality</h4>
+
+<h3>2. 做Controlled experiment容易犯的错误以及挑战</h3>
+
+<p>通过AB测试产出正确的决策通常是一件非常不容易的事情，我可以很容易列举10条常见的错误导致产出错误的结论。错误的结论包括false postive（新方案无效或者有负向效果，但通过实验得出有效的结论）和false negtative（新方案有效果，但是通过实验判定无效），其中false postive相比false negative对公司上海可能更大。常见的观点是在科技公司的算法和策略优化中，80%~90%的idea被验证是无效或者有负向效果的（见Microsoft这篇文章【3】的5.1小节）</p>
+
+<h4>2.1. 几条典型的产出错误结论的原因</h4>
+
+<ol>
+<li>AB流量划分不随机：比如用用户ID最后一位数字做分流，事后才发现该ID并不随机。可通过对数据源深入了解分析和AA测试来减少这方面的错误</li>
+<li>AB流量划分随机，但是control或treatement会影响对方的流量，导致对比结果的不可信</li>
+<li>错误的指标选取：比如有时业务指标（KPI）很难量化，选择的“近似”可量化的指标实际相比业务指标差很远</li>
+<li>实验结果未达到足够的置信度就宣布结论：看p-value，多break down指标看细节</li>
+<li>线下线上分流没有对齐：实验设计、代码开发、指标选取都没有问题，但是由于离线用日志评估结果时未使用和线上一致的分流方案（典型的原因是没有将分流标志写入日志，离线只能按照口头约定的逻辑重新实现分流逻辑，常发生在开发和指标统计不是一个团队时），必然导致统计结果有偏差</li>
+<li>实验期间外部因素干扰了实验结果，比如天气或特殊事件</li>
+<li>任何一个环节的bug</li>
+<li>实验本身很完美，但是你的（或者老板给你定的）KPI错了</li>
+</ol>
+
+
+<h4>2.2. 难点1：设计合适的AB流量划分方案</h4>
+
+<p>常见的流量划分方法有这么几种：按照某种ID进行随机划分（比如用户ID、session ID、cookie ID），按照时间片进行划分（比如每半个小时进行算法的轮换）、按照地理区域划分（比如将城市划分成网格，交错apply不同的算法）。</p>
+
+<p>AB流量划分的第一点是保证划分的随机性，通过做AA测试分析基本可以保证。第二点是保证control/treatment不影响对方的流量，对于某些实验上面几种典型的流量划分方案就不可行了。假设滴滴要评估一个新的定价策略是否可以提高GMV，我们看下这几种流量划分方案：</p>
+
+<ol>
+<li>按照乘客或者订单ID随机划分：订单分配算法是全局的，所以运力/司机是2个定价策略共享的</li>
+<li>按照时间片进行划分轮换：在当前时间片apply某个定价策略，可能会占用下个时间片的运力，特别是时间片较短时（比如不足一小时）影响显著，但是时间片越大时间本身引入的外界因素干扰就越大（比如不同时段的需求、运力、天气等因素的差异）</li>
+<li>按照地理区域划分：同样有运力共享的问题</li>
+</ol>
+
+
+<p>对于这个case，如果你有好的流量划分idea非常欢迎和我交流</p>
+
+<h4>2.3. 难点2：想清楚本质的业务目标，而不只是关注短期指标</h4>
+
+<h4>2.4. 难点3：在较短时间(如几天/周)内得出长期指标的结论</h4>
+
+<p>通过假设检验可以判断实验结论的置信度，不过业务指标往往都是长期的，比如用户的长期留存和活跃度。
+Google在这边</p>
+
+<p>预测的方法；
+google的paper
+区分</p>
+
+<ol>
+<li>设计一个可靠的AB测试方案</li>
+<li>在较短的时间内（比如几天或者几周）内得出结论</li>
+<li>确定一个比较好的
+设计
+一个靠谱的controlled实验方案（AA测试验证、互相干扰、需要很长时间）</li>
+<li>决定是否能够得出确定的结论（实验本身需要验证长期影响，系统波动性vs随机波动，google的文章 不应仅关注短期metric，）</li>
+<li>确定最符合业务的实验评估metric （正确的KPI，短期metrc与长期metric）</li>
+</ol>
+
+
+<h3>3. 实验平台</h3>
+
+<p>更大的层面</p>
+
+<ol>
+<li>统一的实验平台：提高公司层面做实验的效率和可靠性（避免未协调的实验冲突、流量管理、方便非技术人员操作实验、实验实时监控和报警）</li>
+<li>架构支持overlapping：分domain、layer的流量划分</li>
+<li>实验评审与共享：评审/Review实验设置的可靠性、分享实验解决(stand on others&#8217; shoulders)</li>
+</ol>
+
+
+<p>几个topic</p>
+
+<ol>
+<li>长期影响实验设计、通过短期预测长期（google的实验）</li>
+<li>正交</li>
+</ol>
+
+
+<p>在滴滴做实验</p>
+
+<p>保证实验的效率，实验的可靠性，AB测试结果的可靠性是非常难的事情</p>
+
+<h3>Reference</h3>
+
+<ol>
+<li><a href="http://research.google.com/pubs/archive/43887.pdf">Focusing on the Long-term: It’s Good for Users and Business</a> KDD2015</li>
+<li><a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/pubs/archive/36500.pdf">Overlapping Experiment Infrastructure: More, Better, Faster Experimentation</a> KDD2010</li>
+<li><a href="http://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Public.pdf">Online Experimentation at Microsoft</a> 2009</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -447,7 +583,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>滴滴今年的待遇我了解是高于BAT的，对大牛更是不手软，欢迎来聊。</p>
 
-<h4>有兴趣欢迎联系我：<a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#58;&#x67;&#x75;&#111;&#100;&#x6f;&#110;&#x67;&#64;&#100;&#x69;&#x64;&#105;&#x63;&#104;&#x75;&#x78;&#105;&#110;&#103;&#x2e;&#99;&#111;&#x6d;">&#103;&#x75;&#x6f;&#100;&#x6f;&#110;&#x67;&#x40;&#x64;&#105;&#100;&#x69;&#99;&#104;&#117;&#120;&#105;&#x6e;&#103;&#46;&#99;&#111;&#109;</a></h4>
+<h4>有兴趣欢迎联系我：<a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#103;&#x75;&#x6f;&#100;&#x6f;&#x6e;&#x67;&#64;&#100;&#105;&#100;&#105;&#x63;&#104;&#x75;&#x78;&#105;&#x6e;&#x67;&#46;&#x63;&#x6f;&#109;">&#103;&#117;&#x6f;&#100;&#x6f;&#x6e;&#x67;&#x40;&#x64;&#105;&#100;&#x69;&#99;&#x68;&#117;&#120;&#x69;&#110;&#103;&#x2e;&#99;&#x6f;&#x6d;</a></h4>
 </div>
   
   
@@ -538,7 +674,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>第三，滴滴的招聘质量提升非常快，3个月前我刚入职，周边同学大概还是百度同学的平均水平，现在我参与的面试，发的offer的质量基本和hulu差不多了。</p>
 
-<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#x67;&#117;&#111;&#100;&#x6f;&#110;&#x67;&#64;&#x64;&#x69;&#100;&#105;&#x74;&#97;&#x78;&#105;&#46;&#x63;&#111;&#x6d;&#46;&#x63;&#110;">&#x67;&#117;&#x6f;&#100;&#x6f;&#x6e;&#x67;&#64;&#100;&#x69;&#100;&#105;&#116;&#x61;&#120;&#105;&#46;&#x63;&#x6f;&#109;&#46;&#x63;&#x6e;</a></p>
+<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#103;&#117;&#x6f;&#x64;&#x6f;&#110;&#x67;&#x40;&#x64;&#x69;&#100;&#105;&#116;&#x61;&#120;&#x69;&#x2e;&#99;&#111;&#x6d;&#46;&#x63;&#110;">&#x67;&#x75;&#111;&#100;&#111;&#x6e;&#x67;&#x40;&#x64;&#x69;&#100;&#x69;&#116;&#x61;&#120;&#105;&#46;&#x63;&#111;&#109;&#46;&#x63;&#110;</a></p>
 </div>
   
   
@@ -915,107 +1051,6 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/30/Spark-Usage-Share/">Spark使用经验分享</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-30T23:01:39+08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2014</time>
-        
-        
-           | <a href="/blog/2014/12/30/Spark-Usage-Share/#comments">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://spark.apache.org/">Spark</a>是一个基于内存的分布式计算engine，最近1-2年在开源社区(<a href="https://github.com/apache/spark">github</a>)和工业界非常火，国内的一些公司也搭建自己的spark集群。典型的应用场景是大数据上的机器学习模型的训练以及各种数据分析。下面是我理解的spark的优势:</p>
-
-<ol>
-<li><p>Spark使得分布式编程更简单</p>
-
-<p> Spark将实际分布在众多Nodes上的数据抽象成RDD(resilient distributed dataset)，使得我们可以像本地数据一样进行处理。同时，Spark提供了相比MapReduce更丰富的<a href="http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations">API</a>，相比MapReduce编程更加简单。</p></li>
-<li><p>Spark通过充分利用内存提高计算效率</p>
-
-<p> 随着数据量越来越大，内存越来越便宜，使用较多的内存让（某些类型的）计算效率提升10至100倍，对很多公司来说是比较划算的。Spark和Facebook的Presto都基于这样的思想。在Spark中，你可以指定将那些在后续需要被多次使用的RDD缓存在内存中，减少了IO的开销，可以显著提高如机器学习模型训练这种需要迭代计算的应用的效率。</p></li>
-<li><p>Spark提供了一整套的数据分析和计算解决方案，降低了学习和维护成本
- <img src="/images/personal/engineering/spark/spark-components.png" alt="" /></p>
-
-<ul>
-<li>Spark本身支持做batch的计算，比如每天机器学习模型的训练，各种数据的处；</li>
-<li>Spark Streaming可以用来做realtime计算和数据处理，Spark Streaming的<a href="https://spark.apache.org/docs/1.1.1/streaming-programming-guide.html">API</a>和Spark的比较类似，其实背后的实现也是把一段段的realtime数据用batch的方式去处理；</li>
-<li>MLlib实现了常用的机器学习和推荐算法，可以直接用或者作为baseline；</li>
-<li>Spark SQL使得可以通过SQL来对Hive表，Json文件等数据源进行查询，查询会被转变为一个Spark job；</li>
-<li>还有GraphX, 我没有用过，其用于一些图相关的计算；<br></br></li>
-</ul>
-</li>
-<li><p>Spark可以和MapReduce通过YARN共享机器资源
- <img src="/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p>
-
-<p> 所有的存储(HDFS)，计算，内存资源都可以共享</p></li>
-</ol>
-
-
-<h2>个人使用Spark的一些经验总结</h2>
-
-<ol>
-<li><p>理解spark application的运行原理， 可以避免犯很多错误
- <img src="/images/personal/engineering/spark/driver-executors.png" alt="" />
- Driver中涉及到RDD操作的代码（比如RDD.map{}中的代码）需要Serialize后由Driver所在的Node传输给Executors所在的Nodes，并做Deserialize后在executors上执行，RDD操作中涉及到的数据结构，比如map中用到了一个user_id &ndash;> user_profile的hashtable，也需要由Driver所在的Node传输给Executors所在的Nodes。理解了这点就可以更好理解下面2点分享</p></li>
-<li><p>保证Rdd操作中的代码都是可序列化的，否则会有NonSerializableException</p>
-
-<p> 一种常见的错误是，在rdd1.map{objectOfClassA.fun}中，对象objectOfClassA所属的类ClassA需要是可序列化的，这也以为ClassA中用到的所有成员属性都是可序列化的。如果classA使用的某个成员属性无法序列化（或者标识为Serializable），scala中可以通过@transient关键字标明序列化ClassA时不序列化该成员变量。推荐stakoverflow的2个讨论：<a href="http://stackoverflow.com/questions/24224392/why-does-spark-throw-notserializableexception-org-apache-hadoop-io-nullwritable">link1</a> <a href="http://stackoverflow.com/questions/22592811/task-not-serializable-java-io-notserializableexception-when-calling-function-ou/22594142#22594142">link2</a></p></li>
-<li><p>正确地使用广播变量(broadcast variables)</p>
-
-<p> 如果我们有一份const数据，需要在executors上用到，一个典型的例子是Driver从数据库中load了一份数据dbData，在很多RDD操作中都引用了dbData，这样的话，每次RDD操作，driver node都需要将dbData分发到各个executors node一遍（分享1中已经介绍了背景），这非常的低效，特别是dbData比较大且RDD操作次数较多时。Spark的广播变量使得Driver可以提前只给各个executors node传一遍（spark内部具体的实现可能是driver传给某几个executors，这几个executors再传给其余executors）。使用广播变量有一个我犯过的错误如下：
- <pre><code> val brDbData = sparkContext.broadcast(dbData) //broadcast dbDataA, and name it as brDbData
- val dbDataB = brDbData.value //no longer broadcast variable
- oneRDD.map(x=>{dbDataB.getOrElse(key, -1); …})</code></pre>
- 第一行将dbData已经广播出去且命名为brDbData，一定要在RDD操作中直接使用该广播变量，如果提前提取出值，第三行的RDD操作还需要将dbData传送一遍。正确的代码如下
- <pre><code> val brDbData = sparkContext.broadcast(dbData) //broadcast dbDataA, and name it as brDbData
- oneRDD.map(x=>{brDbData.value.getOrElse(key, -1); …})</code></pre></p></li>
-<li><p>使用yarn-client或者yarn-cluster模式运行spark应用之前，在IDE中配置spark local模式调试以及测试好代码</p>
-
-<p> spark的yanr-client或者yarn-cluster模式做一次测试比较耗时，因为涉及到代码打包以及上传。在IDE（推荐IntelliJ）中配置local模型用于debug和测试，将显著提升开发和测试效率；</p>
-
-<p> 在VM option中配置：&#8221;-Dspark.master=local -Dspark.app.name=Test -Xmx2G&#8221; (also increase maximal memory for Heap)
- <img src="/images/personal/engineering/spark/spark-mr-yarn.png" alt="" /></p></li>
-<li><p>充分利用spark的并行性</p>
-
-<p> 理想的情况是整个代码的逻辑是对一个或几个RDD做处理，这时候spark的并行性往往是充分利用的。有时候代码逻辑会更复杂，比如你需要统计一年中每一天的一些数值，由于代码逻辑比较复杂，一种简单的“偷懒”方式是用一个for循环，在for循环内部做RDD的操作，这种情况是要努力避免的，务必思考将不同date的统计并行化。我写过的两个应用中都遇到了这种情况：优化之后速度提升非常明显。</p></li>
-<li><p>使用cache()操作</p>
-
-<p> cache RDD需要考虑自己有多少内存，对于后续不需要多次使用的RDD不要cache，如果内存有限却又指定要cache，大量的时间将被花在memory和disk的in-out上</p></li>
-<li><p>为spark-submit选择合适的参数</p>
-
-<p> <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a>用于提交spark job，其可配置为job申请多少资源，包括Driver的内存和cpu，executor的个数，每个executor的内存，cpu和线程数。如果使用yarn做资源管理，只有内存是硬性占有的，一个job过多地申请内存，将会有资源浪费，可能会使别的job因为申请不到足够的内存无法跑。可以用JMX(Java Management Extension)来监控你的spark job到底消耗多少内存，可以指导你申请合适的内存大小。</p></li>
-<li><p>Spark可以访问众多的数据源：比如HDFS, HBase, Cassandra或者Hive表（Hive on Spark)， 直接得到一个RDD用作后续处理</p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1037,6 +1072,10 @@ druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/dru
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/12/18/experiment/">Controlled Experiments</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/12/06/archsummit2016/">ArchSummit2016干货分享</a>
