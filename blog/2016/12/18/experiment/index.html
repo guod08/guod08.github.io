@@ -32,7 +32,7 @@
 <!--<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
 <script>
         function addBlankTargetForLinks () {
-                  $('a[href^="http"]').each(function(){
+        $('a[href^="http"]').each(function(){
                               $(this).attr('target', '_blank');
                                   });
                                     }
@@ -106,6 +106,9 @@
 <div class="entry-content"><p>越来越多人和公司认同data-drivern决策的必要性，不仅是滴滴、Google、Microsoft、Linkedin、Amazon这些科技公司，也包括传统意义上的非技术公司。Data-drivern的核心是Controlled experiment（即大家常说的A/B Testing)，按照字面理解就是将其它影响因素都control住，保持一致，实验结果只由预设的不同方案影响。</p>
 
 <p>在滴滴算法团队，很多时间和精力都在做各种策略和算法实验，比如我们比较不同的订单分配策略哪个可以让接驾时间更短，比如评估新的动态定价策略对乘客的留存和活跃度有什么样的影响。基于近期在做实验方面遇到的一些挑战思考，以及上个周末看的几篇文章写一个小结在这里。先介绍几个controlled experiment相关的基础而重要的点，总结做controlled experiment中的一些遇到的难点和挑战，最后是一些实验方案和架构的构想。</p>
+
+<!--more-->
+
 
 <h3>1. 几个基础&amp;重要的知识点</h3>
 
