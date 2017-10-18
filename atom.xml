@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://dongguo.me/atom.xml" rel="self"/>
   <link href="http://dongguo.me/"/>
-  <updated>2017-10-18T21:34:26+08:00</updated>
+  <updated>2017-10-18T21:37:04+08:00</updated>
   <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -18,8 +18,9 @@
     <link href="http://dongguo.me/blog/2017/10/18/critical-thinking/"/>
     <updated>2017-10-18T16:52:23+08:00</updated>
     <id>http://dongguo.me/blog/2017/10/18/critical-thinking</id>
-    <content type="html"><![CDATA[<p>最近看完了2本批判性思维的书，一本是<a href="https://book.douban.com/subject/26278795/">《批判性思维》</a>，另一本是<a href="https://book.douban.com/subject/20428922/">《学会提问》</a>（更推荐）。我感觉CRITICAL THINKING是职场和生活中重要的素质，这里我总结了这2本书中的要点和感受，不过还是推荐大家读一下第二本书，结合例子感受更深刻。
-<img src="http://dongguo.me/images/personal/critical_thinking2.jpg" alt="" /></p>
+    <content type="html"><![CDATA[<p>最近看完了2本批判性思维的书，一本是<a href="https://book.douban.com/subject/26278795/">《批判性思维》</a>，另一本是<a href="https://book.douban.com/subject/20428922/">《学会提问》</a>（更推荐）。我感觉CRITICAL THINKING是职场和生活中重要的素质，这里我总结了这2本书中的要点和感受，不过还是推荐大家读一下第二本书，结合例子感受更深刻。</p>
+
+<p><img src="http://dongguo.me/images/personal/critical_thinking2.jpg" width = "300" height = "400" alt="人类学习" align=center /></p>
 
 <h2>1.故事的起源：人类的学习与批判性思维（该部分纯YY）</h2>
 
@@ -27,9 +28,7 @@
 
 <h3>1.1 人类如何学习</h3>
 
-<p><img src="http://dongguo.me/images/personal/learning.png" width = "300" height = "200" alt="人类学习" align=center /></p>
-
-<p><img src="http://dongguo.me/images/personal/learning.png" alt="" /></p>
+<p><img src="http://dongguo.me/images/personal/learning.png" width = "400" height = "300" alt="人类学习" align=center /></p>
 
 <ul>
 <li>Optimization Objective：Maximize(Long-term Happiness) + alpha * Minimize(Short-term Pain)</li>
@@ -596,7 +595,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>滴滴今年的待遇我了解是高于BAT的，对大牛更是不手软，欢迎来聊。</p>
 
-<h4>有兴趣欢迎联系我：<a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#x67;&#117;&#x6f;&#100;&#111;&#x6e;&#x67;&#64;&#x64;&#x69;&#x64;&#x69;&#x63;&#x68;&#117;&#120;&#105;&#x6e;&#103;&#46;&#x63;&#x6f;&#109;">&#x67;&#117;&#x6f;&#100;&#111;&#x6e;&#103;&#x40;&#x64;&#105;&#100;&#x69;&#x63;&#104;&#117;&#x78;&#x69;&#x6e;&#103;&#x2e;&#99;&#x6f;&#x6d;</a></h4>
+<h4>有兴趣欢迎联系我：<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#103;&#x75;&#111;&#100;&#111;&#x6e;&#103;&#x40;&#x64;&#x69;&#100;&#x69;&#x63;&#x68;&#117;&#120;&#x69;&#110;&#x67;&#46;&#99;&#111;&#x6d;">&#x67;&#117;&#x6f;&#x64;&#111;&#x6e;&#103;&#x40;&#x64;&#x69;&#x64;&#105;&#x63;&#104;&#117;&#x78;&#x69;&#x6e;&#x67;&#46;&#x63;&#x6f;&#x6d;</a></h4>
 ]]></content>
   </entry>
   
@@ -657,7 +656,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>第三，滴滴的招聘质量提升非常快，3个月前我刚入职，周边同学大概还是百度同学的平均水平，现在我参与的面试，发的offer的质量基本和hulu差不多了。</p>
 
-<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#x67;&#x75;&#111;&#100;&#x6f;&#x6e;&#103;&#64;&#100;&#105;&#100;&#x69;&#116;&#x61;&#120;&#105;&#x2e;&#99;&#x6f;&#x6d;&#46;&#99;&#x6e;">&#x67;&#x75;&#111;&#100;&#111;&#x6e;&#x67;&#64;&#100;&#x69;&#100;&#105;&#116;&#x61;&#120;&#105;&#x2e;&#99;&#111;&#109;&#x2e;&#99;&#110;</a></p>
+<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#103;&#x75;&#111;&#100;&#111;&#110;&#x67;&#x40;&#100;&#105;&#x64;&#x69;&#116;&#97;&#120;&#x69;&#46;&#99;&#x6f;&#x6d;&#46;&#x63;&#x6e;">&#x67;&#x75;&#111;&#x64;&#x6f;&#x6e;&#x67;&#64;&#x64;&#x69;&#100;&#105;&#x74;&#x61;&#x78;&#105;&#x2e;&#x63;&#x6f;&#109;&#x2e;&#x63;&#x6e;</a></p>
 ]]></content>
   </entry>
   
