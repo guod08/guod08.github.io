@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="用户定向是在线广告的核心优势之一，数据是用户定向的基础，而cookie matching技术可以将用户在各个站点上的数据关联在一起，使得re-targeting成为可能。 cookie matching有很多的应用场景，典型的有2种，一种是在DMP(Data Management Platform &hellip;">
+  <meta name="description" content="本文介绍如何搭建Druid cluster，Druid的介绍与应用见另一篇文章 Druid的官网也有详细的文档，建议浏览一遍。本文对关键部分做一些梳理，总结一些比较坑的点。 机器准备 Druid包含若干个services和nodes，我的配置如下（如果没有多个机器， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,118 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/02/druid-cluster-setup/">Druid Cluster Setup</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-02T14:53:25+08:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2015</time>
+        
+        
+           | <a href="/blog/2015/03/02/druid-cluster-setup/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本文介绍如何搭建Druid cluster，Druid的介绍与应用见<a href="http://dongguo.me/blog/2014/05/05/druid-introduction-and-practise/">另一篇文章</a></p>
+
+<p>Druid的官网也有详细的<a href="http://druid.io/docs/latest/">文档</a>，建议浏览一遍。本文对关键部分做一些梳理，总结一些比较坑的点。</p>
+
+<h2>机器准备</h2>
+
+<p>Druid包含若干个services和nodes，我的配置如下（如果没有多个机器，当然可以将所有模块都起在一台机器上）</p>
+
+<ul>
+<li>services/nodes on machine1: Mysql server, Zookepper server, coordinator node, overlord node (indexing service)</li>
+<li>services/nodes on machine2: Historical node, Realtime node</li>
+<li>services/nodes on machine3: Broker node</li>
+</ul>
+
+
+<p>3台机器都安装配置好java (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get">how</a>)</p>
+
+<h2>安装配置依赖</h2>
+
+<h4>mysql配置</h4>
+
+<p>按照Druid的文档安装mysql并创建一个新的用户druid/diurd。理论上Druid在后续步骤会在database druid中创建3张表druid_config, druid_rules和druid_segments。如果最终你发现没有这3张表，可以手动创建。</p>
+
+<h4>安装Zookeeper</h4>
+
+<p>安装启动，无坑</p>
+
+<h4>Deep storage</h4>
+
+<p>如果是local模式（全部都在一台机器上），使用本地磁盘作为deep storage是最简单的，对于cluster，较简单的方式是大家（indexing services, historical node, realtime node）挂载一块公共的磁盘(比如nfs方式)，这样historical node就可以同步deep storage上的segments，realtime node也可以将segments同步到deep storage上来。</p>
+
+<p>在实际应用中数据量通常比较大，常常会使用hdfs作为deep storage，为了能够将segments写入到hdfs中，</p>
+
+<h3>配置启动Druid各个nodes</h3>
+
+<p>对于如下每个node/service，Druid都有一个配置文件runtime.properties（较新的版本将一些公共的配置提取了出来），每个node/service都配置下druid.zk.service.host为zookeeper的地址。</p>
+
+<ul>
+<li>coordinator node: 无坑，在machine1上启动</li>
+<li><p>historical node: Druid默认Deep storage数据路径为/tmp/druid/localStorage, 可通过配置druid.storage.storageDirectory=XXX来覆盖。</p>
+
+<p>  <code>
+druid.storage.type=local
+druid.storage.storageDirectory=/mnt/data/druid/localStorage
+druid.segmentCache.locations=[{"path": "/mnt/data/druid/indexCache", "maxSize"\: 10000000000}]
+ </code>
+  如果deep storage是hdfs，则修改druid.storage.type=hdfs，druid.storage.storageDirectory为hdfs上的路径</p></li>
+<li><p>broker node: 无坑，在machine3上启动；</p></li>
+<li><p>indexing service:</p>
+
+<p>  <code>
+druid.indexer.task.hadoopWorkingPath=hdfs://elsaudnn001.prod.hulu.com/user/guodong/druid
+druid.storage.type=hdfs
+druid.storage.storageDirectory=hdfs://elsaudnn001.prod.hulu.com/user/guodong/druid
+ </code>
+  对应deep storage是hdfs</p></li>
+<li>realtime node: 需要使用kafka，参考官网文档即可；</li>
+</ul>
+
+
+<h3>数据导入</h3>
+
+<p>使用indexing services是Druid推荐的数据导入方式，数据的input和output都可以是本地/挂载磁盘或者hdfs。
+如果要读写hdfs，需要保证druid引用的hadoop版本和你使用的版本一致。</p>
+
+<p>另外Druid引用了2.5.0版本的protobuf，而2.1.0之前版本的hadoop使用的是更老的protobuf版本（如2.4.0a），如果你遇到protobuf版本冲突的问题，需要修改druid的pom.xml<a href="http://druid.io/docs/latest/Build-from-source.html">重新打包</a></p>
+
+<h2>参考</h2>
+
+<ol>
+<li><a href="http://druid.io/docs/latest/">官方文档</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/druid-development">google groups讨论区</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1059,110 +1171,6 @@ Suppose variable x belongs to Gaussian distribution, then x conditional on x bel
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">Bayesian CTR Prediction of Bing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-01T22:07:00+08:00" pubdate data-updated="true">Dec 1<span>st</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/12/01/bayesian-ctr-prediction-for-bing/#comments">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Microsoft published a paper in ICML 2009 named &lsquo;Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft&rsquo;s Bing Search Engine&rsquo;,
-which is claimed won the competition of most accurate and scalable CTR predictor across MS.
-This article shows how to inference this model(let&rsquo;s call it Ad predictor) step-by-step.</p>
-
-<h2>Pros. and Cons.</h2>
-
-<p>I like it because it&rsquo;s totally based on Bayesian, and Bayesian is beautiful. Online learning is naturally supported, and the precition accuracy is comparable with FTRL and OWLQN. And both training and prediction is light-weight and fast.
-Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big issue when applied on big dataset with huge amount of features.</p>
-
-<h2>Inference using Expectation Propagation step by step</h2>
-
-<p>Firstly, following is the factor graph of ad predictor.
-<img class="left" src="/images/personal/research/ep/adPredictor.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step1.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step2.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step3.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step4.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step5.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step6.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step7_1.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step7_2.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step7_3.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step7_4.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step8.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step9.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step10.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step11.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step12.png" width="1200"></p>
-
-<p><img class="left" src="/images/personal/research/ep/ep_step13.png" width="1200"></p>
-
-<p>For each sample, we can use the formula of step 13 to update the posterior parameter of W, which is very easy to be implemented.</p>
-
-<h2>Prediction</h2>
-
-<p>After training, we can predict with following formula:
-<img class="left" src="/images/personal/research/ep/ep_predict.png" width="1200"></p>
-
-<h2>Prediction Accuracy</h2>
-
-<p>I compared it with FTRL and OWLQN on one dataset for age&amp;gender prediction. AUC of this model is comparable with OWLQN and FTRL, so I recommend you have a try in your case.</p>
-
-<h2>Insights</h2>
-
-<ol>
-<li><p>You can find variance of each feature increases after every exposure, which makes sense.</p></li>
-<li><p>This model shows samples with more features will have bigger variance, which does not make sense very much. I think the reason is we assume all the features are independent. Any insights from you?</p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1186,6 +1194,10 @@ Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big iss
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/10/18/critical-thinking/">批判性思维-读书笔记</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/10/07/xinjiang-travel/">2017国庆-北疆自驾</a>

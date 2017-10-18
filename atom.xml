@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://dongguo.me/atom.xml" rel="self"/>
   <link href="http://dongguo.me/"/>
-  <updated>2017-10-08T22:08:04+08:00</updated>
+  <updated>2017-10-18T17:01:50+08:00</updated>
   <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[批判性思维-读书笔记]]></title>
+    <link href="http://dongguo.me/blog/2017/10/18/critical-thinking/"/>
+    <updated>2017-10-18T16:52:23+08:00</updated>
+    <id>http://dongguo.me/blog/2017/10/18/critical-thinking</id>
+    <content type="html"><![CDATA[<p>我的mentor国庆前推荐我读读批判性思维的书，本周看完了2本，一本是<a href="https://book.douban.com/subject/26278795/">《批判性思维》</a>，另一本是<a href="https://book.douban.com/subject/20428922/">《学会提问》</a>，觉得蛮有收获，我感觉CRITICAL THINKING是职场以及生活中重要的素质，推荐大家都读读。这两本书我更推荐第二本。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2017国庆-北疆自驾]]></title>
@@ -440,7 +449,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>滴滴今年的待遇我了解是高于BAT的，对大牛更是不手软，欢迎来聊。</p>
 
-<h4>有兴趣欢迎联系我：<a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#103;&#117;&#111;&#100;&#111;&#110;&#103;&#x40;&#x64;&#x69;&#x64;&#105;&#99;&#104;&#117;&#x78;&#x69;&#110;&#103;&#x2e;&#x63;&#111;&#x6d;">&#103;&#x75;&#x6f;&#100;&#x6f;&#x6e;&#103;&#x40;&#x64;&#x69;&#x64;&#105;&#x63;&#104;&#117;&#120;&#x69;&#x6e;&#x67;&#x2e;&#x63;&#111;&#109;</a></h4>
+<h4>有兴趣欢迎联系我：<a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#103;&#x75;&#111;&#100;&#111;&#110;&#x67;&#x40;&#x64;&#105;&#x64;&#105;&#99;&#x68;&#x75;&#x78;&#105;&#x6e;&#x67;&#x2e;&#x63;&#111;&#109;">&#103;&#117;&#x6f;&#100;&#111;&#x6e;&#103;&#x40;&#x64;&#x69;&#x64;&#x69;&#x63;&#x68;&#x75;&#120;&#105;&#x6e;&#x67;&#x2e;&#x63;&#x6f;&#109;</a></h4>
 ]]></content>
   </entry>
   
@@ -501,7 +510,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>第三，滴滴的招聘质量提升非常快，3个月前我刚入职，周边同学大概还是百度同学的平均水平，现在我参与的面试，发的offer的质量基本和hulu差不多了。</p>
 
-<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#103;&#x75;&#x6f;&#100;&#x6f;&#110;&#103;&#x40;&#100;&#105;&#x64;&#x69;&#116;&#x61;&#120;&#105;&#x2e;&#x63;&#111;&#x6d;&#46;&#x63;&#x6e;">&#103;&#x75;&#111;&#100;&#111;&#110;&#103;&#64;&#100;&#105;&#x64;&#x69;&#x74;&#97;&#x78;&#x69;&#46;&#x63;&#111;&#x6d;&#x2e;&#x63;&#x6e;</a></p>
+<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x67;&#x75;&#111;&#x64;&#111;&#x6e;&#x67;&#64;&#x64;&#105;&#x64;&#105;&#x74;&#x61;&#120;&#105;&#x2e;&#99;&#111;&#109;&#x2e;&#x63;&#x6e;">&#103;&#117;&#111;&#100;&#111;&#x6e;&#x67;&#x40;&#100;&#105;&#x64;&#105;&#116;&#97;&#x78;&#105;&#46;&#99;&#x6f;&#109;&#x2e;&#x63;&#110;</a></p>
 ]]></content>
   </entry>
   
@@ -1427,80 +1436,6 @@ Suppose variable x belongs to Gaussian distribution, then x conditional on x bel
 <p><img src="http://dongguo.me/images/personal/research/gaussian/tg_v1.png" width="1200">
 <img src="http://dongguo.me/images/personal/research/gaussian/tg_v2.png" width="1200">
 <img src="http://dongguo.me/images/personal/research/gaussian/tg_v3.png" width="1200"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bayesian CTR Prediction of Bing]]></title>
-    <link href="http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/"/>
-    <updated>2013-12-01T22:07:00+08:00</updated>
-    <id>http://dongguo.me/blog/2013/12/01/bayesian-ctr-prediction-for-bing</id>
-    <content type="html"><![CDATA[<p>Microsoft published a paper in ICML 2009 named &lsquo;Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft&rsquo;s Bing Search Engine&rsquo;,
-which is claimed won the competition of most accurate and scalable CTR predictor across MS.
-This article shows how to inference this model(let&rsquo;s call it Ad predictor) step-by-step.</p>
-
-<h2>Pros. and Cons.</h2>
-
-<p>I like it because it&rsquo;s totally based on Bayesian, and Bayesian is beautiful. Online learning is naturally supported, and the precition accuracy is comparable with FTRL and OWLQN. And both training and prediction is light-weight and fast.
-Btw: one shortage of this model is it&rsquo;s not sparse, which may be a big issue when applied on big dataset with huge amount of features.</p>
-
-<h2>Inference using Expectation Propagation step by step</h2>
-
-<p>Firstly, following is the factor graph of ad predictor.
-<img class="left" src="http://dongguo.me/images/personal/research/ep/adPredictor.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_factor_definition.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step1.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step2.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step3.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step4.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step5.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step6.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_1.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_2.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_3.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step7_4.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step8.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step9.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step10.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step11.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step12.png" width="1200"></p>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/ep/ep_step13.png" width="1200"></p>
-
-<p>For each sample, we can use the formula of step 13 to update the posterior parameter of W, which is very easy to be implemented.</p>
-
-<h2>Prediction</h2>
-
-<p>After training, we can predict with following formula:
-<img class="left" src="http://dongguo.me/images/personal/research/ep/ep_predict.png" width="1200"></p>
-
-<h2>Prediction Accuracy</h2>
-
-<p>I compared it with FTRL and OWLQN on one dataset for age&amp;gender prediction. AUC of this model is comparable with OWLQN and FTRL, so I recommend you have a try in your case.</p>
-
-<h2>Insights</h2>
-
-<ol>
-<li><p>You can find variance of each feature increases after every exposure, which makes sense.</p></li>
-<li><p>This model shows samples with more features will have bigger variance, which does not make sense very much. I think the reason is we assume all the features are independent. Any insights from you?</p></li>
-</ol>
-
 ]]></content>
   </entry>
   
