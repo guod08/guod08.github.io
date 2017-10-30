@@ -131,11 +131,13 @@
 
 <p><img src="http://dongguo.me/images/personal/alphago/mcts.png" alt="" /></p>
 
-<p>MCTS（Monto Carlo Tree Search）是go中的一个核心算法（在AlphaGo之前的各种围棋程序基本都基于MCTS）。逻辑如下：</p>
+<p>MCTS（Monto Carlo Tree Search）是go中的一个核心算法（在AlphaGo之前的各种围棋程序基本都基于MCTS）。很简单，逻辑如下：</p>
 
 <ol>
-<li></li>
-<li>的</li>
+<li>Selection：基于棋局当前的state定位到Tree的一个叶子节点，每个节点存储Q-value（以及prior probability）和visit count；Q-value的初始值通过Policy Network的prediction</li>
+<li>Expansion：当叶节点visit count大于某个阈值，继续从深度上拓展该path，使用default policy做sampling；</li>
+<li>Evaluation：combine Q-value with one random rollout result, and update value of state</li>
+<li>Backup: 更新tree（update visit count，and Q-value）</li>
 </ol>
 
 
