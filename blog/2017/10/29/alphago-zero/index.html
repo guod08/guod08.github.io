@@ -141,7 +141,22 @@
 </ol>
 
 
-<p><img src="http://dongguo.me/images/personal/alphago/alphago_network_pipeline.png" alt="" /></p>
+<p>MCTS核心思想是基于反复的episode sampling高效地建立一棵树状结构，高效体现在其重点exploit较优的path，且兼顾了exploration。树建立好之后，每个节点记录了Q-value信息，直接可用于Action决策。</p>
+
+<p>在AlphaGo之前，各种围棋程序的解法基本就是依赖MCTS及其变种，问题是go的解空间（包括深度和宽度）巨大，AlphaGo的主要改进是使用Policy Network作为MCTS的先验将树搜索宽度限制在了高概率的分支上（narrow down search to high-probability moves），以及使用Value Network减少了树的搜索深度（当Value Network预测叶节点的胜率比较极端，就没有必要做expansion或rollout了）</p>
+
+<p><img src="http://dongguo.me/images/personal/alphago/alphago_network_pipeline.png" alt="" />
+上图为AlphaGo核心算法步骤：</p>
+
+<ol>
+<li><p>Policy Network的第一步训练：基于Human knowledge（专业棋手的落子），使用DNN，有监督学习人类的落子（Q-value），就是一个分类问题；
+<img src="http://dongguo.me/images/personal/alphago/policy_sl.png" alt="" /></p></li>
+<li><p>Policy Network的第二步训练：在第一步有监督学习到的Network参数基础上，使用self-play（不同的policy）进行对弈，基于Policy Gradient RL进一步优化Network；
+<img src="http://dongguo.me/images/personal/alphago/policy_rl.png" alt="" /></p></li>
+<li><p>Value Network训练：学习每个state的赢面，使用policy network一样的网络结构（除输出层），基于MC value-based RL进行训练
+<img src="http://dongguo.me/images/personal/alphago/value_rl.png" alt="" /></p></li>
+</ol>
+
 
 <h3>4.AlphaGo Zero</h3>
 
