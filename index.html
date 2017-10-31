@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="上周在滴滴内部分享了这篇文章读后感，这里记录一下浅见。 1.下围棋在计算机中是什么问题？ 这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和不可穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（超过人类专家的水准）。 &hellip;">
+  <meta name="description" content="上周在滴滴内部分享了这篇文章读后感，这里记录一下浅见。 1.问题的本质和AlphaGo的解决思路 1.1 下围棋在计算机中是什么问题？ 这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和不可穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,7 +108,9 @@
 
   <div class="entry-content"><p>上周在滴滴内部分享了这篇文章读后感，这里记录一下浅见。</p>
 
-<h2>1.下围棋在计算机中是什么问题？</h2>
+<h2>1.问题的本质和AlphaGo的解决思路</h2>
+
+<h3>1.1 下围棋在计算机中是什么问题？</h3>
 
 <p>这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和不可穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（超过人类专家的水准）。</p>
 
@@ -116,22 +118,22 @@
 
 <p>AlphaGo之所以获得这么大的反响，是由于这个问题大得多的空间复杂性以及之前对该问题的论断(预测几十年之后才能超越人类)。以及David Silver团队一牛的技术营销能力。</p>
 
-<h2>2.AlphaGo的解法思路是直观的</h2>
+<h3>1.2 AlphaGo的解法思路是直观的</h3>
 
 <p>AlphaGo（包括Zero）解决下围棋问题的“思路”是比较朴素的，受过基础算法训练的同学应该能想到一些，当然难度在于有了思路之后解决的方式和程度。</p>
 
-<ol>
+<ul>
 <li>look forward（向前多看几步，人类下五子棋、象棋、围棋都是这个思路）</li>
 <li>学习高手是如何落子的</li>
 <li>评估某个棋局的赢面</li>
-</ol>
+</ul>
 
 
 <p>这也是AlphaGo的Methodology。</p>
 
-<h2>3.AlphaGo(2016年)的解法</h2>
+<h2>2.AlphaGo(2016年)的解法</h2>
 
-<h3>3.1 核心之一：MCTS</h3>
+<h3>2.1 核心之一：MCTS</h3>
 
 <p><img src="http://dongguo.me/images/personal/alphago/mcts.png" alt="" /></p>
 
@@ -147,7 +149,7 @@
 
 <p>在AlphaGo之前，各种围棋程序的解法基本就是依赖MCTS及其变种，问题是go的解空间（包括深度和宽度）巨大，AlphaGo的主要改进是使用Policy Network作为MCTS的先验将树搜索宽度限制在了高概率的分支上（narrow down search to high-probability moves），以及使用Value Network减少了树的搜索深度（当Value Network预测叶节点的胜率比较极端，就没有必要做expansion或rollout了），将探索集中在高效的空间，从而显著提升了power。</p>
 
-<h3>3.2 整体步骤</h3>
+<h3>2.2 整体步骤</h3>
 
 <p><img src="http://dongguo.me/images/personal/alphago/alphago_network_pipeline.png" alt="" /></p>
 
@@ -162,9 +164,9 @@
 </ol>
 
 
-<h2>4.AlphaGo Zero</h2>
+<h2>3.AlphaGo Zero</h2>
 
-<h3>算法改进点</h3>
+<h3>3.1 算法改进点</h3>
 
 <p>AlphaGo Zero相比AlphaGo最大的不同是将MCTS的建立过程和Network的训练融合在一起，互相迭代（而不是像AlphaGo中先单独训练Network，再将Network灌到MCTS中）。第一，MCTS的Q-value和eposide self-play的胜负一起指导Network的训练（trust MCTS）；第二，MCTS的Q-value指导Network self-play的move；第三，Network的预估结果迭代地作为MCTS节点Q-value的prior probability（而不是第一版AlphaGo中一次性地加入）</p>
 
@@ -190,15 +192,17 @@
 </ol>
 
 
-<h3>效果对比</h3>
+<h3>3.2 效果对比</h3>
 
-<p><img src="http://dongguo.me/images/personal/alphago/compare1.png" alt="" />
-paper中这张图除了表明Zero的威力，还表达了Zero相比Supervised Learning得到的Policy并不能更好地预估Human expert的move，但是Elo却高很多，即：Zero学到的技艺和人类围棋知识不同，且人类大脑有限的计算能力很可能陷入了局部解。</p>
+<p><img src="http://dongguo.me/images/personal/alphago/compare1.png" alt="" /></p>
 
-<p><img src="http://dongguo.me/images/personal/alphago/compare2.png" alt="" />
-几个不同算法的performance差异，提示：2个player如果Elo差距400分，分高的胜率在90%。</p>
+<p>paper中这张图除了表明Zero的威力，还表达了Zero相比Supervised Learning得到的Policy并不能更好地预估Human expert的move，但是Elo却高很多，即：Zero学到的技艺和人类围棋知识不同，且人类大脑有限的计算能力很可能陷入了局部解。</p>
 
-<h2>5.综合感受</h2>
+<p><img src="http://dongguo.me/images/personal/alphago/compare2.png" alt="" /></p>
+
+<p>几个不同算法的performance差异，提示：2个player如果Elo差距400分，分高的胜率在90%。</p>
+
+<h2>4.综合感受</h2>
 
 <ol>
 <li>RL在解决无及时反馈问题上的能力扩宽了想象力</li>
@@ -211,7 +215,7 @@ paper中这张图除了表明Zero的威力，还表达了Zero相比Supervised Le
 </ol>
 
 
-<h2>6.几篇文章和code</h2>
+<h2>5.几篇文章和code</h2>
 
 <ol>
 <li>2015, Human-level control through deep reinforcement learning: Beat human in some games without human knowledge</li>
@@ -771,7 +775,7 @@ paper中这张图除了表明Zero的威力，还表达了Zero相比Supervised Le
 
 <p>滴滴今年的待遇我了解是高于BAT的，对大牛更是不手软，欢迎来聊。</p>
 
-<h4>有兴趣欢迎联系我：<a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#103;&#117;&#111;&#x64;&#x6f;&#x6e;&#103;&#64;&#100;&#x69;&#x64;&#105;&#99;&#x68;&#117;&#120;&#x69;&#x6e;&#x67;&#x2e;&#x63;&#x6f;&#109;">&#103;&#x75;&#111;&#x64;&#111;&#110;&#x67;&#64;&#100;&#x69;&#x64;&#105;&#x63;&#104;&#117;&#x78;&#x69;&#x6e;&#103;&#x2e;&#x63;&#x6f;&#x6d;</a></h4>
+<h4>有兴趣欢迎联系我：<a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#103;&#x75;&#111;&#x64;&#111;&#x6e;&#x67;&#64;&#100;&#105;&#x64;&#x69;&#99;&#x68;&#x75;&#x78;&#x69;&#110;&#x67;&#x2e;&#99;&#x6f;&#109;">&#103;&#x75;&#111;&#x64;&#x6f;&#x6e;&#103;&#x40;&#x64;&#x69;&#x64;&#x69;&#x63;&#104;&#117;&#x78;&#105;&#110;&#103;&#x2e;&#x63;&#x6f;&#109;</a></h4>
 </div>
   
   
@@ -862,7 +866,7 @@ paper中这张图除了表明Zero的威力，还表达了Zero相比Supervised Le
 
 <p>第三，滴滴的招聘质量提升非常快，3个月前我刚入职，周边同学大概还是百度同学的平均水平，现在我参与的面试，发的offer的质量基本和hulu差不多了。</p>
 
-<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#58;&#103;&#x75;&#111;&#100;&#x6f;&#110;&#x67;&#64;&#x64;&#x69;&#x64;&#105;&#116;&#x61;&#x78;&#105;&#x2e;&#x63;&#x6f;&#109;&#x2e;&#99;&#110;">&#103;&#117;&#x6f;&#x64;&#x6f;&#110;&#x67;&#x40;&#x64;&#105;&#x64;&#x69;&#116;&#97;&#120;&#105;&#x2e;&#x63;&#x6f;&#109;&#x2e;&#x63;&#x6e;</a></p>
+<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#103;&#117;&#111;&#100;&#x6f;&#x6e;&#x67;&#64;&#x64;&#x69;&#x64;&#105;&#116;&#x61;&#x78;&#x69;&#x2e;&#99;&#x6f;&#109;&#46;&#x63;&#110;">&#103;&#117;&#x6f;&#x64;&#x6f;&#x6e;&#103;&#x40;&#x64;&#105;&#x64;&#105;&#116;&#97;&#x78;&#105;&#x2e;&#99;&#111;&#x6d;&#46;&#x63;&#110;</a></p>
 </div>
   
   
