@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="上周在滴滴内部分享了这篇文章读后感，这里记录一下浅见。 1.问题的本质和AlphaGo的解决思路 1.1 下围棋在计算机中是什么问题？ 这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和不可穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（ &hellip;">
+  <meta name="description" content="上周在滴滴内部分享了这篇文章读后感，这里记录一下浅见。 1.问题的本质和AlphaGo的解决思路 1.1 下围棋在计算机中是什么问题？ 这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和难以穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,7 +109,7 @@
 
 <h3>1.1 下围棋在计算机中是什么问题？</h3>
 
-<p>这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和不可穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（超过人类专家的水准）。</p>
+<p>这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和难以穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（超过人类专家的水准）。</p>
 
 <p><img src="http://dongguo.me/images/personal/alphago/mcts_go.png" alt="" /></p>
 
@@ -161,7 +161,7 @@
 </ol>
 
 
-<h2>3.AlphaGo Zero</h2>
+<h2>3.AlphaGo Zero(2017年)</h2>
 
 <h3>3.1 算法改进点</h3>
 
@@ -202,7 +202,7 @@
 <h2>4.综合感受</h2>
 
 <ol>
-<li>RL在解决无及时反馈问题上的能力扩宽了想象力</li>
+<li>RL在解决无即时反馈问题上的能力扩宽了想象力</li>
 <li>不使用human expert move进行学习，这个我也觉得比较好理解，围棋本质就是有限空间的解搜索问题，在有强大计算能力和好的算法时，不依赖人的数据理论上是可行的（况且确实有被人类带入狭隘解空间的风险，本来就是要PK掉人类的）</li>
 <li>适用性：围棋是一个非常有确定性的问题，一方面输赢的定义很明确，另一方面除了落子没有其他因素影响到棋局；而很多我们在滴滴遇到的问题并没有如此简单；</li>
 <li>很多ML理论和实践的工作都用到了sampling，以及左右互搏迭代的思想，Alphago Zero也是。该思想值得在工作创新中重视</li>
@@ -263,6 +263,8 @@
         <a class="basic-alignment left" href="/blog/2017/10/18/critical-thinking/" title="Previous Post: 读书感想-批判性思维(Critical_Thinking)">&laquo; 读书感想-批判性思维(Critical_Thinking)</a>
       
       
+        <a class="basic-alignment right" href="/blog/2017/12/12/pricing-papers/" title="Next Post: pricing_papers">pricing_papers &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -302,6 +304,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/12/12/pricing-papers/">Pricing_papers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/10/29/alphago-zero/">AlphaGo Zero浅读</a>

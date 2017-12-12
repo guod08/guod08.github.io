@@ -4,7 +4,7 @@
   <title><![CDATA[Dong Guo's Blog]]></title>
   <link href="http://dongguo.me/atom.xml" rel="self"/>
   <link href="http://dongguo.me/"/>
-  <updated>2017-10-31T13:08:33+08:00</updated>
+  <updated>2017-12-12T10:46:15+08:00</updated>
   <id>http://dongguo.me/</id>
   <author>
     <name><![CDATA[Dong Guo]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pricing_papers]]></title>
+    <link href="http://dongguo.me/blog/2017/12/12/pricing-papers/"/>
+    <updated>2017-12-12T10:43:04+08:00</updated>
+    <id>http://dongguo.me/blog/2017/12/12/pricing-papers</id>
+    <content type="html"><![CDATA[<p>整理了一下近期定价项目中在看的几篇文献, 供candidiates了解Team的工作领域</p>
+
+<p>Dynamic Pricing in a Labor Market: Surge Pricing and Flexible Work on the Uber Platform</p>
+
+<p>THE VALUE OF FLEXIBLE WORK: EVIDENCE FROM UBER DRIVERS</p>
+
+<p>Using Big Data to Estimate Consumer Surplus: The Case of Uber</p>
+
+<p>Pricing and Optimization in Shared Vehicle Systems: Queueing Models and Approximation Algorithms</p>
+
+<p>Spatial Pricing in Ride-Sharing Networks</p>
+
+<p>Personalized Dynamic Pricing with Machine Learning</p>
+
+<p>Ta_tonnement in Markets for Trips: Evidence from Uber</p>
+
+<p>Surge Pricing Solves the Wild Goose Chase</p>
+
+<p>New York City Cab Drivers’ Labor Supply Revisited: Reference-Dependent Preferences with Rational- Expectations Targets for Hours and Income</p>
+
+<p>Is Tomorrow Another Day? The Labor Supply of New York City Cabdrivers</p>
+
+<p>Reference-Dependent Preferences and Labor Supply: The Case of New York City Taxi Drivers</p>
+
+<p>Do Workers Work More if Wages Are High? Evidence from a Randomized Field Experiment</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AlphaGo Zero浅读]]></title>
@@ -24,7 +57,7 @@
 
 <h3>1.1 下围棋在计算机中是什么问题？</h3>
 
-<p>这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和不可穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（超过人类专家的水准）。</p>
+<p>这是有限空间的解搜索问题，问题的复杂性来自于搜索空间的巨大和难以穷尽。类似但更简单的的问题包括：走迷宫，下五子棋，以及各种策略游戏。这些问题很多已经被较好地解决（超过人类专家的水准）。</p>
 
 <p><img src="http://dongguo.me/images/personal/alphago/mcts_go.png" alt="" /></p>
 
@@ -76,7 +109,7 @@
 </ol>
 
 
-<h2>3.AlphaGo Zero</h2>
+<h2>3.AlphaGo Zero(2017年)</h2>
 
 <h3>3.1 算法改进点</h3>
 
@@ -117,7 +150,7 @@
 <h2>4.综合感受</h2>
 
 <ol>
-<li>RL在解决无及时反馈问题上的能力扩宽了想象力</li>
+<li>RL在解决无即时反馈问题上的能力扩宽了想象力</li>
 <li>不使用human expert move进行学习，这个我也觉得比较好理解，围棋本质就是有限空间的解搜索问题，在有强大计算能力和好的算法时，不依赖人的数据理论上是可行的（况且确实有被人类带入狭隘解空间的风险，本来就是要PK掉人类的）</li>
 <li>适用性：围棋是一个非常有确定性的问题，一方面输赢的定义很明确，另一方面除了落子没有其他因素影响到棋局；而很多我们在滴滴遇到的问题并没有如此简单；</li>
 <li>很多ML理论和实践的工作都用到了sampling，以及左右互搏迭代的思想，Alphago Zero也是。该思想值得在工作创新中重视</li>
@@ -722,7 +755,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>滴滴今年的待遇我了解是高于BAT的，对大牛更是不手软，欢迎来聊。</p>
 
-<h4>有兴趣欢迎联系我：<a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#103;&#x75;&#111;&#x64;&#111;&#x6e;&#x67;&#64;&#100;&#105;&#x64;&#x69;&#99;&#x68;&#x75;&#x78;&#x69;&#110;&#x67;&#x2e;&#99;&#x6f;&#109;">&#103;&#x75;&#111;&#x64;&#x6f;&#x6e;&#103;&#x40;&#x64;&#x69;&#x64;&#x69;&#x63;&#104;&#117;&#x78;&#105;&#110;&#103;&#x2e;&#x63;&#x6f;&#109;</a></h4>
+<h4>有兴趣欢迎联系我：<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x67;&#117;&#111;&#100;&#x6f;&#x6e;&#103;&#x40;&#100;&#105;&#x64;&#105;&#x63;&#x68;&#x75;&#120;&#105;&#x6e;&#103;&#46;&#x63;&#x6f;&#109;">&#x67;&#117;&#111;&#x64;&#x6f;&#110;&#x67;&#64;&#x64;&#x69;&#x64;&#x69;&#99;&#104;&#117;&#x78;&#105;&#110;&#x67;&#46;&#x63;&#111;&#x6d;</a></h4>
 ]]></content>
   </entry>
   
@@ -783,7 +816,7 @@ online learning 准实时模型更新（KAFKA &ndash;> Storm &ndash;> Online Lea
 
 <p>第三，滴滴的招聘质量提升非常快，3个月前我刚入职，周边同学大概还是百度同学的平均水平，现在我参与的面试，发的offer的质量基本和hulu差不多了。</p>
 
-<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#103;&#117;&#111;&#100;&#x6f;&#x6e;&#x67;&#64;&#x64;&#x69;&#x64;&#105;&#116;&#x61;&#x78;&#x69;&#x2e;&#99;&#x6f;&#109;&#46;&#x63;&#110;">&#103;&#117;&#x6f;&#x64;&#x6f;&#x6e;&#103;&#x40;&#x64;&#105;&#x64;&#105;&#116;&#97;&#x78;&#105;&#x2e;&#99;&#111;&#x6d;&#46;&#x63;&#110;</a></p>
+<p>最后，昨天滴滴大巴上线了，现在可供出行的产品线有出租车，专车，快车，顺风车，大巴。欢迎加入滴滴，在滴滴最美好的阶段，和牛逼的人做牛逼的事情，一起改变中国人的出行体验。有兴趣的联系我: <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x67;&#117;&#111;&#100;&#x6f;&#x6e;&#x67;&#64;&#x64;&#105;&#100;&#105;&#x74;&#97;&#x78;&#105;&#46;&#99;&#x6f;&#x6d;&#46;&#99;&#x6e;">&#103;&#x75;&#x6f;&#x64;&#111;&#110;&#103;&#x40;&#x64;&#105;&#x64;&#x69;&#x74;&#x61;&#x78;&#x69;&#46;&#x63;&#111;&#109;&#x2e;&#99;&#110;</a></p>
 ]]></content>
   </entry>
   
@@ -1571,87 +1604,6 @@ paper中称这个model为ad predictor，其在我的数据集上预估效果很�
 <li><p>本文的PPT： <a href="http://www.slideshare.net/guo_dong/expectation-propagation-researchworkshop">墙外</a>, <a href="http://pan.baidu.com/s/1kT3DtvL">墙内</a></p></li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Classification Models]]></title>
-    <link href="http://dongguo.me/blog/2013/12/15/classification-models/"/>
-    <updated>2013-12-15T00:35:00+08:00</updated>
-    <id>http://dongguo.me/blog/2013/12/15/classification-models</id>
-    <content type="html"><![CDATA[<p>During my past 3 years in career, following classifiers are often used for classification tasks.</p>
-
-<h2>Typcial classifiers comparision</h2>
-
-<p><img class="left" src="http://dongguo.me/images/personal/research/classifiers/classifiers_compare.png" width="800"></p>
-
-<h2>Decision Tree</h2>
-
-<p>Decision Tree is not a start-of-art model for classification or regression, and when there are huge features(say millions) it will take a long time for training.
-But it may perform very well when the number of distinct features are limited, and the classification/regression task is obviously non-linear.</p>
-
-<p>A typical scenario is multi-model fusion: you have trained multiple models for single task, and you want to generate the final prediction result using all these models.
-Based on my past experiments, Decision Tree can out perform linear model(linear regression, logistic regression and so on) on many datasets.</p>
-
-<h2>RDT, random forest, boosting tree</h2>
-
-<p>All of these 3 models are ensemble learning method for classification/regression that operate by constructing multiple Decision Tree at training time.
-For RDT(random decision tree), only part of total samples are used to training each tree. And all features are considered for splitting.</p>
-
-<p>Similar with RDT, random forest also use part of total sampels to construct each tree, but it also only use subset of features/dimisions for splitting.
-So random forest introduces more &lsquo;random&rsquo; factors for training, and it may perform better when there are more noises in training set.</p>
-
-<p>boosting tree is actually forward stagwise additive modeling with decision tree as base learner. And if you choose exponential loss function, then boosting tree becauses Adaboost with decision tree as base learner.
-Here is one <a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">slide</a> about additive model and boosting tree.</p>
-
-<h2>Generalized linear model</h2>
-
-<p>One of the most popular generalized linear model is logistic regression, which is generalized linear model with inversed sigmoid function as the link function.
-There are multiple different implementation for logistic regression, and here are some often used by me.</p>
-
-<h4>Logistic regression optimized with SGD.</h4>
-
-<p>It&rsquo;s very basic, so I ignore the details here</p>
-
-<h4>OWLQN</h4>
-
-<p>It was proposed by Microsoft in paper <a href="http://research.microsoft.com/en-us/downloads/b1eb1016-1738-4bd5-83a9-370c9d498a03/">Orthant-Wise Limited-memory Quasi-Newton Optimizer for L1-regularized Objectives</a> of ICML 2007. You can also find the source code and executable runner via this link.</p>
-
-<p>This model is optimized by a method which is similar with L-BFGS, but can achieve sparse model with L1 regularizer. I recommend you try this model and compare with other models you are using in your dataset.
-Here are four reasons:</p>
-
-<ol type="a">
-<li>It&rsquo;s fast, especially when the dataset is huge;</li>
-<li>It can generate start-of-art prediction results on most dataset;</li>
-<li>It&rsquo;s stable and there are few parameters need to be tried. Actaully, I find only regularization parameters can impact the performance obviously;</li>
-<li>It&rsquo;s sparse, which is very important for big dataset and real product. (Of course, sparse is due to L1 regularizer, instead of the specific optimization method)</li>
-</ol>
-
-
-<p>One problem is it&rsquo;s more challenge to implement it by yourself, so you need spend some time to make it support incremental update or online learning.</p>
-
-<h4>FTRL</h4>
-
-<p>It was proposed by Google via paper <a href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/41159.pdf">
-Ad Click Prediction: a View from the Trenches</a> in 2013. I tried on my dataset, and this implementation can generate similar prediction performance with OWLQN.
-It&rsquo;s quicker than OWLQN for training, and it&rsquo;s also sparse. One advantage is it&rsquo;s very easy to implement, and it support increamental update naturally.
-One pain point for me is this model has 3-4 parameters need to be chosen, and most of them impact the prediction performance obviously.</p>
-
-<h4>Ad predictor</h4>
-
-<p>This <a href="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">paper</a> was also proposed by Microsoft in ICML 2009.</p>
-
-<p>One biggest different with upper 3 implementation is it&rsquo;s based on bayesian, so it&rsquo;s generative model. Ad predictor is used to predict CTR of sponsor search ads of Bing, and on my dataset, it could also achieve comparable prediction performance with OWQLN and FTRL.
-Ad predictor model the weight of each feature with a gaussian distribution, so it natually supports online learning. And the prediction result for each sample is also a gaussian distribution, and it could be used to handle the exploration and exploitation problem.
-See more details of this model in another <a href="http://guod08.github.io/me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">post</a>.</p>
-
-<h2>Neural Network</h2>
-
-<p>ANN is so slow for training, so it&rsquo;s tried only when the dataset is small of medium. Another disadvantage of ANN is it&rsquo;s totally blackbox.</p>
-
-<h2>SVM</h2>
-
-<p>SVM with kernel is also slow for training. You can try it with <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm</a>.</p>
 ]]></content>
   </entry>
   

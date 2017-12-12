@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="Hulu是我的第一份工作。从2011年1月开始实习，7月毕业后正式加入，到15年春天，正好是本科4年的长度，在这里对这4年作个总结。 1. 定位自己的技术领域 互联网行业太大了，从技术角度来说至少包含了硬件研发，前端，后端service，基础架构，数据平台，策略算法等领域。 &hellip;">
+  <meta name="description" content="离开了墙外的Hulu，以后科学上网需要自力更生了。昨天尝试了Shadowsocks，确实稳定易用价格低，推荐给有需求的同学。 Shadowsocks的介绍和安装过程（windows/MacOs/ios/Android）在这篇经典的文章中有详细的介绍：ShadowSocks—科学上网之瑞士军刀。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/28/shi-yong-shadowsockske-xue-shang-wang/">使用Shadowsocks科学上网</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-28T18:54:43+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2015</time>
+        
+        
+           | <a href="/blog/2015/03/28/shi-yong-shadowsockske-xue-shang-wang/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>离开了墙外的Hulu，以后科学上网需要自力更生了。昨天尝试了Shadowsocks，确实稳定易用价格低，推荐给有需求的同学。</p>
+
+<p>Shadowsocks的介绍和安装过程（windows/MacOs/ios/Android）在这篇经典的文章中有详细的介绍：<a href="http://www.jianshu.com/p/08ba65d1f91a">ShadowSocks—科学上网之瑞士军刀</a>。亲测可靠。</p>
+
+<p>Shadowsocks客户端启动之后，是一个三角箭头，需要在“Open Server Preference”里设置账号（包括IP, 端口，加密方式和账号密码）。</p>
+
+<p><img src="http://dongguo.me/images/personal/engineering/shadowsocks/shadow0.png" alt="Shadowsocks账号设置" /></p>
+
+<p>Shadowsocks的账号网上有机会找到一些免费的，不过都是和很多人共享，且不稳定（比如密码改变），靠谱的方式是在VPS（虚拟专用服务器）上部署自己的Shadowsocks服务。我用了这家：<a href="http://it-player.com/">http://it-player.com/</a>（非广告）的服务，一年几十块，很划算了。（如果你难得需要科学上网一次，你甚至可以使用它的半小时有效的临时账号）</p>
+
+<p>这家的VPS里已经配置好了Shadowsocks服务的安装程序，只需要在网页操作鼠标操作就可以安装好，复制端口号，密码，和VPS的ip配置到本地Shadowsocks客户端。截图如下：
+<img src="http://dongguo.me/images/personal/engineering/shadowsocks/shadow3.png" alt="在VPS中安装配置Shadowsocks服务" /></p>
+
+<p>配置好账号，就可以愉快地切换了，考虑到每个月有上百G的流量，默认一直科学上网好了。下载和youtube的速度都是刚刚的。</p>
+
+<p><img src="http://dongguo.me/images/personal/engineering/shadowsocks/shadow4.png" alt="在VPS中安装配置Shadowsocks服务" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1108,117 +1162,6 @@ paper中称这个model为ad predictor，其在我的数据集上预估效果很�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/15/classification-models/">Classification Models</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-15T00:35:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2013</time>
-        
-        
-           | <a href="/blog/2013/12/15/classification-models/#comments">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>During my past 3 years in career, following classifiers are often used for classification tasks.</p>
-
-<h2>Typcial classifiers comparision</h2>
-
-<p><img class="left" src="/images/personal/research/classifiers/classifiers_compare.png" width="800"></p>
-
-<h2>Decision Tree</h2>
-
-<p>Decision Tree is not a start-of-art model for classification or regression, and when there are huge features(say millions) it will take a long time for training.
-But it may perform very well when the number of distinct features are limited, and the classification/regression task is obviously non-linear.</p>
-
-<p>A typical scenario is multi-model fusion: you have trained multiple models for single task, and you want to generate the final prediction result using all these models.
-Based on my past experiments, Decision Tree can out perform linear model(linear regression, logistic regression and so on) on many datasets.</p>
-
-<h2>RDT, random forest, boosting tree</h2>
-
-<p>All of these 3 models are ensemble learning method for classification/regression that operate by constructing multiple Decision Tree at training time.
-For RDT(random decision tree), only part of total samples are used to training each tree. And all features are considered for splitting.</p>
-
-<p>Similar with RDT, random forest also use part of total sampels to construct each tree, but it also only use subset of features/dimisions for splitting.
-So random forest introduces more &lsquo;random&rsquo; factors for training, and it may perform better when there are more noises in training set.</p>
-
-<p>boosting tree is actually forward stagwise additive modeling with decision tree as base learner. And if you choose exponential loss function, then boosting tree becauses Adaboost with decision tree as base learner.
-Here is one <a href="http://www.slideshare.net/guo_dong/additive-model-and-boosting-tree">slide</a> about additive model and boosting tree.</p>
-
-<h2>Generalized linear model</h2>
-
-<p>One of the most popular generalized linear model is logistic regression, which is generalized linear model with inversed sigmoid function as the link function.
-There are multiple different implementation for logistic regression, and here are some often used by me.</p>
-
-<h4>Logistic regression optimized with SGD.</h4>
-
-<p>It&rsquo;s very basic, so I ignore the details here</p>
-
-<h4>OWLQN</h4>
-
-<p>It was proposed by Microsoft in paper <a href="http://research.microsoft.com/en-us/downloads/b1eb1016-1738-4bd5-83a9-370c9d498a03/">Orthant-Wise Limited-memory Quasi-Newton Optimizer for L1-regularized Objectives</a> of ICML 2007. You can also find the source code and executable runner via this link.</p>
-
-<p>This model is optimized by a method which is similar with L-BFGS, but can achieve sparse model with L1 regularizer. I recommend you try this model and compare with other models you are using in your dataset.
-Here are four reasons:</p>
-
-<ol type="a">
-<li>It&rsquo;s fast, especially when the dataset is huge;</li>
-<li>It can generate start-of-art prediction results on most dataset;</li>
-<li>It&rsquo;s stable and there are few parameters need to be tried. Actaully, I find only regularization parameters can impact the performance obviously;</li>
-<li>It&rsquo;s sparse, which is very important for big dataset and real product. (Of course, sparse is due to L1 regularizer, instead of the specific optimization method)</li>
-</ol>
-
-
-<p>One problem is it&rsquo;s more challenge to implement it by yourself, so you need spend some time to make it support incremental update or online learning.</p>
-
-<h4>FTRL</h4>
-
-<p>It was proposed by Google via paper <a href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/41159.pdf">
-Ad Click Prediction: a View from the Trenches</a> in 2013. I tried on my dataset, and this implementation can generate similar prediction performance with OWLQN.
-It&rsquo;s quicker than OWLQN for training, and it&rsquo;s also sparse. One advantage is it&rsquo;s very easy to implement, and it support increamental update naturally.
-One pain point for me is this model has 3-4 parameters need to be chosen, and most of them impact the prediction performance obviously.</p>
-
-<h4>Ad predictor</h4>
-
-<p>This <a href="http://research.microsoft.com/pubs/122779/adpredictor%20icml%202010%20-%20final.pdf">paper</a> was also proposed by Microsoft in ICML 2009.</p>
-
-<p>One biggest different with upper 3 implementation is it&rsquo;s based on bayesian, so it&rsquo;s generative model. Ad predictor is used to predict CTR of sponsor search ads of Bing, and on my dataset, it could also achieve comparable prediction performance with OWQLN and FTRL.
-Ad predictor model the weight of each feature with a gaussian distribution, so it natually supports online learning. And the prediction result for each sample is also a gaussian distribution, and it could be used to handle the exploration and exploitation problem.
-See more details of this model in another <a href="http://guod08.github.io/me/blog/2013/12/01/bayesian-ctr-prediction-for-bing/">post</a>.</p>
-
-<h2>Neural Network</h2>
-
-<p>ANN is so slow for training, so it&rsquo;s tried only when the dataset is small of medium. Another disadvantage of ANN is it&rsquo;s totally blackbox.</p>
-
-<h2>SVM</h2>
-
-<p>SVM with kernel is also slow for training. You can try it with <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1242,6 +1185,10 @@ See more details of this model in another <a href="http://guod08.github.io/me/bl
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/12/12/pricing-papers/">Pricing_papers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/10/29/alphago-zero/">AlphaGo Zero浅读</a>
