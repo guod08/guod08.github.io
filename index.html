@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="昨天看到刘江在朋友圈推荐这本书，JD下单今天翻了一下，书写的挺好：ML相关应用覆盖很全、干货基本都讲了。推荐~ ">
+  <meta name="description" content="昨天看到刘江在朋友圈推荐这本书，今天翻了一下，这本书应该基本把美团机器学习模型/系统/应用都讲了，干货比较多，推荐~ 模型 看起来模型的演进是：先是FTRL做简单的分类，大量排序场景用了分布式的LambdaMart，尝试了Deep&amp;Wide，现在广告/搜索/推荐在Gringer（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,9 +106,29 @@
   </header>
 
 
-  <div class="entry-content"><p>昨天看到刘江在朋友圈推荐这本书，JD下单今天翻了一下，书写的挺好：ML相关应用覆盖很全、干货基本都讲了。推荐~</p>
+  <div class="entry-content"><p>昨天看到刘江在朋友圈推荐这本书，今天翻了一下，这本书应该基本把美团机器学习模型/系统/应用都讲了，干货比较多，推荐~</p>
 
-<p><img src="http://dongguo.me/images/meituan_ml.jpg" alt="" /></p>
+<p><img src="http://dongguo.me/images/meituan_ml_small.jpg" alt="" /></p>
+
+<h3>模型</h3>
+
+<p>看起来模型的演进是：先是FTRL做简单的分类，大量排序场景用了分布式的LambdaMart，尝试了Deep&amp;Wide，现在广告/搜索/推荐在Gringer（自己搭建的分布式机器学习平台）上跑微创新的深度学习模型ClickNet（主要是CTR预估）。ClickNet看起来比较类似凤巢的CTR模型结构；</p>
+
+<h3>系统</h3>
+
+<p>Gringer-美团的分布式机器学习平台，采用PS架构，属于第一代深度学习框架，抽象粒度比TF更大。牺牲了通用性，实验称相比TF要快很多（训练1/10的时间，达到和TF近似的AUC）；</p>
+
+<h3>主要的应用</h3>
+
+<ol>
+<li>用户画像/标签：对于MT很基础和重要</li>
+<li>搜索排序：大框架还是召回+排序（粗排+细排），排序LTR主要用LambdaMart（做了分布式改造）；结合业务特点，针对美团的业务特点做了层次的场景化划分，分别做排序建模，据说效果提升显著。排序的在线学习部分用了FTRL和GBDT做融合（类似wide&amp;deep）；最新迁移到了ClickNet</li>
+<li>推荐：框架还是召回+排序，结合业务使用了多种召回模型和方案，融合后进行排序（LTR）</li>
+<li>计算广告：比较重视三方利益平衡，关注广告对乘客体验的长期影响（保留了少量乘客不展示广告）；使用深度学习ClickNet做CTR预估，最终进行排序；广告的工具做的很完善</li>
+<li>推荐和广告的混排：专门一张讲了普通POI和广告POI如何混排（思想是基于展示广告和展示普通POI的收益兑换），算法还是LTR</li>
+<li>图像视觉：有很多OCR的应用场景，图像分类和识别，用一些GAN的应用，没有用到DRL</li>
+</ol>
+
 </div>
   
   
