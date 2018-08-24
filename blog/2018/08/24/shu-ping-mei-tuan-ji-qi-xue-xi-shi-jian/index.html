@@ -9,7 +9,7 @@
   <meta name="author" content="Dong Guo">
 
   
-  <meta name="description" content="昨天看到刘江在朋友圈推荐这本书，今天翻了一下，这本书应该基本把美团机器学习模型/系统/应用都讲了，干货比较多，推荐~ 模型 看起来模型的演进是：先是FTRL做简单的分类，大量排序场景用了分布式的LambdaMart，尝试了Deep&amp;Wide，现在广告/搜索/推荐在Gringer（ &hellip;">
+  <meta name="description" content="昨天看到刘江在朋友圈推荐这本书，今天翻了一下，这本书应该基本把美团机器学习模型/系统/应用都讲了，干货比较多，推荐~ 1.模型 看起来模型的演进是：先是FTRL做简单的分类，大量排序场景用了分布式的LambdaMart，尝试了Deep&amp;Wide，现在广告/搜索/推荐在Gringer（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,15 +107,15 @@
 
 <p><img src="http://dongguo.me/images/meituan_ml_small.jpg" alt="" /></p>
 
-<h3>模型</h3>
+<h3>1.模型</h3>
 
 <p>看起来模型的演进是：先是FTRL做简单的分类，大量排序场景用了分布式的LambdaMart，尝试了Deep&amp;Wide，现在广告/搜索/推荐在Gringer（自己搭建的分布式机器学习平台）上跑微创新的深度学习模型ClickNet（主要是CTR预估）。ClickNet看起来比较类似凤巢的CTR模型结构；</p>
 
-<h3>系统</h3>
+<h3>2.系统</h3>
 
 <p>Gringer-美团的分布式机器学习平台，采用PS架构，属于第一代深度学习框架，抽象粒度比TF更大。牺牲了通用性，实验称相比TF要快很多（训练1/10的时间，达到和TF近似的AUC）；</p>
 
-<h3>主要的应用</h3>
+<h3>3.主要的应用</h3>
 
 <ol>
 <li>用户画像/标签：对于MT很基础和重要</li>
